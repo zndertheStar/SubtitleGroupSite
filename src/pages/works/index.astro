@@ -20,52 +20,89 @@ const categories = ['all', 'anime', 'movie', 'ova', 'other'] as const;
   <main class="flex-1 py-12">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Page Header -->
-      <div class="mb-8">
-        <h1 class="text-3xl font-bold mb-2">{t('works.title')}</h1>
-        <p class="text-gray-400">共 {works.length} 部作品</p>
+      <div class="mb-8 flex items-start justify-between gap-4">
+        <div>
+          <h1 class="text-3xl font-bold mb-2">{t('works.title')}</h1>
+          <p class="text-gray-400">共 {works.length} 部作品</p>
+        </div>
+        <a 
+          href="/rss.xml" 
+          target="_blank"
+          class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs text-orange-400 hover:text-orange-300 hover:bg-orange-400/10 transition-all border border-orange-400/20"
+          title="RSS 订阅"
+        >
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19.17 7.02 20.5 5.36 20.5c-1.66 0-3-1.33-3-2.68 0-1.21.83-2.18 2.18-2.18zM2 11.1c5.87 0 10.7 4.83 10.7 10.7h-3.36c0-4.06-3.28-7.34-7.34-7.34V11.1zm0-5.44c9.12 0 16.44 7.32 16.44 16.44h-3.36c0-7.26-5.82-13.08-13.08-13.08V5.66z"/>
+          </svg>
+          <span>RSS</span>
+        </a>
       </div>
 
-      <!-- Filters -->
-      <div class="flex gap-2 mb-8 overflow-x-auto pb-2">
-        {categories.map(cat => (
-          <button 
-            class="px-4 py-2 rounded-full text-sm font-medium transition-all filter-btn whitespace-nowrap"
-            data-category={cat}
-          >
-            {cat === 'all' ? t('works.filter.all') : 
-             cat === 'anime' ? t('works.filter.anime') :
-             cat === 'movie' ? t('works.filter.movie') :
-             cat === 'ova' ? t('works.filter.ova') : '其他'}
-          </button>
-        ))}
+      <!-- Search & Filters -->
+      <div class="flex flex-col sm:flex-row gap-4 mb-8">
+        <!-- Search Box -->
+        <div class="relative flex-1 max-w-md">
+          <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+          <input 
+            type="text" 
+            id="search-input"
+            placeholder="搜索作品标题或描述..."
+            class="w-full pl-10 pr-4 py-2 rounded-xl border border-white/10 bg-white/5 text-sm focus:outline-none focus:border-purple-500/50 focus:ring-1 focus:ring-purple-500/50 transition-all"
+          />
+        </div>
+        
+        <!-- Category Filters -->
+        <div class="flex gap-2 overflow-x-auto pb-2">
+          {categories.map(cat => (
+            <button 
+              class="px-4 py-2 rounded-full text-sm font-medium transition-all filter-btn whitespace-nowrap"
+              data-category={cat}
+            >
+              {cat === 'all' ? t('works.filter.all') : 
+               cat === 'anime' ? t('works.filter.anime') :
+               cat === 'movie' ? t('works.filter.movie') :
+               cat === 'ova' ? t('works.filter.ova') : '其他'}
+            </button>
+          ))}
+        </div>
       </div>
 
-      <!-- Works Grid -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="works-grid">
-        {works.map(work => (
+      <!-- Works Grid - Vertical Cards -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4" id="works-grid">
+        {works.map((work, index) => (
           <a 
             href={`/works/${work.slug}`} 
             class="anime-card group block work-item"
             data-category={work.data.category}
+            style={`animation-delay: ${index * 0.05}s`}
           >
-            <div class="aspect-video bg-gradient-to-br from-purple-900/50 to-pink-900/50 flex items-center justify-center overflow-hidden relative">
+            <div class="aspect-[3/4] bg-gradient-to-br from-purple-900/50 to-pink-900/50 flex items-center justify-center overflow-hidden relative">
               {work.data.cover ? (
-                <img src={work.data.cover} alt={work.data.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <img 
+                  src={work.data.cover} 
+                  alt={work.data.title} 
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
               ) : (
-                <span class="text-6xl">🎬</span>
+                <span class="text-4xl">🎬</span>
               )}
-              <div class="absolute top-2 right-2 px-2 py-1 rounded-lg text-xs font-medium bg-black/50 text-white backdrop-blur-sm">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+              
+              <div class="absolute top-2 right-2 px-1.5 py-0.5 rounded text-[10px] font-medium bg-black/50 text-white backdrop-blur-sm">
                 {work.data.category === 'anime' ? '动画' : work.data.category === 'movie' ? '电影' : work.data.category === 'ova' ? 'OVA' : '其他'}
               </div>
-            </div>
-            <div class="p-4">
-              <h3 class="font-semibold text-lg mb-1 group-hover:text-purple-400 transition-colors">{work.data.title}</h3>
-              <p class="text-sm text-gray-500 line-clamp-2">{work.data.description}</p>
-              <div class="flex items-center justify-between mt-3">
-                <span class="text-xs text-gray-500">{work.data.pubDate.toLocaleDateString('zh-CN')}</span>
-                {work.data.episode && (
-                  <span class="px-2 py-0.5 rounded-full text-xs bg-purple-500/20 text-purple-300">第{work.data.episode}集</span>
-                )}
+              
+              <div class="absolute bottom-0 left-0 right-0 p-3">
+                <h3 class="font-semibold text-sm text-white group-hover:text-purple-300 transition-colors truncate">{work.data.title}</h3>
+                <div class="flex items-center justify-between mt-1">
+                  <span class="text-[10px] text-gray-400">{work.data.pubDate.toLocaleDateString('zh-CN')}</span>
+                  {work.data.episode && (
+                    <span class="text-[10px] px-1.5 py-0.5 rounded-full bg-purple-500/30 text-purple-200">第{work.data.episode}集</span>
+                  )}
+                </div>
               </div>
             </div>
           </a>
@@ -74,10 +111,50 @@ const categories = ['all', 'anime', 'movie', 'ova', 'other'] as const;
     </div>
   </main>
 
+  <style>
+    .work-item {
+      opacity: 0;
+      transform: translateY(15px);
+      animation: work-fade-in 0.4s ease forwards;
+    }
+    
+    @keyframes work-fade-in {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+
   <script is:inline>
+    const searchInput = document.getElementById('search-input');
+    const workItems = document.querySelectorAll('.work-item');
+    let currentCategory = 'all';
+    
+    function filterWorks() {
+      const searchTerm = searchInput?.value?.toLowerCase() || '';
+      
+      workItems.forEach(item => {
+        const title = item.querySelector('h3')?.textContent?.toLowerCase() || '';
+        const description = item.dataset.description?.toLowerCase() || '';
+        const category = item.dataset.category;
+        
+        const matchesCategory = currentCategory === 'all' || category === currentCategory;
+        const matchesSearch = !searchTerm || title.includes(searchTerm) || description.includes(searchTerm);
+        
+        if (matchesCategory && matchesSearch) {
+          item.style.display = '';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+    
+    searchInput?.addEventListener('input', filterWorks);
+    
     document.querySelectorAll('.filter-btn').forEach(btn => {
       btn.addEventListener('click', () => {
-        const category = btn.dataset.category;
+        currentCategory = btn.dataset.category;
         
         // Update active state
         document.querySelectorAll('.filter-btn').forEach(b => {
@@ -87,14 +164,7 @@ const categories = ['all', 'anime', 'movie', 'ova', 'other'] as const;
         btn.style.background = 'linear-gradient(135deg, #c084fc 0%, #f472b6 100%)';
         btn.style.color = 'white';
         
-        // Filter works
-        document.querySelectorAll('.work-item').forEach(item => {
-          if (category === 'all' || item.dataset.category === category) {
-            item.style.display = '';
-          } else {
-            item.style.display = 'none';
-          }
-        });
+        filterWorks();
       });
     });
     

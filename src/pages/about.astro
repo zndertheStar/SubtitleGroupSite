@@ -2,9 +2,12 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import PageLoader from '../components/PageLoader.astro';
 import { getCollection, render } from 'astro:content';
+import { siteConfig, getSiteName } from '../config/site';
 
 const lang = 'zh';
+const siteName = getSiteName(lang);
 const aboutData = await getCollection('about');
 const about = aboutData[0];
 let Content;
@@ -15,16 +18,17 @@ if (about) {
 ---
 
 <Layout title="关于我们" lang={lang}>
+  <PageLoader />
   <Header lang={lang} />
   
   <main class="flex-1 py-12">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
         <div class="w-20 h-20 mx-auto rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white font-bold text-3xl mb-6 glow-purple">
-          G
+          {siteConfig.logo.iconText}
         </div>
-        <h1 class="text-4xl font-bold mb-4 gradient-text">绿茶字幕组</h1>
-        <p class="text-xl text-gray-400">Green Tea Subs</p>
+        <h1 class="text-4xl font-bold mb-4 gradient-text">{siteName}</h1>
+        <p class="text-xl text-gray-400">{siteConfig.nameEn}</p>
       </div>
 
       {Content ? (

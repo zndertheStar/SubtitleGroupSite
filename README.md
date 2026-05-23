@@ -4,15 +4,15 @@
 
 ## 功能特性
 
-- 作品发布系统（文章 + 下载）
-- 季度展示板（自动 RSS 解析进度）
-- 多语言支持（中/日/英）
-- 亮/暗双模式二次元主题
-- Decap CMS 内容管理
-- Pagefind 搜索
-- Giscus 评论
-- Umami 统计
-- RSS 输出
+- 🎬 作品发布系统（文章 + 下载）
+- 📊 季度展示板（自动 RSS 解析进度）
+- 🌐 多语言支持（中/日/英）
+- 🌙 亮/暗双模式二次元主题
+- 📝 Decap CMS 内容管理
+- 🔍 Pagefind 搜索
+- 💬 Giscus 评论
+- 📈 Umami 统计
+- 📡 RSS 输出
 
 ## 技术栈
 
@@ -25,34 +25,103 @@
 
 ---
 
-## 前置准备
+## 部署流程总览
 
-### 1. 环境要求
-
-- **Node.js**: >= 22.12.0
-- **Git**: 任意版本
-- **npm**: >= 10.x
-
-### 2. 你需要准备的东西
-
-部署前，请确保你已准备好以下信息：
-
-| 项目 | 说明 | 获取方式 |
-|------|------|---------|
-| GitHub 账号 | 用于托管代码和 Decap CMS 认证 | [github.com](https://github.com) |
-| 站点仓库 | 存放本项目的 GitHub 仓库 | 新建或 Fork |
-| 字幕仓库 (可选) | 存放字幕文件的独立仓库 | 新建 |
-| Giscus 配置 | 评论系统 | 见下方配置 |
-| Umami 地址 (可选) | 访问统计 | 自建或官方 |
-| RSS 源地址 | 展示板自动解析用 | 第三方站点 |
+```
+1. 个性化配置  →  2. 选择部署方式  →  3. 配置第三方服务  →  4. 开始使用
+     ↓                  ↓                      ↓
+  改站点名称      Vercel 或自建          Giscus / RSS
+  换图标颜色      服务器               Umami（可选）
+```
 
 ---
 
-## 快速开始（本地开发）
+## 第一步：个性化配置（部署前必做）
+
+### 1. 修改站点名称和图标
+
+编辑 `src/config/site.ts`：
+
+```typescript
+export const siteConfig = {
+  // 站点名称（支持多语言）
+  name: '绿茶字幕组',        // 中文
+  nameEn: 'Green Tea Subs', // 英文
+  nameJa: '緑茶字幕組',     // 日文
+  
+  // 站点描述
+  description: '用心翻译每一帧',
+  descriptionEn: 'Translating every frame with heart',
+  descriptionJa: '一つ一つのフレームに心を込めて',
+  
+  // 图标配置
+  logo: {
+    text: true,      // true=文字Logo, false=图片Logo
+    iconText: 'G',   // Logo文字（单个字母或短文字）
+    image: '',       // 图片Logo路径（如使用图片则填 /logo.png）
+  },
+  
+  // 站点地址
+  url: 'https://your-domain.com',
+  
+  // 版权后缀
+  copyright: '用爱发电',
+};
+```
+
+### 2. 更换图标
+
+将图标文件放入 `public/` 目录：
+
+| 文件 | 用途 | 建议尺寸 |
+|------|------|---------|
+| `public/favicon.svg` | 浏览器标签页图标 | SVG 矢量图 |
+| `public/favicon.ico` | 旧浏览器兼容 | 32x32 |
+| `public/images/og-default.jpg` | 社交分享封面图 | 1200x630 |
+
+### 3. 修改主题色（可选）
+
+编辑 `src/styles/global.css`，修改 CSS 变量：
+
+```css
+:root {
+  --accent-purple: #a855f7;
+  --accent-pink: #ec4899;
+  /* 更多颜色变量... */
+}
+```
+
+---
+
+## 第二步：环境准备
+
+### 系统要求
+
+| 项目 | 最低版本 | 说明 |
+|------|---------|------|
+| Node.js | >= 22.12.0 | [下载](https://nodejs.org/) |
+| npm | >= 10.x | 随 Node.js 安装 |
+| Git | 任意 | [下载](https://git-scm.com/) |
+
+### 你需要准备的账号和服务
+
+| 项目 | 必需 | 用途 |
+|------|------|------|
+| GitHub 账号 | ✅ 必需 | 代码托管 + CMS 认证 |
+| Giscus | ✅ 必需 | 评论区 |
+| RSS 源 | ✅ 必需 | 展示板自动更新 |
+| Vercel / 服务器 | ✅ 必需 | 网站托管 |
+| Umami | ❌ 可选 | 访问统计 |
+| 自定义域名 | ❌ 可选 | 品牌域名 |
+
+---
+
+## 第三步：本地开发与测试
 
 ### 1. 克隆项目
 
 ```bash
+# 使用你自己的仓库地址
 git clone https://github.com/你的用户名/你的仓库名.git
 cd 你的仓库名
 ```
@@ -65,31 +134,12 @@ npm install
 
 ### 3. 配置环境变量
 
-复制示例配置文件：
-
 ```bash
+# 复制示例文件
 cp .env.example .env
-```
 
-编辑 `.env` 文件，填入你的配置：
-
-```env
-# Umami 统计（可选）
-UMAMI_WEBSITE_ID=your-website-id
-UMAMI_SCRIPT_URL=https://your-umami-domain.com/script.js
-
-# Giscus 评论（必需）
-GISCUS_REPO=你的用户名/你的仓库名
-GISCUS_REPO_ID=从 Giscus 获取
-GISCUS_CATEGORY_ID=从 Giscus 获取
-
-# 字幕仓库（可选）
-SUBTITLE_REPO=你的用户名/字幕仓库名
-SUBTITLE_REPO_BRANCH=main
-
-# RSS 解析（展示板用）
-RSS_FEED_URL=https://api.animes.garden/feed.xml
-GROUP_NAME=你的字幕组名
+# 编辑 .env（详见下方配置说明）
+nano .env
 ```
 
 ### 4. 启动开发服务器
@@ -98,338 +148,271 @@ GROUP_NAME=你的字幕组名
 npm run dev
 ```
 
-访问 http://localhost:4321 查看站点。
+访问 http://localhost:4321 查看效果。
+
+> 💡 **提示**：开发模式下 Pagefind 搜索不可用，构建后才可用。
 
 ---
 
-## 部署方式一：Vercel（推荐）
+## 第四步：选择部署方式
 
-Vercel 是部署 Astro 站点的最佳平台，支持自动构建和全球 CDN。
+### 方式 A：Vercel 部署（推荐 ⭐）
 
-### 步骤 1：准备 GitHub 仓库
+适合：没有服务器经验、想要快速上线、需要全球 CDN
 
-1. 在 GitHub 上创建一个新仓库（如 `green-tea-subs-site`）
-2. 将本地代码推送到仓库：
+| 优点 | 缺点 |
+|------|------|
+| 自动构建部署 | 需要绑定 GitHub |
+| 全球 CDN 加速 | 免费版有流量限制 |
+| 自带 HTTPS | |
+| 配置简单 | |
 
-```bash
-git init
-git add .
-git commit -m "init: 初始化字幕组站点"
-git branch -M main
-git remote add origin https://github.com/你的用户名/你的仓库名.git
-git push -u origin main
-```
+**步骤：**
 
-### 步骤 2：连接 Vercel
+1. **准备 GitHub 仓库**
+   ```bash
+   git init
+   git add .
+   git commit -m "init: 初始化字幕组站点"
+   git branch -M main
+   git remote add origin https://github.com/你的用户名/你的仓库名.git
+   git push -u origin main
+   ```
 
-1. 访问 [vercel.com](https://vercel.com) 并登录（建议用 GitHub 账号登录）
-2. 点击 "Add New Project"
-3. 选择你的 GitHub 仓库
-4. Vercel 会自动识别 Astro 项目，保持默认配置即可：
-   - **Framework Preset**: Astro
-   - **Build Command**: `npm run build`
-   - **Output Directory**: `dist`
-5. 点击 "Deploy"
+2. **连接 Vercel**
+   - 访问 [vercel.com](https://vercel.com)，用 GitHub 登录
+   - 点击 "Add New Project"
+   - 选择你的仓库
+   - 保持默认配置（Astro），点击 "Deploy"
 
-### 步骤 3：配置环境变量
+3. **配置环境变量**
+   - 进入 Vercel Dashboard → 你的项目 → Settings → Environment Variables
+   - 添加以下变量（详见下方【第三方服务配置】）：
+     - `GISCUS_REPO`
+     - `GISCUS_REPO_ID`
+     - `GISCUS_CATEGORY_ID`
+     - `RSS_FEED_URL`
+     - `GROUP_NAME`
 
-1. 在 Vercel Dashboard 进入项目设置
-2. 选择 "Environment Variables"
-3. 添加以下变量：
-
-| 变量名 | 值 | 环境 |
-|--------|-----|------|
-| `GISCUS_REPO` | 你的用户名/仓库名 | Production |
-| `GISCUS_REPO_ID` | 从 Giscus 获取 | Production |
-| `GISCUS_CATEGORY_ID` | 从 Giscus 获取 | Production |
-| `RSS_FEED_URL` | RSS 源地址 | Production |
-| `GROUP_NAME` | 字幕组名 | Production |
-
-### 步骤 4：配置域名（可选）
-
-1. 在 Vercel Dashboard 进入 "Domains"
-2. 添加你的自定义域名
-3. 按提示配置 DNS 记录
-
-### 步骤 5：配置 Decap CMS
-
-Decap CMS 需要 Git Gateway 后端支持。推荐使用 **Netlify Identity**（免费）：
-
-1. 访问 [netlify.com](https://netlify.com) 并用 GitHub 登录
-2. 导入同一个 GitHub 仓库
-3. 部署后，进入 Site settings -> Identity
-4. 启用 Identity 服务
-5. 设置 Git Gateway（在 Services 中）
-6. 复制 Netlify 站点的 API URL
-7. 修改 `public/admin/config.yml`：
-
-```yaml
-backend:
-  name: git-gateway
-  branch: main
-  repo: 你的用户名/你的仓库名
-```
-
-8. 提交修改并推送到 GitHub（Vercel 会自动重新部署）
-
-### Vercel 部署完成！
-
-每次你推送代码到 GitHub，Vercel 会自动重新构建和部署。
+4. **绑定域名（可选）**
+   - Vercel Dashboard → Domains → Add
+   - 按提示配置 DNS 记录
 
 ---
 
-## 部署方式二：本地部署（自建服务器）
+### 方式 B：自建服务器部署
 
-如果你想在自己的服务器上运行，使用 Node.js 部署。
+适合：有服务器资源、需要完全控制、大流量站点
 
-### 步骤 1：服务器准备
+| 优点 | 缺点 |
+|------|------|
+| 完全控制 | 需要自己维护 |
+| 无流量限制 | 需要服务器成本 |
+| 数据自主 | 配置较复杂 |
 
-确保服务器已安装：
-- Node.js >= 22.12.0
-- npm >= 10.x
-- Git
-- Nginx（可选，用于反向代理）
+**服务器要求：**
 
-### 步骤 2：克隆代码
+| 项目 | 要求 |
+|------|------|
+| 系统 | Linux (Ubuntu/Debian/CentOS) |
+| Node.js | >= 22.12.0 |
+| 内存 | >= 512MB |
+| 带宽 | 根据访问量 |
 
-```bash
-cd /var/www
-git clone https://github.com/你的用户名/你的仓库名.git
-cd 你的仓库名
-```
+**步骤：**
 
-### 步骤 3：安装依赖并构建
+1. **安装依赖**
+   ```bash
+   # Ubuntu/Debian
+   curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
+   sudo apt install -y nodejs nginx git
+   ```
 
-```bash
-npm install
-npm run build
-```
+2. **克隆并构建**
+   ```bash
+   cd /var/www
+   git clone https://github.com/你的用户名/你的仓库名.git
+   cd 你的仓库名
+   npm install
+   npm run build
+   ```
 
-构建完成后，会生成 `dist` 目录，其中包含：
-- `dist/server/entry.mjs` - Node.js 服务器入口
-- `dist/client/` - 静态资源
+3. **配置环境变量**
+   ```bash
+   cp .env.example .env
+   nano .env
+   # 填入配置（详见下方）
+   ```
 
-### 步骤 4：配置环境变量
+4. **启动服务（三选一）**
 
-```bash
-cp .env.example .env
-nano .env
-```
+   **方案 1 - PM2（推荐）**
+   ```bash
+   npm install -g pm2
+   pm2 start ecosystem.config.js
+   pm2 save
+   pm2 startup
+   ```
 
-填入你的配置（同上方环境变量表格）。
+   **方案 2 - Systemd**
+   ```bash
+   sudo systemctl enable green-tea-subs
+   sudo systemctl start green-tea-subs
+   ```
 
-### 步骤 5：启动服务
+   **方案 3 - Docker（最简单）**
+   ```bash
+   docker build -t subs-site .
+   docker run -d -p 3000:3000 --name subs-site subs-site
+   ```
 
-#### 方式 A：直接运行（测试用）
+5. **配置 Nginx**
+   ```bash
+   sudo nano /etc/nginx/sites-available/subs-site
+   # 填入配置（详见下方 Nginx 配置）
+   sudo ln -s /etc/nginx/sites-available/subs-site /etc/nginx/sites-enabled/
+   sudo nginx -t
+   sudo systemctl reload nginx
+   ```
 
-```bash
-node dist/server/entry.mjs
-```
-
-默认监听 http://localhost:4321
-
-#### 方式 B：使用 PM2 守护进程（生产推荐）
-
-安装 PM2：
-```bash
-npm install -g pm2
-```
-
-创建 PM2 配置文件 `ecosystem.config.js`：
-
-```javascript
-module.exports = {
-  apps: [{
-    name: 'green-tea-subs',
-    script: './dist/server/entry.mjs',
-    instances: 1,
-    autorestart: true,
-    watch: false,
-    max_memory_restart: '500M',
-    env: {
-      NODE_ENV: 'production',
-      PORT: 3000
-    },
-    error_file: './logs/err.log',
-    out_file: './logs/out.log',
-    log_date_format: 'YYYY-MM-DD HH:mm:ss Z'
-  }]
-};
-```
-
-启动服务：
-```bash
-mkdir -p logs
-pm2 start ecosystem.config.js
-pm2 save
-pm2 startup
-```
-
-#### 方式 C：使用 Systemd（Linux）
-
-创建服务文件 `/etc/systemd/system/green-tea-subs.service`：
-
-```ini
-[Unit]
-Description=Green Tea Subs Site
-After=network.target
-
-[Service]
-Type=simple
-User=www-data
-WorkingDirectory=/var/www/你的仓库名
-ExecStart=/usr/bin/node /var/www/你的仓库名/dist/server/entry.mjs
-Restart=on-failure
-RestartSec=10
-Environment=NODE_ENV=production
-Environment=PORT=3000
-
-[Install]
-WantedBy=multi-user.target
-```
-
-启动服务：
-```bash
-sudo systemctl daemon-reload
-sudo systemctl enable green-tea-subs
-sudo systemctl start green-tea-subs
-sudo systemctl status green-tea-subs
-```
-
-### 步骤 6：配置 Nginx 反向代理
-
-如果你希望通过域名访问，配置 Nginx：
-
-```nginx
-server {
-    listen 80;
-    server_name your-domain.com;
-    
-    location / {
-        proxy_pass http://localhost:3000;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection 'upgrade';
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
-        proxy_cache_bypass $http_upgrade;
-    }
-}
-```
-
-启用配置：
-```bash
-sudo nginx -t
-sudo systemctl reload nginx
-```
-
-### 步骤 7：配置 HTTPS（推荐）
-
-使用 Let's Encrypt：
-
-```bash
-sudo apt install certbot python3-certbot-nginx
-sudo certbot --nginx -d your-domain.com
-```
-
-### 步骤 8：配置 Decap CMS
-
-本地部署的 Decap CMS 需要 Git Gateway。推荐方案：
-
-**方案 A：使用 Netlify Identity（最简单）**
-- 按 Vercel 部署中的 Decap CMS 配置步骤操作
-- 你的站点部署在哪里不重要，Netlify Identity 只提供认证服务
-
-**方案 B：使用 GitHub OAuth（自建）**
-1. 在 GitHub Settings -> Developer settings -> OAuth Apps 中新建应用
-2. 设置 Authorization callback URL 为 `https://your-domain.com/admin/`
-3. 获取 Client ID 和 Client Secret
-4. 部署一个 [Git Gateway](https://github.com/netlify/git-gateway) 服务
-5. 修改 `public/admin/config.yml` 使用 GitHub OAuth
-
-### 本地部署完成！
-
-更新代码后重新部署：
-```bash
-git pull origin main
-npm install
-npm run build
-pm2 restart green-tea-subs
-```
+6. **配置 HTTPS**
+   ```bash
+   sudo apt install certbot python3-certbot-nginx
+   sudo certbot --nginx -d your-domain.com
+   ```
 
 ---
 
-## 部署后配置
+## 第五步：第三方服务配置
 
-### 1. 配置 Giscus 评论
+### Giscus 评论系统（必需）
 
-1. 确保你的仓库已开启 Discussions 功能（Settings -> General -> Discussions）
+1. 确保仓库已开启 Discussions（Settings → General → Discussions → 勾选）
 2. 访问 [giscus.app](https://giscus.app)
-3. 输入你的仓库名，选择语言为 zh-CN
-4. 复制生成的 `data-repo-id` 和 `data-category-id`
-5. 填入 `.env` 文件，或直接在以下文件中替换：
-   - `src/pages/works/[slug].astro`
-   - `src/pages/misc/[slug].astro`
+3. 输入你的仓库名，选择语言 zh-CN
+4. 复制以下信息到环境变量：
+   - `GISCUS_REPO`: `你的用户名/仓库名`
+   - `GISCUS_REPO_ID`: 从 giscus.app 获取
+   - `GISCUS_CATEGORY_ID`: 从 giscus.app 获取
 
-### 2. 配置展示板 RSS 解析
+### GitHub OAuth 登录（可选）
 
-1. 在 GitHub 仓库设置中添加 Secrets：
-   - `RSS_FEED_URL`：第三方 RSS 源地址
-   - `GROUP_NAME`：你的字幕组名（如"绿茶字幕组"）
-   - `GROUP_NAME_ALT`：别名（可选）
+站点支持用户通过 GitHub OAuth 登录，用于评论和个人资料。
 
-2. GitHub Action 会自动每 30 分钟运行一次，解析 RSS 并更新展示板数据
+**配置步骤：**
 
-3. 如需修改运行频率，编辑 `.github/workflows/showcase.yml`：
-```yaml
-on:
-  schedule:
-    - cron: '*/30 * * * *'  # 每30分钟，可修改
-```
+1. **创建 GitHub OAuth App**
+   - 访问 GitHub Settings → Developer settings → OAuth Apps
+   - 点击 "New OAuth App"
+   - Application name: 你的站点名称
+   - Homepage URL: 你的站点地址（如 `https://your-domain.com`）
+   - Authorization callback URL: `https://your-domain.com/`
+   - 创建后记录 **Client ID** 和 **Client Secret**
 
-### 3. 配置 Umami 统计（可选）
+2. **配置 Netlify Identity**
+   - 访问 [netlify.com](https://netlify.com)，导入同一仓库
+   - 进入 Site settings → Identity → Enable Identity
+   - External providers → GitHub → Add provider
+   - 填入 GitHub OAuth App 的 Client ID 和 Client Secret
+   - 保存
 
-1. 自建 Umami 或使用官方托管
+3. **配置站点**
+   - 编辑 `src/components/Header.astro`（如需自定义登录按钮）
+   - 用户现在可以在 Header 点击用户图标登录
+
+> 💡 **说明**：Giscus 评论使用 GitHub Discussions，用户评论时需要通过 GitHub 授权。站点登录功能让用户可以在站点内保持登录状态，方便评论互动。
+
+### 展示板 RSS 解析（必需）
+
+1. 确定你的 RSS 源地址（如 `https://api.animes.garden/feed.xml`）
+2. 设置环境变量：
+   - `RSS_FEED_URL`: RSS 源地址
+   - `GROUP_NAME`: 字幕组名称（如"绿茶字幕组"）
+3. GitHub Actions 会自动每 30 分钟解析一次
+4. 如需修改频率，编辑 `.github/workflows/showcase.yml`
+
+### Umami 统计（可选）
+
+1. 自建 [Umami](https://umami.is/) 或使用官方托管
 2. 添加站点，获取 Website ID
-3. 在 `src/layouts/Layout.astro` 中替换脚本：
-```html
-<script defer src="你的Umami地址/script.js" data-website-id="你的ID"></script>
-```
+3. 编辑 `src/layouts/Layout.astro`，替换：
+   ```html
+   <script defer src="你的Umami地址/script.js" data-website-id="你的ID"></script>
+   ```
 
-### 4. 配置字幕下载系统（可选）
+### Decap CMS（可选）
 
-1. 创建独立的字幕仓库（如 `subtitles`）
-2. 在 `.env` 中配置：
-```env
-SUBTITLE_REPO=你的用户名/subtitles
-SUBTITLE_REPO_BRANCH=main
-```
-3. 文件命名规范：
-   - 字幕包：`[组名] 番剧名 - 集数 [版本][分辨率]--备注.zip`
-   - 字体包：`番剧名 字体包.zip`
-4. 开发 `scripts/generate-download-manifest.js` 生成下载清单
+需要 Git Gateway 后端，推荐 Netlify Identity（免费）：
+
+1. 访问 [netlify.com](https://netlify.com)，导入同一仓库
+2. Site settings → Identity → Enable Identity
+3. Services → Git Gateway → Enable
+4. 编辑 `public/admin/config.yml`：
+   ```yaml
+   backend:
+     name: git-gateway
+     branch: main
+     repo: 你的用户名/你的仓库名
+   ```
 
 ---
 
-## 常用命令
+## 第六步：验证部署
+
+部署完成后，检查以下功能是否正常：
+
+- [ ] 首页正常显示
+- [ ] 作品列表页有搜索框
+- [ ] 展示板显示番剧进度
+- [ ] 切换季度正常
+- [ ] 搜索功能可用
+- [ ] 评论区正常加载
+- [ ] 暗/亮模式切换正常
+- [ ] RSS 输出正常 (`/rss.xml`)
+- [ ] CMS 后台可访问 (`/admin/`)
+
+---
+
+## 环境变量参考
+
+| 变量名 | 必需 | 说明 | 示例 |
+|--------|------|------|------|
+| `GISCUS_REPO` | ✅ | GitHub 仓库路径 | `user/repo` |
+| `GISCUS_REPO_ID` | ✅ | 从 giscus.app 获取 | `MDEw...` |
+| `GISCUS_CATEGORY_ID` | ✅ | 从 giscus.app 获取 | `DIC_kw...` |
+| `RSS_FEED_URL` | ✅ | RSS 源地址 | `https://.../feed.xml` |
+| `GROUP_NAME` | ✅ | 字幕组名称 | `绿茶字幕组` |
+| `GROUP_NAME_ALT` | ❌ | 字幕组别名 | `GreenTeaSubs` |
+| `UMAMI_WEBSITE_ID` | ❌ | Umami 站点 ID | `uuid...` |
+| `UMAMI_SCRIPT_URL` | ❌ | Umami 脚本地址 | `https://.../script.js` |
+| `SUBTITLE_REPO` | ❌ | 字幕仓库路径 | `user/subtitles` |
+| `SUBTITLE_REPO_BRANCH` | ❌ | 字幕仓库分支 | `main` |
+
+---
+
+## 常用命令速查
 
 ```bash
-# 开发模式
-npm run dev
+# 开发
+npm run dev              # 启动开发服务器
 
-# 构建（含 Pagefind 索引）
-npm run build
+# 构建
+npm run build            # 完整构建（含搜索索引）
+npm run pagefind         # 仅更新搜索索引
 
-# 仅构建 Pagefind 索引
-npm run pagefind
+# 预览
+npm run preview          # 本地预览构建结果
 
-# 本地预览构建结果
-npm run preview
+# 更新
+git pull origin main     # 拉取最新代码
+npm install              # 安装/更新依赖
+npm update               # 更新依赖到最新版本
 
-# 更新依赖
-npm update
+# PM2（自建服务器）
+pm2 status               # 查看状态
+pm2 restart subs-site    # 重启服务
+pm2 logs subs-site       # 查看日志
+pm2 save                 # 保存配置
 ```
 
 ---
@@ -437,58 +420,86 @@ npm update
 ## 目录结构
 
 ```
+SubtitleGroupSite/
 ├── src/
-│   ├── components/          # 组件
-│   │   ├── Header.astro     # 导航栏
-│   │   ├── Footer.astro     # 页脚
-│   │   ├── DownloadButton.svelte  # 下载按钮
-│   │   ├── ThemeToggle.svelte     # 主题切换
-│   │   └── Search.svelte          # 搜索
-│   ├── content/             # 内容集合
-│   │   ├── works/           # 作品文章
-│   │   ├── misc/            # 杂谈文章
-│   │   ├── showcase/        # 展示板数据
-│   │   └── about/           # 关于页面
+│   ├── config/
+│   │   └── site.ts           # ⭐ 站点配置（名称、图标、颜色）
+│   ├── components/           # UI 组件
+│   │   ├── Header.astro      # 导航栏
+│   │   ├── Footer.astro      # 页脚
+│   │   ├── ThemeToggle.svelte # 主题切换
+│   │   └── DownloadButton.svelte # 下载按钮
+│   ├── content/              # 内容集合
+│   │   ├── works/            # 作品文章 (*.md)
+│   │   ├── misc/             # 杂谈文章 (*.md)
+│   │   ├── showcase/         # 展示板数据 (*.md)
+│   │   └── about/            # 关于页面 (*.md)
 │   ├── i18n/
-│   │   └── ui.ts            # 多语言字典
+│   │   └── ui.ts             # 多语言字典
 │   ├── layouts/
-│   │   └── Layout.astro     # 基础布局
-│   ├── pages/               # 页面路由
+│   │   └── Layout.astro      # 页面基础布局
+│   ├── pages/                # 页面路由
+│   │   ├── index.astro       # 首页
+│   │   ├── works/            # 作品列表/详情
+│   │   ├── showcase/         # 展示板
+│   │   ├── misc/             # 杂谈列表/详情
+│   │   ├── about.astro       # 关于页面
+│   │   └── rss.xml.js        # RSS 输出
 │   └── styles/
-│       └── global.css       # 全局样式
-├── public/                  # 静态资源
-│   ├── admin/               # Decap CMS
-│   ├── favicon.svg
-│   └── opensearch.xml
+│       └── global.css        # 全局样式 + CSS 变量
+├── public/                   # 静态资源
+│   ├── admin/                # Decap CMS 后台
+│   ├── favicon.svg           # 站点图标
+│   └── images/               # 图片资源
 ├── scripts/
-│   └── parse-rss.js         # RSS 解析脚本
+│   └── parse-rss.js          # RSS 解析脚本
 ├── .github/workflows/
-│   └── showcase.yml         # 展示板自动化
-├── astro.config.mjs
-├── package.json
-├── README.md
-├── .env.example
-└── ecosystem.config.js      # PM2 配置（可选）
+│   └── showcase.yml          # 自动更新展示板
+├── .env.example              # 环境变量示例
+├── astro.config.mjs          # Astro 配置
+└── ecosystem.config.js       # PM2 配置
 ```
 
 ---
 
-## 常见问题
+## 故障排查
 
-### Q: 构建失败，提示 "Cannot find module"
-A: 删除 `node_modules` 和 `package-lock.json`，重新运行 `npm install`
+### 构建失败
 
-### Q: Pagefind 搜索不工作
-A: 确保已运行 `npm run build`（构建脚本会自动调用 Pagefind）。开发模式下搜索不可用。
+| 错误 | 原因 | 解决 |
+|------|------|------|
+| `Cannot find module` | 依赖缺失 | `rm -rf node_modules package-lock.json && npm install` |
+| `Cannot apply unknown utility class` | Tailwind 类名错误 | 检查 CSS 中是否使用了 `@apply` 未定义的类 |
+| `Pagefind error` | 搜索索引失败 | 确保构建完成后再运行 `npm run pagefind` |
 
-### Q: Decap CMS 登录后报错
-A: 检查 Git Gateway 配置，确保 Netlify Identity 已正确设置，且回调 URL 匹配你的站点域名。
+### 运行时问题
 
-### Q: 展示板没有自动更新
-A: 检查 GitHub Actions 是否运行成功，Secrets 是否正确设置。可手动触发 workflow 测试。
+| 现象 | 原因 | 解决 |
+|------|------|------|
+| 搜索框不工作 | Pagefind 未索引 | 运行 `npm run build`（会自动索引） |
+| 评论区不显示 | Giscus 配置错误 | 检查环境变量是否正确，仓库是否开启 Discussions |
+| 展示板不更新 | GitHub Actions 失败 | 检查 Actions 日志，确认 Secrets 设置正确 |
+| CMS 登录报错 | Git Gateway 未配置 | 检查 Netlify Identity / Git Gateway 是否启用 |
+| 样式错乱 | 构建缓存问题 | 清除浏览器缓存，重新构建 |
 
-### Q: 如何修改站点主题色？
-A: 编辑 `src/styles/global.css`，修改 CSS 变量中的颜色值。
+---
+
+## 更新站点
+
+日常内容更新通过 **Decap CMS** (`/admin/`) 或 **直接编辑 Markdown 文件**。
+
+代码更新后重新部署：
+
+```bash
+# Vercel（自动）
+git push origin main
+
+# 自建服务器
+git pull origin main
+npm install
+npm run build
+pm2 restart subs-site
+```
 
 ---
 

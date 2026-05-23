@@ -1,0 +1,257 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const lang = 'zh';
+
+// 预定义的模板
+const templates = {
+  work: `---
+title: "作品标题"
+description: "作品简介"
+cover: "/images/cover.jpg"
+tags: ["标签1", "标签2"]
+category: "anime"
+pubDate: ${new Date().toISOString().split('T')[0]}
+episode: 1
+source: "Baha"
+featured: false
+season: "2025春"
+lang: ["zh"]
+---
+
+# 作品标题
+
+这里是作品的详细描述...
+
+## 下载链接
+
+- [字幕文件](link)
+- [字体包](link)
+`,
+  misc: `---
+title: "文章标题"
+description: "文章简介"
+pubDate: ${new Date().toISOString().split('T')[0]}
+tags: ["标签1", "标签2"]
+lang: ["zh"]
+---
+
+# 文章标题
+
+这里是文章内容...
+`,
+  showcase: `---
+season: "2025春"
+shows:
+  - title: "番剧名称"
+    regex: '番剧名称.*?(\d+)'
+    alsoIn: []
+    versions:
+      - name: "Baha"
+        episodes: [1, 2, 3]
+      - name: "CR"
+        episodes: [1, 2]
+---
+`,
+  about: `---
+title: "关于我们"
+description: "站点简介"
+---
+
+# 关于我们
+
+这里是关于页面的内容...
+`
+};
+
+const contentTypes = [
+  { id: 'work', name: '作品', folder: 'src/content/works', template: templates.work },
+  { id: 'misc', name: '杂谈', folder: 'src/content/misc', template: templates.misc },
+  { id: 'showcase', name: '展示板', folder: 'src/content/showcase', template: templates.showcase },
+  { id: 'about', name: '关于', folder: 'src/content/about', template: templates.about },
+];
+---
+
+<Layout title="内容编辑器" description="Markdown 内容编辑器" lang={lang}>
+  <Header lang={lang} />
+  
+  <main class="flex-1 py-8">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Header -->
+      <div class="mb-6 flex items-center justify-between">
+        <div>
+          <h1 class="text-2xl font-bold mb-1">内容编辑器</h1>
+          <p class="text-sm text-gray-400">在线编辑 Markdown 内容并生成 Frontmatter</p>
+        </div>
+        <a href="/admin-dashboard" class="text-sm text-purple-400 hover:text-purple-300">← 返回管理后台</a>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- Editor Section -->
+        <div class="space-y-4">
+          <!-- Content Type Selector -->
+          <div class="anime-card p-4">
+            <label class="block text-sm font-medium mb-2">内容类型</label>
+            <select id="content-type" class="w-full px-3 py-2 rounded-lg border border-white/10 bg-white/5 text-sm focus:outline-none focus:border-purple-500/50">
+              {contentTypes.map(type => (
+                <option value={type.id} data-folder={type.folder}>{type.name} ({type.folder})</option>
+              ))}
+            </select>
+          </div>
+
+          <!-- Editor -->
+          <div class="anime-card p-4">
+            <label class="block text-sm font-medium mb-2">Markdown 内容</label>
+            <textarea 
+              id="editor" 
+              class="w-full h-[500px] px-3 py-2 rounded-lg border border-white/10 bg-white/5 text-sm font-mono focus:outline-none focus:border-purple-500/50 resize-none"
+              placeholder="在这里编辑 Markdown 内容..."
+            >{templates.work}</textarea>
+          </div>
+
+          <!-- Actions -->
+          <div class="flex gap-3">
+            <button id="btn-copy" class="flex-1 px-4 py-2 rounded-lg bg-purple-500/20 text-purple-300 hover:bg-purple-500/30 transition-all text-sm font-medium flex items-center justify-center gap-2">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+              </svg>
+              复制内容
+            </button>
+            <button id="btn-download" class="flex-1 px-4 py-2 rounded-lg bg-white/5 text-gray-300 hover:bg-white/10 transition-all text-sm font-medium flex items-center justify-center gap-2">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+              </svg>
+              下载文件
+            </button>
+          </div>
+
+          <!-- Instructions -->
+          <div class="anime-card p-4 text-sm text-gray-400">
+            <h4 class="font-medium text-gray-300 mb-2">使用说明</h4>
+            <ol class="list-decimal list-inside space-y-1">
+              <li>选择内容类型，会自动加载对应模板</li>
+              <li>在编辑器中修改内容</li>
+              <li>点击"复制内容"复制到剪贴板</li>
+              <li>或者点击"下载文件"保存为 .md 文件</li>
+              <li>将文件放入对应的 src/content/ 目录</li>
+              <li>提交到 GitHub 并推送</li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- Preview Section -->
+        <div class="anime-card p-4">
+          <div class="flex items-center justify-between mb-4">
+            <label class="text-sm font-medium">实时预览</label>
+            <span class="text-xs text-gray-500">仅预览正文，不显示 Frontmatter</span>
+          </div>
+          <div id="preview" class="prose prose-invert prose-purple max-w-none text-sm">
+            <p class="text-gray-500">预览将在这里显示...</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script is:inline define:vars={{ templates: JSON.stringify(templates) }}>
+    const editor = document.getElementById('editor');
+    const preview = document.getElementById('preview');
+    const contentType = document.getElementById('content-type');
+    const btnCopy = document.getElementById('btn-copy');
+    const btnDownload = document.getElementById('btn-download');
+    const templateData = JSON.parse(templates);
+    
+    // Simple markdown to HTML converter
+    function markdownToHtml(md) {
+      // Remove frontmatter
+      let content = md.replace(/^---[\s\S]*?---\n?/, '');
+      
+      // Headers
+      content = content.replace(/^### (.*$)/gim, '<h3>$1</h3>');
+      content = content.replace(/^## (.*$)/gim, '<h2>$1</h2>');
+      content = content.replace(/^# (.*$)/gim, '<h1>$1</h1>');
+      
+      // Bold and italic
+      content = content.replace(/\*\*\*(.*?)\*\*\*/g, '<strong><em>$1</em></strong>');
+      content = content.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+      content = content.replace(/\*(.*?)\*/g, '<em>$1</em>');
+      
+      // Lists
+      content = content.replace(/^\s*-\s+(.*$)/gim, '<li>$1</li>');
+      content = content.replace(/(<li>.*<\/li>\n?)+/g, '<ul>$&</ul>');
+      
+      // Links
+      content = content.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="text-purple-400 hover:underline">$1</a>');
+      
+      // Code blocks
+      content = content.replace(/```([\s\S]*?)```/g, '<pre class="bg-white/5 p-3 rounded-lg overflow-x-auto"><code>$1</code></pre>');
+      content = content.replace(/`([^`]+)`/g, '<code class="bg-white/10 px-1 rounded">$1</code>');
+      
+      // Paragraphs
+      content = content.replace(/\n\n/g, '</p><p>');
+      
+      // Wrap in paragraph if not already wrapped
+      if (!content.startsWith('<')) {
+        content = '<p>' + content + '</p>';
+      }
+      
+      return content;
+    }
+    
+    // Update preview
+    function updatePreview() {
+      const md = editor.value;
+      preview.innerHTML = markdownToHtml(md);
+    }
+    
+    editor.addEventListener('input', updatePreview);
+    
+    // Change template
+    contentType.addEventListener('change', () => {
+      const type = contentType.value;
+      editor.value = templateData[type] || '';
+      updatePreview();
+    });
+    
+    // Copy to clipboard
+    btnCopy.addEventListener('click', () => {
+      navigator.clipboard.writeText(editor.value).then(() => {
+        btnCopy.innerHTML = `
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+          已复制
+        `;
+        setTimeout(() => {
+          btnCopy.innerHTML = `
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+            </svg>
+            复制内容
+          `;
+        }, 2000);
+      });
+    });
+    
+    // Download file
+    btnDownload.addEventListener('click', () => {
+      const type = contentType.value;
+      const folder = contentType.options[contentType.selectedIndex].dataset.folder;
+      const blob = new Blob([editor.value], { type: 'text/markdown' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      const date = new Date().toISOString().split('T')[0];
+      a.href = url;
+      a.download = `${date}-${type}.md`;
+      a.click();
+      URL.revokeObjectURL(url);
+    });
+    
+    // Initial preview
+    updatePreview();
+  </script>
+
+  <Footer lang={lang} />
+</Layout>

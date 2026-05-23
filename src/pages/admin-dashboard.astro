@@ -1,0 +1,180 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import PageLoader from '../components/PageLoader.astro';
+import { siteConfig } from '../config/site';
+
+const lang = 'zh';
+
+const modules = [
+  {
+    id: 'works',
+    name: '作品管理',
+    desc: '添加、编辑作品文章',
+    icon: '🎬',
+    color: 'from-purple-500/20 to-pink-500/20',
+    textColor: 'text-purple-400',
+    href: '/admin-works',
+    preview: '/works',
+    folder: 'src/content/works/',
+  },
+  {
+    id: 'misc',
+    name: '杂谈管理',
+    desc: '添加、编辑杂谈文章',
+    icon: '📝',
+    color: 'from-blue-500/20 to-cyan-500/20',
+    textColor: 'text-blue-400',
+    href: '/admin-misc',
+    preview: '/misc',
+    folder: 'src/content/misc/',
+  },
+  {
+    id: 'showcase',
+    name: '展示板管理',
+    desc: '管理季度番剧进度',
+    icon: '📊',
+    color: 'from-green-500/20 to-emerald-500/20',
+    textColor: 'text-green-400',
+    href: '/admin-showcase',
+    preview: '/showcase',
+    folder: 'src/content/showcase/',
+  },
+  {
+    id: 'about',
+    name: '关于页面',
+    desc: '编辑关于我们内容',
+    icon: 'ℹ️',
+    color: 'from-yellow-500/20 to-orange-500/20',
+    textColor: 'text-yellow-400',
+    href: '/admin-about',
+    preview: '/about',
+    folder: 'src/content/about/',
+  },
+  {
+    id: 'config',
+    name: '站点配置',
+    desc: '修改站点名称、图标等',
+    icon: '⚙️',
+    color: 'from-red-500/20 to-pink-500/20',
+    textColor: 'text-red-400',
+    href: '/admin-config',
+    preview: '/',
+    folder: 'src/config/',
+  },
+  {
+    id: 'cms',
+    name: 'Decap CMS',
+    desc: '可视化内容管理',
+    icon: '📁',
+    color: 'from-gray-500/20 to-gray-400/20',
+    textColor: 'text-gray-400',
+    href: '/admin/',
+    preview: null,
+    folder: null,
+  },
+];
+---
+
+<Layout title="管理后台" description="站点管理后台" lang={lang}>
+  <PageLoader />
+  <Header lang={lang} />
+  
+  <main class="flex-1 py-8">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Header -->
+      <div class="mb-8 flex items-center justify-between">
+        <div>
+          <h1 class="text-2xl font-bold mb-1">管理后台</h1>
+          <p class="text-sm text-gray-400">{siteConfig.name} 内容管理系统</p>
+        </div>
+        <a href="/" class="text-sm text-purple-400 hover:text-purple-300 flex items-center gap-1">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          </svg>
+          返回首页
+        </a>
+      </div>
+
+      <!-- Module Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {modules.map(mod => (
+          <div class="anime-card p-5 group">
+            <div class="flex items-start gap-4">
+              <div class={`w-12 h-12 rounded-xl bg-gradient-to-br ${mod.color} flex items-center justify-center text-2xl flex-shrink-0`}>
+                {mod.icon}
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center justify-between">
+                  <a href={mod.href} class="font-semibold group-hover:text-purple-300 transition-colors">{mod.name}</a>
+                  {mod.preview && (
+                    <a 
+                      href={mod.preview} 
+                      target="_blank" 
+                      class="text-xs text-gray-500 hover:text-purple-400 transition-colors flex items-center gap-0.5"
+                    >
+                      <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
+                      预览
+                    </a>
+                  )}
+                </div>
+                <p class="text-sm text-gray-400 mt-1">{mod.desc}</p>
+                
+                {mod.folder && (
+                  <div class="mt-3 flex items-center gap-2">
+                    <span class="text-[10px] text-gray-500 bg-white/5 px-2 py-1 rounded">{mod.folder}</span>
+                  </div>
+                )}
+                
+                <div class="mt-3 flex gap-2">
+                  <a 
+                    href={mod.href} 
+                    class="inline-flex items-center gap-1 text-xs px-3 py-1.5 rounded-lg bg-purple-500/20 text-purple-300 hover:bg-purple-500/30 transition-all"
+                  >
+                    进入管理
+                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Workflow Guide -->
+      <div class="mt-8 anime-card p-6">
+        <h3 class="font-semibold mb-4 flex items-center gap-2">
+          <span class="w-1 h-5 rounded-full bg-gradient-to-b from-purple-500 to-pink-500"></span>
+          工作流指南
+        </h3>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div class="p-4 rounded-xl bg-white/[0.02] border border-white/5">
+            <div class="text-2xl mb-2">1️⃣</div>
+            <h4 class="font-medium text-sm mb-1">编辑内容</h4>
+            <p class="text-xs text-gray-400">点击模块进入管理页，复制模板并修改内容</p>
+          </div>
+          
+          <div class="p-4 rounded-xl bg-white/[0.02] border border-white/5">
+            <div class="text-2xl mb-2">2️⃣</div>
+            <h4 class="font-medium text-sm mb-1">提交代码</h4>
+            <p class="text-xs text-gray-400">将修改后的文件放入对应目录，提交到 GitHub</p>
+          </div>
+          
+          <div class="p-4 rounded-xl bg-white/[0.02] border border-white/5">
+            <div class="text-2xl mb-2">3️⃣</div>
+            <h4 class="font-medium text-sm mb-1">自动部署</h4>
+            <p class="text-xs text-gray-400">推送后自动构建部署，约 1-2 分钟后生效</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <Footer lang={lang} />
+</Layout>

@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import PageLoader from '../../components/PageLoader.astro';
 import { getCollection } from 'astro:content';
 import { useTranslations } from '../../i18n/ui';
 
@@ -23,18 +24,63 @@ const sortedShowcases = showcases.sort((a, b) => {
 });
 
 const currentSeason = sortedShowcases[0];
+
+// Helper function to get all episodes and their versions for a show
+function getEpisodesByNumber(show: any) {
+  const episodeMap = new Map<number, string[]>();
+  const maxEpisode = Math.max(...show.versions.map((v: any) => Math.max(...(v.episodes || [0]), 0)), 12);
+  
+  for (let ep = 1; ep <= maxEpisode; ep++) {
+    const versions: string[] = [];
+    show.versions.forEach((v: any) => {
+      if ((v.episodes || []).includes(ep)) {
+        versions.push(v.name);
+      }
+    });
+    if (versions.length > 0) {
+      episodeMap.set(ep, versions);
+    }
+  }
+  
+  return { episodeMap, maxEpisode };
+}
+
+// Helper to calculate progress
+function calculateProgress(show: any) {
+  const maxEpisode = Math.max(...show.versions.map((v: any) => Math.max(...(v.episodes || [0]), 0)), 12);
+  const { episodeMap } = getEpisodesByNumber(show);
+  const completedEpisodes = episodeMap.size;
+  return {
+    completed: completedEpisodes,
+    total: maxEpisode,
+    percentage: Math.round((completedEpisodes / maxEpisode) * 100)
+  };
+}
+
+// Generate version color map for consistent coloring
+function getVersionColor(versionName: string): string {
+  const colors: Record<string, string> = {
+    'Baha': '#a855f7',
+    'CR': '#3b82f6',
+    'Web': '#10b981',
+    'TV': '#f59e0b',
+    'BD': '#ef4444',
+  };
+  return colors[versionName] || '#6b7280';
+}
 ---
 
 <Layout title={t('showcase.title')} lang={lang}>
+  <PageLoader />
   <Header lang={lang} />
   
-  <main class="flex-1 py-12">
+  <main class="flex-1 py-8">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Page Header -->
-      <div class="mb-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div class="mb-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
-          <h1 class="text-3xl font-bold mb-2">{t('showcase.title')}</h1>
-          <p class="text-muted">自动跟踪本季番剧制作进度</p>
+          <h1 class="text-2xl font-bold mb-1">{t('showcase.title')}</h1>
+          <p class="text-sm text-gray-400">自动跟踪本季番剧制作进度</p>
         </div>
         
         <!-- Season Switcher -->
@@ -42,7 +88,7 @@ const currentSeason = sortedShowcases[0];
           <div class="flex items-center gap-2 overflow-x-auto max-w-full pb-2">
             {sortedShowcases.map(showcase => (
               <button 
-                class="px-4 py-2 rounded-full text-sm font-medium transition-all whitespace-nowrap season-btn"
+                class="px-3 py-1.5 rounded-full text-sm font-medium transition-all whitespace-nowrap season-btn"
                 data-season={showcase.data.season}
               >
                 {showcase.data.season}
@@ -57,7 +103,7 @@ const currentSeason = sortedShowcases[0];
         <div class="text-center py-20">
           <div class="text-6xl mb-4">📋</div>
           <h2 class="text-xl font-semibold mb-2">暂无展示板数据</h2>
-          <p class="text-muted">请通过管理后台添加季度计划</p>
+          <p class="text-gray-400">请通过管理后台添加季度计划</p>
         </div>
       ) : (
         sortedShowcases.map(showcase => (
@@ -66,76 +112,76 @@ const currentSeason = sortedShowcases[0];
             data-season={showcase.data.season}
             style={showcase !== currentSeason ? 'display: none;' : ''}
           >
-            <div class="grid gap-6">
+            <!-- Shows Table -->
+            <div class="space-y-3">
               {showcase.data.shows.map(show => {
-                // Calculate max episodes from versions if available
-                const maxEpisode = Math.max(...show.versions.map(v => Math.max(...(v.episodes || [0]), 0)), 12);
-                const totalEpisodes = show.versions.reduce((acc, v) => acc + (v.episodes?.length || 0), 0);
-                const avgCompleted = totalEpisodes / (show.versions.length || 1);
-                const progress = Math.min((avgCompleted / maxEpisode) * 100, 100);
+                const { episodeMap, maxEpisode } = getEpisodesByNumber(show);
+                const progress = calculateProgress(show);
+                const allVersions = [...new Set(show.versions.map((v: any) => v.name))];
                 
                 return (
-                  <div class="anime-card p-6">
-                    <div class="flex items-start justify-between mb-4">
+                  <div class="anime-card overflow-hidden">
+                    <!-- Show Header -->
+                    <div class="px-4 py-3 border-b border-white/5 flex items-center justify-between gap-4">
                       <div class="flex-1 min-w-0">
-                        <h3 class="text-xl font-bold mb-1 truncate">{show.title}</h3>
-                        <p class="text-sm text-muted">正则: <code class="bg-purple-500/10 px-2 py-0.5 rounded text-xs">{show.regex}</code></p>
+                        <h3 class="text-sm font-bold truncate">{show.title}</h3>
                       </div>
-                      <div class="text-right flex-shrink-0 ml-4">
-                        <span class="text-2xl font-bold gradient-text">{Math.round(progress)}%</span>
-                        <p class="text-xs text-muted">已完成</p>
-                      </div>
-                    </div>
-                    
-                    <!-- Progress Bar -->
-                    <div class="w-full h-2 rounded-full bg-white/5 mb-6 overflow-hidden">
-                      <div 
-                        class="h-full rounded-full bg-gradient-to-r from-purple-500 to-pink-500 transition-all duration-1000"
-                        style={`width: ${progress}%`}
-                      ></div>
-                    </div>
-                    
-                    <!-- Versions & Episodes -->
-                    <div class="space-y-4">
-                      {show.versions.map(version => (
-                        <div class="border-t border-theme pt-4">
-                          <h4 class="text-sm font-medium text-purple-400 mb-3 flex items-center gap-2">
-                            <span class="w-2 h-2 rounded-full bg-purple-500"></span>
-                            {version.name} 版
-                          </h4>
-                          
-                          <div class="grid grid-cols-6 sm:grid-cols-8 md:grid-cols-12 gap-2">
-                            {Array.from({ length: maxEpisode }, (_, i) => i + 1).map(ep => {
-                              const isDone = (version.episodes || []).includes(ep);
-                              return (
-                                <div 
-                                  class={`aspect-square rounded-lg flex items-center justify-center text-xs font-bold transition-all ${
-                                    isDone 
-                                      ? 'episode-done' 
-                                      : 'episode-pending'
-                                  }`}
-                                >
-                                  {ep}
-                                </div>
-                              );
-                            })}
-                          </div>
-                          
-                          <div class="flex items-center gap-4 mt-3 text-sm text-muted">
-                            <span>已完成: {(version.episodes || []).length} / {maxEpisode} 集</span>
-                            {(version.episodes || []).length > 0 && (
-                              <span>最新: 第 {Math.max(...(version.episodes || [0]))} 集</span>
-                            )}
-                          </div>
+                      <div class="flex items-center gap-3 flex-shrink-0">
+                        <span class="text-xs text-gray-400">{progress.completed}/{progress.total}</span>
+                        <div class="w-20 h-1.5 rounded-full bg-white/5 overflow-hidden">
+                          <div 
+                            class="h-full rounded-full bg-gradient-to-r from-purple-500 to-pink-500 transition-all"
+                            style={`width: ${progress.percentage}%`}
+                          ></div>
                         </div>
-                      ))}
+                      </div>
                     </div>
                     
-                    {show.alsoIn && show.alsoIn.length > 0 && (
-                      <div class="mt-4 pt-4 border-t border-theme text-sm text-muted">
-                        同时出现在: {show.alsoIn.join(', ')}
+                    <!-- Episodes Row -->
+                    <div class="px-4 py-3">
+                      <div class="episodes-row">
+                        {Array.from({ length: maxEpisode }, (_, i) => i + 1).map(ep => {
+                          const versions = episodeMap.get(ep);
+                          const isDone = !!versions;
+                          
+                          return (
+                            <div 
+                              class={`ep-cell ${isDone ? 'ep-cell-done' : 'ep-cell-pending'}`}
+                            >
+                              <span class="ep-number">{ep}</span>
+                              {isDone && versions && versions.length > 0 && (
+                                <div class="ep-versions">
+                                  {versions.map(v => (
+                                    <span 
+                                      class="ep-version-tag"
+                                      style={`background-color: ${getVersionColor(v)}33; color: ${getVersionColor(v)};`}
+                                    >
+                                      {v}
+                                    </span>
+                                  ))}
+                                </div>
+                              )}
+                            </div>
+                          );
+                        })}
                       </div>
-                    )}
+                      
+                      {/* Version Legend */}
+                      {allVersions.length > 1 && (
+                        <div class="flex items-center gap-3 mt-2 pt-2 border-t border-white/5">
+                          <span class="text-[10px] text-gray-500">版本:</span>
+                          {allVersions.map(v => (
+                            <div class="flex items-center gap-1">
+                              <span 
+                                class="w-1.5 h-1.5 rounded-full"
+                                style={`background-color: ${getVersionColor(v)}`}
+                              ></span>
+                              <span class="text-[10px] text-gray-400">{v}</span>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
                   </div>
                 );
               })}
@@ -145,6 +191,89 @@ const currentSeason = sortedShowcases[0];
       )}
     </div>
   </main>
+
+  <style>
+    .episodes-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+    
+    .ep-cell {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-width: 36px;
+      padding: 4px 2px;
+      border-radius: 6px;
+      border: 1px solid transparent;
+      transition: all 0.15s ease;
+    }
+    
+    .ep-cell-done {
+      background-color: rgba(168, 85, 247, 0.15);
+      border-color: rgba(168, 85, 247, 0.25);
+    }
+    
+    .ep-cell-done:hover {
+      background-color: rgba(168, 85, 247, 0.25);
+      transform: translateY(-1px);
+    }
+    
+    .ep-cell-pending {
+      background-color: rgba(255, 255, 255, 0.03);
+      border-color: rgba(255, 255, 255, 0.05);
+      opacity: 0.6;
+    }
+    
+    .ep-number {
+      font-size: 11px;
+      font-weight: 700;
+      line-height: 1;
+      color: inherit;
+    }
+    
+    .ep-cell-done .ep-number {
+      color: rgb(216, 180, 254);
+    }
+    
+    .ep-cell-pending .ep-number {
+      color: rgb(75, 85, 99);
+    }
+    
+    .ep-versions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1px;
+      margin-top: 2px;
+      justify-content: center;
+    }
+    
+    .ep-version-tag {
+      font-size: 8px;
+      padding: 0px 3px;
+      border-radius: 2px;
+      font-weight: 600;
+      line-height: 1.4;
+      white-space: nowrap;
+    }
+    
+    /* Responsive: on small screens, show fewer per row */
+    @media (max-width: 640px) {
+      .ep-cell {
+        min-width: 30px;
+        padding: 3px 1px;
+      }
+      .ep-number {
+        font-size: 10px;
+      }
+      .ep-version-tag {
+        font-size: 7px;
+        padding: 0px 2px;
+      }
+    }
+  </style>
 
   <script is:inline>
     document.querySelectorAll('.season-btn').forEach(btn => {

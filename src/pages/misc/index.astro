@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import PageLoader from '../../components/PageLoader.astro';
 import { getCollection } from 'astro:content';
 
 const lang = 'zh';
@@ -10,6 +11,7 @@ const posts = miscPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate
 ---
 
 <Layout title="杂谈" lang={lang}>
+  <PageLoader />
   <Header lang={lang} />
   
   <main class="flex-1 py-12">
@@ -19,28 +21,31 @@ const posts = miscPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate
         <p class="text-gray-400">组内日常与非作品类内容</p>
       </div>
 
-      <div class="space-y-6">
+      <div class="space-y-4">
         {posts.map(post => (
-          <a href={`/misc/${post.slug}`} class="anime-card block p-6 group hover:border-purple-500/30 transition-colors">
+          <a href={`/misc/${post.slug}`} class="anime-card block p-5 group transition-all hover:bg-white/[0.03]">
             <div class="flex items-start gap-4">
-              <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-500/20 to-cyan-500/20 flex items-center justify-center flex-shrink-0">
-                <span class="text-xl">📝</span>
+              <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500/20 to-cyan-500/20 flex items-center justify-center flex-shrink-0 text-lg">
+                📝
               </div>
-              <div class="flex-1">
-                <h2 class="text-xl font-semibold mb-2 group-hover:text-purple-400 transition-colors">{post.data.title}</h2>
-                {post.data.description && (
-                  <p class="text-gray-500 mb-3">{post.data.description}</p>
-                )}
-                <div class="flex items-center gap-3 text-sm text-gray-500">
-                  <span>{post.data.pubDate.toLocaleDateString('zh-CN')}</span>
-                  {post.data.tags.length > 0 && (
-                    <div class="flex gap-2">
-                      {post.data.tags.map(tag => (
-                        <span class="px-2 py-0.5 rounded-full text-xs bg-white/5">{tag}</span>
-                      ))}
-                    </div>
-                  )}
+              <div class="flex-1 min-w-0">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex-1 min-w-0">
+                    <h2 class="text-lg font-semibold group-hover:text-purple-300 transition-colors line-clamp-1">{post.data.title}</h2>
+                    {post.data.description && (
+                      <p class="text-gray-500 mt-1 text-sm line-clamp-2">{post.data.description}</p>
+                    )}
+                  </div>
+                  <span class="text-xs text-gray-500 flex-shrink-0 mt-1">{post.data.pubDate.toLocaleDateString('zh-CN')}</span>
                 </div>
+                
+                {post.data.tags.length > 0 && (
+                  <div class="flex flex-wrap gap-1.5 mt-3">
+                    {post.data.tags.map(tag => (
+                      <span class="px-2 py-0.5 rounded-full text-[10px] bg-white/5 text-gray-400 border border-white/5">{tag}</span>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
           </a>

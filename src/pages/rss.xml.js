@@ -1,13 +1,16 @@
 import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
+import { siteConfig, getSiteName } from '../config/site';
 
 export async function GET(context) {
   const works = await getCollection('works');
   const sortedWorks = works.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
   
+  const siteName = getSiteName('zh');
+  
   return rss({
-    title: '绿茶字幕组',
-    description: '绿茶字幕组官方网站 - 最新作品发布',
+    title: siteName,
+    description: `${siteName}官方网站 - 最新作品发布`,
     site: context.site,
     items: sortedWorks.map(work => ({
       title: work.data.title,

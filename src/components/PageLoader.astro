@@ -1,0 +1,144 @@
+---
+// 页面加载动画组件 - 仅在首次访问时显示
+// 使用方式: <PageLoader /> 放在 body 开头
+---
+
+<div id="page-loader" class="page-loader" style="display: none;">
+  <div class="loader-container">
+    <div class="loader-logo">
+      <div class="loader-ring"></div>
+      <span class="loader-text">G</span>
+    </div>
+    <div class="loader-bar">
+      <div class="loader-progress"></div>
+    </div>
+    <p class="loader-status">加载中...</p>
+  </div>
+</div>
+
+<style>
+  .page-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(15, 15, 25);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+  }
+  
+  .page-loader.loaded {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+  
+  .loader-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  
+  .loader-logo {
+    position: relative;
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .loader-ring {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 3px solid transparent;
+    border-top-color: rgb(168, 85, 247);
+    border-right-color: rgb(236, 72, 153);
+    border-radius: 50%;
+    animation: loader-spin 1s linear infinite;
+  }
+  
+  .loader-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, rgb(168, 85, 247), rgb(236, 72, 153));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .loader-bar {
+    width: 200px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  
+  .loader-progress {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, rgb(168, 85, 247), rgb(236, 72, 153));
+    border-radius: 2px;
+    animation: loader-progress 2s ease-in-out forwards;
+  }
+  
+  .loader-status {
+    font-size: 0.875rem;
+    color: rgb(156, 163, 175);
+    animation: loader-pulse 1.5s ease-in-out infinite;
+  }
+  
+  @keyframes loader-spin {
+    to { transform: rotate(360deg); }
+  }
+  
+  @keyframes loader-progress {
+    0% { width: 0%; }
+    50% { width: 70%; }
+    100% { width: 100%; }
+  }
+  
+  @keyframes loader-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+</style>
+
+<script is:inline>
+  (function() {
+    const loader = document.getElementById('page-loader');
+    
+    // 检查是否是首次访问（通过 localStorage 标记）
+    const hasVisited = localStorage.getItem('site_first_visit');
+    const today = new Date().toDateString();
+    
+    // 如果今天已经访问过，或者已经有过访问记录，不显示加载动画
+    if (hasVisited) {
+      loader.style.display = 'none';
+      return;
+    }
+    
+    // 首次访问，显示加载动画
+    loader.style.display = 'flex';
+    localStorage.setItem('site_first_visit', today);
+    
+    // 页面加载完成后隐藏
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        loader?.classList.add('loaded');
+      }, 800);
+    });
+    
+    // 超时保险（3秒后强制隐藏）
+    setTimeout(() => {
+      loader?.classList.add('loaded');
+    }, 3000);
+  })();
+</script>
