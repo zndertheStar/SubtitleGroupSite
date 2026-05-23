@@ -3,7 +3,9 @@ import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import PageLoader from '../../components/PageLoader.astro';
+import AntiSpamNotice from '../../components/AntiSpamNotice.astro';
 import { siteConfig } from '../../config/site';
+import { isSpam, filterComments } from '../../config/anti-spam';
 
 const lang = 'zh';
 
@@ -20,8 +22,8 @@ const work = {
   cover: '',
 };
 
-// 模拟评论区数据
-const mockComments = [
+// 模拟评论区数据（包含正常评论和垃圾评论）
+const allComments = [
   {
     id: 1,
     author: '动漫爱好者',
@@ -67,7 +69,32 @@ const mockComments = [
       }
     ]
   },
+  // 垃圾评论示例（将被过滤）
+  {
+    id: 4,
+    author: '广告机器人',
+    avatar: '🤖',
+    date: '2025-04-16',
+    content: '加微信 xxxxxx 领取免费资源，还有各种优惠券！',
+    reactions: {},
+    replies: [],
+    isSpam: true,
+  },
+  {
+    id: 5,
+    author: '骗子小号',
+    avatar: '🤖',
+    date: '2025-04-17',
+    content: '轻松赚钱，日入500+，详情请咨询QQ 123456789',
+    reactions: {},
+    replies: [],
+    isSpam: true,
+  },
 ];
+
+// 使用反垃圾系统过滤评论
+const mockComments = allComments.filter(comment => !isSpam(comment.content));
+const spamComments = allComments.filter(comment => isSpam(comment.content));
 ---
 
 <Layout title={work.title} description={work.description} lang={lang}>
@@ -185,6 +212,21 @@ const mockComments = [
       <section class="mb-12">
         <h2 class="text-xl font-bold mb-4 text-theme">评论区</h2>
         
+        <!-- Anti-Spam Notice -->
+        <AntiSpamNotice commentCount={allComments.length} />
+        
+        <!-- Spam Filtered Info -->
+        {spamComments.length > 0 && (
+          <div class="mb-4 p-3 rounded-xl bg-yellow-500/10 border border-yellow-500/20 flex items-center gap-2">
+            <svg class="w-4 h-4 text-yellow-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+            </svg>
+            <span class="text-xs text-yellow-300">
+              已自动过滤 {spamComments.length} 条垃圾评论（广告、欺诈内容）
+            </span>
+          </div>
+        )}
+        
         <!-- Giscus Info Banner -->
         <div class="mb-6 p-4 rounded-xl bg-blue-500/10 border border-blue-500/20">
           <div class="flex items-start gap-3">
@@ -202,7 +244,12 @@ const mockComments = [
         <div class="rounded-2xl border p-6 border-theme bg-surface/50 space-y-6">
           <!-- Comment Count -->
           <div class="flex items-center justify-between border-b border-white/5 pb-4">
-            <span class="text-sm text-muted">{mockComments.length} 条评论</span>
+            <div class="flex items-center gap-2">
+              <span class="text-sm text-muted">{mockComments.length} 条评论</span>
+              {spamComments.length > 0 && (
+                <span class="text-xs text-yellow-500/70">（已过滤 {spamComments.length} 条垃圾内容）</span>
+              )}
+            </div>
             <div class="flex items-center gap-2">
               <span class="text-xs text-muted">排序:</span>
               <select class="bg-transparent text-xs text-muted border border-white/10 rounded-lg px-2 py-1">
