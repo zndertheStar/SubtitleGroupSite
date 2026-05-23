@@ -15,7 +15,11 @@ export default defineConfig({
   site: 'https://green-tea-subs.vercel.app',
   output: 'static',
   adapter: isVercel 
-    ? vercel() 
+    ? vercel({
+        webAnalytics: {
+          enabled: true,
+        },
+      }) 
     : isNode 
       ? node({ mode: 'standalone' })
       : undefined,
