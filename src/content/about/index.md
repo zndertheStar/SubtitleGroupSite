@@ -1,6 +1,27 @@
 ---
 title: "关于我们"
 description: "绿茶字幕组简介"
+members:
+  - icon: "👤"
+    name: "组长"
+    role: "统筹管理"
+  - icon: "✍️"
+    name: "翻译组"
+    role: "翻译/校对"
+  - icon: "🎨"
+    name: "后期组"
+    role: "压制/特效"
+  - icon: "💻"
+    name: "技术组"
+    role: "网站/工具"
+contacts:
+  - icon: "📱"
+    name: "QQ 群"
+    description: "加入粉丝群获取最新动态"
+  - icon: "🐙"
+    name: "GitHub"
+    description: "开源项目与字幕归档"
+    url: "https://github.com/green-tea-subs"
 ---
 
 ## 绿茶字幕组

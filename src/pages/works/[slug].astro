@@ -36,16 +36,16 @@ const downloads = [
       <!-- Article Header -->
       <div class="mb-8">
         <div class="flex items-center gap-2 mb-4 flex-wrap">
-          <span class="px-3 py-1 rounded-full text-xs font-medium bg-purple-500/20 text-purple-400">
+          <span class="glass-badge text-purple-300">
             {work.data.category === 'anime' ? '动画' : work.data.category === 'movie' ? '电影' : work.data.category === 'ova' ? 'OVA' : '其他'}
           </span>
           {work.data.season && (
-            <span class="px-3 py-1 rounded-full text-xs font-medium bg-pink-500/20 text-pink-400">
+            <span class="glass-badge text-pink-300">
               {work.data.season}
             </span>
           )}
           {work.data.episode && (
-            <span class="px-3 py-1 rounded-full text-xs font-medium bg-blue-500/20 text-blue-400">
+            <span class="glass-badge text-blue-300">
               第{work.data.episode}集
             </span>
           )}
@@ -75,13 +75,13 @@ const downloads = [
         <div class="flex items-center gap-2 mb-8 flex-wrap">
           <span class="text-sm text-muted">标签:</span>
           {work.data.tags.map(tag => (
-            <span class="px-3 py-1 rounded-full text-sm bg-purple-500/10 text-purple-400 border border-purple-500/20">{tag}</span>
+            <span class="glass-badge text-purple-300">{tag}</span>
           ))}
         </div>
       )}
 
       <!-- Downloads Section -->
-      <section class="rounded-2xl border p-6 mb-12 border-theme bg-surface">
+      <section class="anime-card p-6 mb-12">
         <h2 class="text-xl font-bold mb-4 flex items-center gap-2 text-theme">
           <svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
@@ -110,7 +110,7 @@ const downloads = [
       <!-- Giscus Comments -->
       <section class="mb-12">
         <h2 class="text-xl font-bold mb-4 text-theme">{t('giscus.title')}</h2>
-        <div class="rounded-2xl border p-4 border-theme bg-surface/50">
+        <div class="anime-card p-4">
           <div class="giscus"></div>
           <script src="https://giscus.app/client.js"
             data-repo={import.meta.env.GISCUS_REPO || "your-username/your-repo"}

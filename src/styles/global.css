@@ -38,7 +38,7 @@
 
   /* Dark Theme (Default - Anime Night) */
   [data-theme="dark"] body {
-    background-color: #0f0a1e;
+    background-color: transparent;
     color: #e2d5f5;
   }
 
@@ -63,13 +63,14 @@
   }
 
   [data-theme="dark"] .header-blur {
-    background: rgba(15, 10, 30, 0.85);
-    border-bottom-color: rgba(139, 92, 246, 0.15);
+    backdrop-filter: blur(20px);
+    background: rgba(15, 10, 30, 0.6);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   }
 
   /* Light Theme (Anime Day/Sakura) */
   [data-theme="light"] body {
-    background-color: #faf5ff;
+    background-color: transparent;
     color: #4c1d95;
   }
 
@@ -94,31 +95,35 @@
   }
 
   [data-theme="light"] .header-blur {
-    background: rgba(255, 255, 255, 0.85);
-    border-bottom-color: rgba(139, 92, 246, 0.12);
+    backdrop-filter: blur(20px);
+    background: rgba(250, 245, 255, 0.7);
+    border-bottom: 1px solid rgba(139, 92, 246, 0.08);
   }
 }
 
 @layer components {
   .anime-card {
-    @apply rounded-xl overflow-hidden shadow-lg transition-all duration-300;
+    @apply overflow-hidden transition-all duration-300;
+    backdrop-filter: blur(16px);
+    border-radius: 16px;
   }
 
   [data-theme="dark"] .anime-card {
-    background: #1a102e;
-    border: 1px solid rgba(139, 92, 246, 0.2);
-    box-shadow: 0 0 20px rgba(139, 92, 246, 0.12);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 20px rgba(139, 92, 246, 0.08);
   }
 
   [data-theme="light"] .anime-card {
-    background: #ffffff;
+    background: rgba(255, 255, 255, 0.7);
     border: 1px solid rgba(139, 92, 246, 0.12);
     box-shadow: 0 4px 20px rgba(139, 92, 246, 0.06);
   }
 
   .anime-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 8px 30px rgba(139, 92, 246, 0.2);
+    border-color: rgba(192, 132, 252, 0.25);
+    box-shadow: 0 8px 30px rgba(139, 92, 246, 0.12);
   }
 
   .gradient-text {
@@ -128,25 +133,29 @@
 
   .btn-primary {
     @apply px-6 py-2 rounded-full font-medium transition-all duration-300;
-    background: linear-gradient(135deg, #c084fc 0%, #f472b6 100%);
+    backdrop-filter: blur(12px);
+    background: rgba(192, 132, 252, 0.15);
+    border: 1px solid rgba(192, 132, 252, 0.3);
     color: white;
   }
 
   .btn-primary:hover {
-    box-shadow: 0 4px 15px rgba(192, 132, 252, 0.4);
+    box-shadow: 0 4px 15px rgba(192, 132, 252, 0.15);
     transform: translateY(-2px);
   }
 
   /* Search input theming */
   [data-theme="dark"] .search-input {
+    backdrop-filter: blur(8px);
     background: rgba(255, 255, 255, 0.05);
-    border-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     color: #e2d5f5;
   }
 
   [data-theme="light"] .search-input {
+    backdrop-filter: blur(8px);
     background: rgba(139, 92, 246, 0.05);
-    border-color: rgba(139, 92, 246, 0.15);
+    border: 1px solid rgba(139, 92, 246, 0.15);
     color: #4c1d95;
   }
 
@@ -175,12 +184,16 @@
 
   /* Filter button theming */
   [data-theme="dark"] .filter-btn {
+    backdrop-filter: blur(8px);
     background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     color: #9ca3af;
   }
 
   [data-theme="light"] .filter-btn {
+    backdrop-filter: blur(8px);
     background: rgba(139, 92, 246, 0.05);
+    border: 1px solid rgba(139, 92, 246, 0.12);
     color: #6b7280;
   }
 
@@ -188,7 +201,7 @@
   [data-theme="dark"] .episode-done {
     background: linear-gradient(135deg, #c084fc 0%, #f472b6 100%);
     color: white;
-    box-shadow: 0 0 10px rgba(192, 132, 252, 0.3);
+    box-shadow: 0 0 10px rgba(192, 132, 252, 0.15);
   }
 
   [data-theme="light"] .episode-done {
@@ -206,6 +219,41 @@
     background: rgba(139, 92, 246, 0.05);
     border: 1px solid rgba(139, 92, 246, 0.15);
     color: #9ca3af;
+  }
+
+  /* Glass badge */
+  .glass-badge {
+    backdrop-filter: blur(8px);
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 9999px;
+  }
+
+  [data-theme="light"] .glass-badge {
+    background: rgba(139, 92, 246, 0.1);
+    border: 1px solid rgba(139, 92, 246, 0.15);
+  }
+
+  /* Language dropdown liquid glass */
+  [data-theme="dark"] .lang-dropdown {
+    background: rgba(0, 0, 0, 0.4);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  [data-theme="light"] .lang-dropdown {
+    background: rgba(255, 255, 255, 0.7);
+    border-color: rgba(192, 132, 252, 0.3);
+  }
+
+  /* Mobile search toggle liquid glass */
+  [data-theme="dark"] .search-toggle-btn {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  [data-theme="light"] .search-toggle-btn {
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(192, 132, 252, 0.3);
   }
 
   /* Prose/Markdown theming */
@@ -229,6 +277,100 @@
     color: #6b21a8;
   }
 }
+
+  /* ===== 液态玻璃导航组件 ===== */
+  /* 单个独立玻璃遮罩 */
+  .glass-nav-item {
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 6px 14px;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .glass-nav-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(192, 132, 252, 0.2);
+  }
+
+  /* 一组按钮连在一起的液态玻璃容器 */
+  .glass-nav-group {
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+  }
+
+  /* 组内的单个导航按钮 */
+  .glass-nav-btn {
+    padding: 6px 14px;
+    border-radius: 10px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #9ca3af;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+
+  .glass-nav-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #c084fc;
+  }
+
+  /* 导航按钮激活状态 */
+  .glass-nav-active {
+    padding: 6px 14px;
+    border-radius: 10px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    background: linear-gradient(135deg, rgba(192, 132, 252, 0.2) 0%, rgba(244, 114, 182, 0.2) 100%);
+    color: #e2d5f5;
+    border: 1px solid rgba(192, 132, 252, 0.25);
+    white-space: nowrap;
+    cursor: pointer;
+  }
+
+  /* 浅色模式 */
+  [data-theme="light"] .glass-nav-item {
+    background: rgba(255, 255, 255, 0.5);
+    border-color: rgba(139, 92, 246, 0.12);
+  }
+
+  [data-theme="light"] .glass-nav-item:hover {
+    background: rgba(255, 255, 255, 0.7);
+    border-color: rgba(192, 132, 252, 0.25);
+  }
+
+  [data-theme="light"] .glass-nav-group {
+    background: rgba(255, 255, 255, 0.5);
+    border-color: rgba(139, 92, 246, 0.12);
+  }
+
+  [data-theme="light"] .glass-nav-btn {
+    color: #6b7280;
+  }
+
+  [data-theme="light"] .glass-nav-btn:hover {
+    background: rgba(139, 92, 246, 0.08);
+    color: #7c3aed;
+  }
+
+  [data-theme="light"] .glass-nav-active {
+    background: linear-gradient(135deg, rgba(192, 132, 252, 0.15) 0%, rgba(244, 114, 182, 0.15) 100%);
+    color: #6b21a8;
+    border-color: rgba(192, 132, 252, 0.3);
+  }
 
 @layer utilities {
   .glow-purple {

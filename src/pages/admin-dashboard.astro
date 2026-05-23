@@ -63,17 +63,7 @@ const modules = [
     preview: '/',
     folder: 'src/config/',
   },
-  {
-    id: 'cms',
-    name: 'Decap CMS',
-    desc: '可视化内容管理',
-    icon: '📁',
-    color: 'from-gray-500/20 to-gray-400/20',
-    textColor: 'text-gray-400',
-    href: '/admin/',
-    preview: null,
-    folder: null,
-  },
+
 ];
 ---
 
@@ -125,14 +115,14 @@ const modules = [
                 
                 {mod.folder && (
                   <div class="mt-3 flex items-center gap-2">
-                    <span class="text-[10px] text-gray-500 bg-white/5 px-2 py-1 rounded">{mod.folder}</span>
+                    <span class="text-[10px] text-gray-500 glass-badge px-2 py-1 rounded">{mod.folder}</span>
                   </div>
                 )}
                 
                 <div class="mt-3 flex gap-2">
                   <a 
                     href={mod.href} 
-                    class="inline-flex items-center gap-1 text-xs px-3 py-1.5 rounded-lg bg-purple-500/20 text-purple-300 hover:bg-purple-500/30 transition-all"
+                    class="inline-flex items-center gap-1 text-xs px-3 py-1.5 rounded-lg glass text-purple-300 hover:border-purple-400/40 transition-all"
                   >
                     进入管理
                     <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -154,19 +144,19 @@ const modules = [
         </h3>
         
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <div class="p-4 rounded-xl bg-white/[0.02] border border-white/5">
+          <div class="p-4 rounded-xl glass">
             <div class="text-2xl mb-2">1️⃣</div>
             <h4 class="font-medium text-sm mb-1">编辑内容</h4>
             <p class="text-xs text-gray-400">点击模块进入管理页，复制模板并修改内容</p>
           </div>
           
-          <div class="p-4 rounded-xl bg-white/[0.02] border border-white/5">
+          <div class="p-4 rounded-xl glass">
             <div class="text-2xl mb-2">2️⃣</div>
             <h4 class="font-medium text-sm mb-1">提交代码</h4>
             <p class="text-xs text-gray-400">将修改后的文件放入对应目录，提交到 GitHub</p>
           </div>
           
-          <div class="p-4 rounded-xl bg-white/[0.02] border border-white/5">
+          <div class="p-4 rounded-xl glass">
             <div class="text-2xl mb-2">3️⃣</div>
             <h4 class="font-medium text-sm mb-1">自动部署</h4>
             <p class="text-xs text-gray-400">推送后自动构建部署，约 1-2 分钟后生效</p>

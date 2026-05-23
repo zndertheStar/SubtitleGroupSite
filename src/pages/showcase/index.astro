@@ -88,7 +88,7 @@ function getVersionColor(versionName: string): string {
           <div class="flex items-center gap-2 overflow-x-auto max-w-full pb-2">
             {sortedShowcases.map(showcase => (
               <button 
-                class="px-3 py-1.5 rounded-full text-sm font-medium transition-all whitespace-nowrap season-btn"
+                class="px-3 py-1.5 rounded-full text-sm font-medium transition-all whitespace-nowrap season-btn backdrop-blur-xl bg-white/5 border border-white/10"
                 data-season={showcase.data.season}
               >
                 {showcase.data.season}
@@ -212,8 +212,8 @@ function getVersionColor(versionName: string): string {
     }
     
     .ep-cell-done {
-      background-color: rgba(168, 85, 247, 0.15);
-      border-color: rgba(168, 85, 247, 0.25);
+      background-color: rgba(168, 85, 247, 0.1);
+      border-color: rgba(168, 85, 247, 0.2);
     }
     
     .ep-cell-done:hover {
@@ -223,7 +223,7 @@ function getVersionColor(versionName: string): string {
     
     .ep-cell-pending {
       background-color: rgba(255, 255, 255, 0.03);
-      border-color: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.06);
       opacity: 0.6;
     }
     

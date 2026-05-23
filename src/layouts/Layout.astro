@@ -65,7 +65,47 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     })();
   </script>
 </head>
-<body class="min-h-screen flex flex-col">
+<body class="min-h-screen flex flex-col relative">
+  <!-- Random ACG Background -->
+  <div id="bg-layer" class="fixed inset-0 z-[-1] transition-opacity duration-700">
+    <div id="bg-image" class="absolute inset-0 bg-cover bg-center bg-no-repeat"></div>
+    <div id="bg-overlay" class="absolute inset-0"></div>
+  </div>
+  
+  <script is:inline>
+    (function() {
+      const bgImage = document.getElementById('bg-image');
+      const bgOverlay = document.getElementById('bg-overlay');
+      
+      // Random image from loliapi
+      const imgUrl = 'https://www.loliapi.com/acg/?t=' + Date.now();
+      bgImage.style.backgroundImage = 'url(' + imgUrl + ')';
+      
+      // Apply overlay based on theme
+      function applyOverlay() {
+        const theme = document.documentElement.getAttribute('data-theme') || 'dark';
+        if (theme === 'dark') {
+          bgOverlay.style.background = 'rgba(15, 10, 30, 0.65)';
+        } else {
+          bgOverlay.style.background = 'rgba(250, 245, 255, 0.70)';
+        }
+      }
+      
+      applyOverlay();
+      
+      // Listen for theme changes
+      const observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          if (mutation.attributeName === 'data-theme') {
+            applyOverlay();
+          }
+        });
+      });
+      
+      observer.observe(document.documentElement, { attributes: true });
+    })();
+  </script>
+  
   <slot />
 </body>
 </html>

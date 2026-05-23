@@ -23,9 +23,9 @@ const posts = miscPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate
 
       <div class="space-y-4">
         {posts.map(post => (
-          <a href={`/misc/${post.slug}`} class="anime-card block p-5 group transition-all hover:bg-white/[0.03]">
+          <a href={`/misc/${post.slug}`} class="anime-card block p-5 group transition-all hover:bg-white/[0.08]">
             <div class="flex items-start gap-4">
-              <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500/20 to-cyan-500/20 flex items-center justify-center flex-shrink-0 text-lg">
+              <div class="w-10 h-10 rounded-lg glass bg-blue-500/10 flex items-center justify-center flex-shrink-0 text-lg">
                 📝
               </div>
               <div class="flex-1 min-w-0">
@@ -42,7 +42,7 @@ const posts = miscPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate
                 {post.data.tags.length > 0 && (
                   <div class="flex flex-wrap gap-1.5 mt-3">
                     {post.data.tags.map(tag => (
-                      <span class="px-2 py-0.5 rounded-full text-[10px] bg-white/5 text-gray-400 border border-white/5">{tag}</span>
+                      <span class="px-2 py-0.5 rounded-full text-[10px] glass-badge text-gray-400">{tag}</span>
                     ))}
                   </div>
                 )}

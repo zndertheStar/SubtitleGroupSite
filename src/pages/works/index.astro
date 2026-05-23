@@ -28,7 +28,7 @@ const categories = ['all', 'anime', 'movie', 'ova', 'other'] as const;
         <a 
           href="/rss.xml" 
           target="_blank"
-          class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs text-orange-400 hover:text-orange-300 hover:bg-orange-400/10 transition-all border border-orange-400/20"
+          class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs text-orange-400 hover:text-orange-300 transition-all glass hover:border-orange-400/40"
           title="RSS 订阅"
         >
           <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -91,7 +91,7 @@ const categories = ['all', 'anime', 'movie', 'ova', 'other'] as const;
               )}
               <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
               
-              <div class="absolute top-2 right-2 px-1.5 py-0.5 rounded text-[10px] font-medium bg-black/50 text-white backdrop-blur-sm">
+              <div class="absolute top-2 right-2 px-1.5 py-0.5 rounded text-[10px] font-medium glass-badge">
                 {work.data.category === 'anime' ? '动画' : work.data.category === 'movie' ? '电影' : work.data.category === 'ova' ? 'OVA' : '其他'}
               </div>
               
@@ -100,7 +100,7 @@ const categories = ['all', 'anime', 'movie', 'ova', 'other'] as const;
                 <div class="flex items-center justify-between mt-1">
                   <span class="text-[10px] text-gray-400">{work.data.pubDate.toLocaleDateString('zh-CN')}</span>
                   {work.data.episode && (
-                    <span class="text-[10px] px-1.5 py-0.5 rounded-full bg-purple-500/30 text-purple-200">第{work.data.episode}集</span>
+                    <span class="text-[10px] px-1.5 py-0.5 rounded-full glass text-purple-300">第{work.data.episode}集</span>
                   )}
                 </div>
               </div>

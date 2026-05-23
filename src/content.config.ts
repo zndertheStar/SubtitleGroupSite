@@ -57,6 +57,21 @@ const about = defineCollection({
     title: z.string(),
     description: z.string().optional(),
     updatedDate: z.coerce.date().optional(),
+    members: z.array(
+      z.object({
+        icon: z.string().optional(),
+        name: z.string(),
+        role: z.string().optional(),
+      })
+    ).default([]),
+    contacts: z.array(
+      z.object({
+        icon: z.string().optional(),
+        name: z.string(),
+        description: z.string().optional(),
+        url: z.string().optional(),
+      })
+    ).default([]),
   }),
 });
 

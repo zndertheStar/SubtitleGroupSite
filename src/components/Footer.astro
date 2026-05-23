@@ -12,30 +12,28 @@ const t = useTranslations(lang as any);
 const siteName = getSiteName(lang);
 ---
 
-<footer class="mt-auto border-t py-6 transition-colors duration-300 bg-surface border-theme">
+<footer class="mt-auto py-6">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
-      <!-- Left: Site Stats -->
-      <div class="flex items-center gap-3">
-        <div class="w-7 h-7 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white font-bold text-xs">
+      <!-- Left: Site Stats - 液态玻璃遮罩 -->
+      <div class="glass-nav-item">
+        <div class="w-7 h-7 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white font-bold text-xs flex-shrink-0">
           {siteConfig.logo.iconText}
         </div>
-        <div class="flex items-center gap-3 text-sm">
-          <span class="text-muted">{siteName}</span>
-          <span class="text-gray-600">|</span>
-          <!-- Umami Stats -->
-          <div class="flex items-center gap-2 text-xs text-gray-500">
-            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-            </svg>
-            <span id="umami-stats">统计加载中...</span>
-          </div>
+        <span class="text-muted text-sm">{siteName}</span>
+        <span class="text-gray-600">|</span>
+        <!-- Umami Stats -->
+        <div class="flex items-center gap-2 text-xs text-gray-500">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+          </svg>
+          <span id="umami-stats">统计加载中...</span>
         </div>
       </div>
 
-      <!-- Right: Friend Links -->
-      <div class="flex items-center gap-4 text-xs">
+      <!-- Right: Friend Links - 液态玻璃遮罩 -->
+      <div class="glass-nav-item">
         {friendLinks.length > 0 ? (
           <div class="flex items-center gap-3">
             <span class="text-gray-500">友站:</span>
