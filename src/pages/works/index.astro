@@ -1,0 +1,110 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { getCollection } from 'astro:content';
+import { useTranslations } from '../../i18n/ui';
+
+const lang = 'zh';
+const t = useTranslations(lang);
+
+const allWorks = await getCollection('works');
+const works = allWorks.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const categories = ['all', 'anime', 'movie', 'ova', 'other'] as const;
+---
+
+<Layout title={t('works.title')} lang={lang}>
+  <Header lang={lang} />
+  
+  <main class="flex-1 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Page Header -->
+      <div class="mb-8">
+        <h1 class="text-3xl font-bold mb-2">{t('works.title')}</h1>
+        <p class="text-gray-400">共 {works.length} 部作品</p>
+      </div>
+
+      <!-- Filters -->
+      <div class="flex gap-2 mb-8 overflow-x-auto pb-2">
+        {categories.map(cat => (
+          <button 
+            class="px-4 py-2 rounded-full text-sm font-medium transition-all filter-btn whitespace-nowrap"
+            data-category={cat}
+          >
+            {cat === 'all' ? t('works.filter.all') : 
+             cat === 'anime' ? t('works.filter.anime') :
+             cat === 'movie' ? t('works.filter.movie') :
+             cat === 'ova' ? t('works.filter.ova') : '其他'}
+          </button>
+        ))}
+      </div>
+
+      <!-- Works Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="works-grid">
+        {works.map(work => (
+          <a 
+            href={`/works/${work.slug}`} 
+            class="anime-card group block work-item"
+            data-category={work.data.category}
+          >
+            <div class="aspect-video bg-gradient-to-br from-purple-900/50 to-pink-900/50 flex items-center justify-center overflow-hidden relative">
+              {work.data.cover ? (
+                <img src={work.data.cover} alt={work.data.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              ) : (
+                <span class="text-6xl">🎬</span>
+              )}
+              <div class="absolute top-2 right-2 px-2 py-1 rounded-lg text-xs font-medium bg-black/50 text-white backdrop-blur-sm">
+                {work.data.category === 'anime' ? '动画' : work.data.category === 'movie' ? '电影' : work.data.category === 'ova' ? 'OVA' : '其他'}
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="font-semibold text-lg mb-1 group-hover:text-purple-400 transition-colors">{work.data.title}</h3>
+              <p class="text-sm text-gray-500 line-clamp-2">{work.data.description}</p>
+              <div class="flex items-center justify-between mt-3">
+                <span class="text-xs text-gray-500">{work.data.pubDate.toLocaleDateString('zh-CN')}</span>
+                {work.data.episode && (
+                  <span class="px-2 py-0.5 rounded-full text-xs bg-purple-500/20 text-purple-300">第{work.data.episode}集</span>
+                )}
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </main>
+
+  <script is:inline>
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const category = btn.dataset.category;
+        
+        // Update active state
+        document.querySelectorAll('.filter-btn').forEach(b => {
+          b.style.background = 'rgba(255,255,255,0.05)';
+          b.style.color = '';
+        });
+        btn.style.background = 'linear-gradient(135deg, #c084fc 0%, #f472b6 100%)';
+        btn.style.color = 'white';
+        
+        // Filter works
+        document.querySelectorAll('.work-item').forEach(item => {
+          if (category === 'all' || item.dataset.category === category) {
+            item.style.display = '';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+    
+    // Set initial active
+    const firstBtn = document.querySelector('.filter-btn');
+    if (firstBtn) {
+      firstBtn.style.background = 'linear-gradient(135deg, #c084fc 0%, #f472b6 100%)';
+      firstBtn.style.color = 'white';
+    }
+  </script>
+
+  <Footer lang={lang} />
+</Layout>

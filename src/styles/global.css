@@ -1,0 +1,241 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary-50: #fff0f5;
+  --color-primary-100: #ffe4e6;
+  --color-primary-200: #fecdd3;
+  --color-primary-300: #fda4af;
+  --color-primary-400: #fb7185;
+  --color-primary-500: #f43f5e;
+  --color-primary-600: #e11d48;
+  --color-primary-700: #be123c;
+  --color-primary-800: #9f1239;
+  --color-primary-900: #881337;
+
+  --color-accent-50: #eff6ff;
+  --color-accent-100: #dbeafe;
+  --color-accent-200: #bfdbfe;
+  --color-accent-300: #93c5fd;
+  --color-accent-400: #60a5fa;
+  --color-accent-500: #3b82f6;
+  --color-accent-600: #2563eb;
+  --color-accent-700: #1d4ed8;
+  --color-accent-800: #1e40af;
+  --color-accent-900: #1e3a8a;
+
+  --font-sans: 'Noto Sans SC', 'Noto Sans JP', system-ui, -apple-system, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    @apply antialiased;
+  }
+
+  /* Dark Theme (Default - Anime Night) */
+  [data-theme="dark"] body {
+    background-color: #0f0a1e;
+    color: #e2d5f5;
+  }
+
+  [data-theme="dark"] .bg-theme {
+    background-color: #0f0a1e;
+  }
+
+  [data-theme="dark"] .bg-surface {
+    background-color: #1a102e;
+  }
+
+  [data-theme="dark"] .border-theme {
+    border-color: rgba(139, 92, 246, 0.2);
+  }
+
+  [data-theme="dark"] .text-theme {
+    color: #e2d5f5;
+  }
+
+  [data-theme="dark"] .text-muted {
+    color: #9ca3af;
+  }
+
+  [data-theme="dark"] .header-blur {
+    background: rgba(15, 10, 30, 0.85);
+    border-bottom-color: rgba(139, 92, 246, 0.15);
+  }
+
+  /* Light Theme (Anime Day/Sakura) */
+  [data-theme="light"] body {
+    background-color: #faf5ff;
+    color: #4c1d95;
+  }
+
+  [data-theme="light"] .bg-theme {
+    background-color: #faf5ff;
+  }
+
+  [data-theme="light"] .bg-surface {
+    background-color: #ffffff;
+  }
+
+  [data-theme="light"] .border-theme {
+    border-color: rgba(139, 92, 246, 0.15);
+  }
+
+  [data-theme="light"] .text-theme {
+    color: #4c1d95;
+  }
+
+  [data-theme="light"] .text-muted {
+    color: #6b7280;
+  }
+
+  [data-theme="light"] .header-blur {
+    background: rgba(255, 255, 255, 0.85);
+    border-bottom-color: rgba(139, 92, 246, 0.12);
+  }
+}
+
+@layer components {
+  .anime-card {
+    @apply rounded-xl overflow-hidden shadow-lg transition-all duration-300;
+  }
+
+  [data-theme="dark"] .anime-card {
+    background: #1a102e;
+    border: 1px solid rgba(139, 92, 246, 0.2);
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.12);
+  }
+
+  [data-theme="light"] .anime-card {
+    background: #ffffff;
+    border: 1px solid rgba(139, 92, 246, 0.12);
+    box-shadow: 0 4px 20px rgba(139, 92, 246, 0.06);
+  }
+
+  .anime-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(139, 92, 246, 0.2);
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #c084fc 0%, #f472b6 50%, #60a5fa 100%);
+  }
+
+  .btn-primary {
+    @apply px-6 py-2 rounded-full font-medium transition-all duration-300;
+    background: linear-gradient(135deg, #c084fc 0%, #f472b6 100%);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    box-shadow: 0 4px 15px rgba(192, 132, 252, 0.4);
+    transform: translateY(-2px);
+  }
+
+  /* Search input theming */
+  [data-theme="dark"] .search-input {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+    color: #e2d5f5;
+  }
+
+  [data-theme="light"] .search-input {
+    background: rgba(139, 92, 246, 0.05);
+    border-color: rgba(139, 92, 246, 0.15);
+    color: #4c1d95;
+  }
+
+  .search-input:focus {
+    border-color: rgba(139, 92, 246, 0.5);
+  }
+
+  /* Nav link theming */
+  [data-theme="dark"] .nav-link {
+    color: #9ca3af;
+  }
+
+  [data-theme="dark"] .nav-link:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: #c084fc;
+  }
+
+  [data-theme="light"] .nav-link {
+    color: #6b7280;
+  }
+
+  [data-theme="light"] .nav-link:hover {
+    background: rgba(139, 92, 246, 0.08);
+    color: #7c3aed;
+  }
+
+  /* Filter button theming */
+  [data-theme="dark"] .filter-btn {
+    background: rgba(255, 255, 255, 0.05);
+    color: #9ca3af;
+  }
+
+  [data-theme="light"] .filter-btn {
+    background: rgba(139, 92, 246, 0.05);
+    color: #6b7280;
+  }
+
+  /* Episode grid theming */
+  [data-theme="dark"] .episode-done {
+    background: linear-gradient(135deg, #c084fc 0%, #f472b6 100%);
+    color: white;
+    box-shadow: 0 0 10px rgba(192, 132, 252, 0.3);
+  }
+
+  [data-theme="light"] .episode-done {
+    background: linear-gradient(135deg, #c084fc 0%, #f472b6 100%);
+    color: white;
+  }
+
+  [data-theme="dark"] .episode-pending {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #6b7280;
+  }
+
+  [data-theme="light"] .episode-pending {
+    background: rgba(139, 92, 246, 0.05);
+    border: 1px solid rgba(139, 92, 246, 0.15);
+    color: #9ca3af;
+  }
+
+  /* Prose/Markdown theming */
+  [data-theme="dark"] .prose-custom {
+    color: #e2d5f5;
+  }
+
+  [data-theme="dark"] .prose-custom h1,
+  [data-theme="dark"] .prose-custom h2,
+  [data-theme="dark"] .prose-custom h3 {
+    color: #f3e8ff;
+  }
+
+  [data-theme="light"] .prose-custom {
+    color: #4c1d95;
+  }
+
+  [data-theme="light"] .prose-custom h1,
+  [data-theme="light"] .prose-custom h2,
+  [data-theme="light"] .prose-custom h3 {
+    color: #6b21a8;
+  }
+}
+
+@layer utilities {
+  .glow-purple {
+    box-shadow: 0 0 40px rgba(139, 92, 246, 0.3);
+  }
+
+  .glow-pink {
+    box-shadow: 0 0 40px rgba(244, 114, 182, 0.3);
+  }
+}

@@ -1,0 +1,53 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+const lang = 'zh';
+const miscPosts = await getCollection('misc');
+const posts = miscPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<Layout title="杂谈" lang={lang}>
+  <Header lang={lang} />
+  
+  <main class="flex-1 py-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="mb-8">
+        <h1 class="text-3xl font-bold mb-2">杂谈</h1>
+        <p class="text-gray-400">组内日常与非作品类内容</p>
+      </div>
+
+      <div class="space-y-6">
+        {posts.map(post => (
+          <a href={`/misc/${post.slug}`} class="anime-card block p-6 group hover:border-purple-500/30 transition-colors">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-500/20 to-cyan-500/20 flex items-center justify-center flex-shrink-0">
+                <span class="text-xl">📝</span>
+              </div>
+              <div class="flex-1">
+                <h2 class="text-xl font-semibold mb-2 group-hover:text-purple-400 transition-colors">{post.data.title}</h2>
+                {post.data.description && (
+                  <p class="text-gray-500 mb-3">{post.data.description}</p>
+                )}
+                <div class="flex items-center gap-3 text-sm text-gray-500">
+                  <span>{post.data.pubDate.toLocaleDateString('zh-CN')}</span>
+                  {post.data.tags.length > 0 && (
+                    <div class="flex gap-2">
+                      {post.data.tags.map(tag => (
+                        <span class="px-2 py-0.5 rounded-full text-xs bg-white/5">{tag}</span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </main>
+
+  <Footer lang={lang} />
+</Layout>

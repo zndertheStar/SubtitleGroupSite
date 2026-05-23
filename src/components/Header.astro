@@ -1,0 +1,190 @@
+---
+import { useTranslations } from '../i18n/ui';
+
+interface Props {
+  lang?: string;
+}
+
+const { lang = 'zh' } = Astro.props;
+const t = useTranslations(lang as any);
+
+const navLinks = [
+  { href: `/${lang === 'zh' ? '' : lang + '/'}`, label: t('nav.home') },
+  { href: `/${lang === 'zh' ? '' : lang + '/'}works`, label: t('nav.works') },
+  { href: `/${lang === 'zh' ? '' : lang + '/'}showcase`, label: t('nav.showcase') },
+  { href: `/${lang === 'zh' ? '' : lang + '/'}misc`, label: t('nav.misc') },
+  { href: `/${lang === 'zh' ? '' : lang + '/'}about`, label: t('nav.about') },
+];
+
+const languages = [
+  { code: 'zh', label: '中文' },
+  { code: 'ja', label: '日本語' },
+  { code: 'en', label: 'EN' },
+];
+---
+
+<header class="sticky top-0 z-50 backdrop-blur-xl border-b transition-colors duration-300 header-blur">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <!-- Logo -->
+      <a href={`/${lang === 'zh' ? '' : lang + '/'}`} class="flex items-center gap-2 group">
+        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white font-bold text-sm group-hover:scale-110 transition-transform glow-purple">
+          G
+        </div>
+        <span class="font-bold text-lg gradient-text hidden sm:block">绿茶字幕组</span>
+      </a>
+
+      <!-- Navigation -->
+      <nav class="hidden md:flex items-center gap-1">
+        {navLinks.map(link => (
+          <a 
+            href={link.href}
+            class="nav-link px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200"
+          >
+            {link.label}
+          </a>
+        ))}
+      </nav>
+
+      <!-- Right section -->
+      <div class="flex items-center gap-3">
+      <!-- Pagefind Search UI -->
+      <div class="relative hidden sm:block" id="search-wrapper">
+        <div id="search" class="pagefind-search" data-pagefind-ui></div>
+      </div>
+
+      <!-- Search Modal Button (Mobile) -->
+      <button id="search-toggle" class="sm:hidden p-2 rounded-lg hover:bg-purple-500/10 transition-colors text-muted">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+      </button>
+
+        <!-- Language switcher -->
+        <div class="relative group">
+          <button class="px-2 py-1 rounded-lg text-sm font-medium text-muted hover:bg-purple-500/10 transition-colors">
+            {languages.find(l => l.code === lang)?.label || '中文'}
+          </button>
+          <div class="absolute right-0 top-full mt-1 w-24 rounded-lg border shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 overflow-hidden bg-surface border-theme">
+            {languages.map(l => (
+              <a 
+                href={`/${l.code === 'zh' ? '' : l.code + '/'}${Astro.url.pathname.split('/').slice(2).join('/')}`}
+                class="block px-4 py-2 text-sm text-muted hover:bg-purple-500/10 hover:text-purple-500 transition-colors"
+              >
+                {l.label}
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <!-- Dark mode toggle -->
+        <button id="theme-toggle" class="p-2 rounded-lg hover:bg-purple-500/10 transition-colors text-muted">
+          <svg id="moon-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+          </svg>
+          <svg id="sun-icon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile nav -->
+  <nav class="md:hidden flex overflow-x-auto px-4 pb-2 gap-2">
+    {navLinks.map(link => (
+      <a 
+        href={link.href}
+        class="px-3 py-1.5 rounded-full text-xs font-medium whitespace-nowrap bg-white/5 text-muted hover:bg-purple-500/20"
+      >
+        {link.label}
+      </a>
+    ))}
+  </nav>
+</header>
+
+<!-- Pagefind Search Script -->
+<link href="/pagefind/pagefind-ui.css" rel="stylesheet">
+<script src="/pagefind/pagefind-ui.js" type="module" is:inline></script>
+<script type="module" is:inline>
+  async function initPagefind() {
+    try {
+      const pagefind = await import('/pagefind/pagefind-ui.js');
+      const searchContainer = document.getElementById('search');
+      if (searchContainer && pagefind.PagefindUI) {
+        new pagefind.PagefindUI({
+          element: '#search',
+          showImages: false,
+          showSubResults: true,
+          translations: {
+            placeholder: '搜索作品...',
+            clear_search: '清除',
+            load_more: '加载更多结果',
+            search_label: '搜索',
+            filters_label: '筛选',
+            zero_results: '未找到 [SEARCH_TERM] 的相关结果',
+            many_results: '[COUNT] 个结果',
+            one_result: '1 个结果',
+            alt_search: '未找到 [SEARCH_TERM] 的结果。显示 [DIFFERENT_TERM] 的相关结果',
+            search_suggestion: '未找到 [SEARCH_TERM] 的结果。尝试以下搜索：',
+            searching: '搜索中...'
+          }
+        });
+      }
+    } catch (e) {
+      console.log('Pagefind UI init error:', e);
+    }
+  }
+  
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initPagefind);
+  } else {
+    initPagefind();
+  }
+  
+  // Mobile search toggle
+  const searchToggle = document.getElementById('search-toggle');
+  const searchWrapper = document.getElementById('search-wrapper');
+  searchToggle?.addEventListener('click', () => {
+    searchWrapper?.classList.toggle('hidden');
+    searchWrapper?.classList.toggle('absolute');
+    searchWrapper?.classList.toggle('top-full');
+    searchWrapper?.classList.toggle('left-0');
+    searchWrapper?.classList.toggle('right-0');
+    searchWrapper?.classList.toggle('mt-2');
+    searchWrapper?.classList.toggle('bg-surface');
+    searchWrapper?.classList.toggle('p-4');
+    searchWrapper?.classList.toggle('rounded-xl');
+    searchWrapper?.classList.toggle('border');
+    searchWrapper?.classList.toggle('border-theme');
+    searchWrapper?.classList.toggle('shadow-xl');
+    searchWrapper?.classList.toggle('z-50');
+  });
+</script>
+
+<script is:inline>
+  const themeToggle = document.getElementById('theme-toggle');
+  const moonIcon = document.getElementById('moon-icon');
+  const sunIcon = document.getElementById('sun-icon');
+
+  function updateIcon() {
+    const theme = document.documentElement.getAttribute('data-theme');
+    if (theme === 'dark') {
+      moonIcon?.classList.remove('hidden');
+      sunIcon?.classList.add('hidden');
+    } else {
+      moonIcon?.classList.add('hidden');
+      sunIcon?.classList.remove('hidden');
+    }
+  }
+
+  themeToggle?.addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme');
+    const next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    updateIcon();
+  });
+
+  updateIcon();
+</script>

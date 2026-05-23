@@ -1,0 +1,165 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { getCollection } from 'astro:content';
+import { useTranslations } from '../i18n/ui';
+
+const lang = 'zh';
+const t = useTranslations(lang);
+
+const allWorks = await getCollection('works');
+const allMisc = await getCollection('misc');
+
+const latestWorks = allWorks
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 6);
+
+const featuredWorks = allWorks
+  .filter(w => w.data.featured)
+  .slice(0, 3);
+
+const latestMisc = allMisc
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+---
+
+<Layout title={t('home.hero.title')} description={t('home.hero.subtitle')} lang={lang}>
+  <Header lang={lang} />
+  
+  <main class="flex-1">
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden py-20 sm:py-32">
+      <div class="absolute inset-0 opacity-20">
+        <div class="absolute top-20 left-10 w-72 h-72 bg-purple-600 rounded-full blur-[128px]"></div>
+        <div class="absolute bottom-20 right-10 w-96 h-96 bg-pink-600 rounded-full blur-[128px]"></div>
+      </div>
+      
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div class="text-center">
+          <h1 class="text-5xl sm:text-7xl font-bold mb-6 gradient-text">
+            {t('home.hero.title')}
+          </h1>
+          <p class="text-xl sm:text-2xl text-gray-400 mb-8">
+            {t('home.hero.subtitle')}
+          </p>
+          <div class="flex justify-center gap-4">
+            <a href="/works" class="btn-primary">
+              浏览作品
+            </a>
+            <a href="/showcase" class="px-6 py-2 rounded-full font-medium border border-purple-500/30 text-purple-300 hover:bg-purple-500/10 transition-all">
+              本季进度
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Carousel (simplified as grid) -->
+    {featuredWorks.length > 0 && (
+      <section class="py-12 border-t" style="border-color: rgba(45, 27, 78, 0.5);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 class="text-2xl font-bold mb-8 flex items-center gap-2">
+            <span class="w-1 h-8 rounded-full bg-gradient-to-b from-purple-500 to-pink-500"></span>
+            {t('home.featured')}
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {featuredWorks.map(work => (
+              <a href={`/works/${work.slug}`} class="anime-card group block">
+                <div class="aspect-video bg-gradient-to-br from-purple-900/50 to-pink-900/50 flex items-center justify-center overflow-hidden relative">
+                  {work.data.cover ? (
+                    <img src={work.data.cover} alt={work.data.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  ) : (
+                    <span class="text-6xl">🎬</span>
+                  )}
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                </div>
+                <div class="p-4">
+                  <h3 class="font-semibold text-lg mb-1 group-hover:text-purple-400 transition-colors">{work.data.title}</h3>
+                  <p class="text-sm text-gray-500 line-clamp-2">{work.data.description}</p>
+                  <div class="flex items-center gap-2 mt-3">
+                    {work.data.tags.map(tag => (
+                      <span class="px-2 py-0.5 rounded-full text-xs bg-purple-500/20 text-purple-300">{tag}</span>
+                    ))}
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- Latest Works -->
+    <section class="py-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between mb-8">
+          <h2 class="text-2xl font-bold flex items-center gap-2">
+            <span class="w-1 h-8 rounded-full bg-gradient-to-b from-purple-500 to-pink-500"></span>
+            {t('home.latest')}
+          </h2>
+          <a href="/works" class="text-sm text-purple-400 hover:text-purple-300 transition-colors">查看全部 →</a>
+        </div>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {latestWorks.map(work => (
+            <a href={`/works/${work.slug}`} class="anime-card group block">
+              <div class="aspect-video bg-gradient-to-br from-purple-900/50 to-pink-900/50 flex items-center justify-center overflow-hidden relative">
+                {work.data.cover ? (
+                  <img src={work.data.cover} alt={work.data.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                ) : (
+                  <span class="text-6xl">🎬</span>
+                )}
+                <div class="absolute top-2 right-2 px-2 py-1 rounded-lg text-xs font-medium bg-black/50 text-white backdrop-blur-sm">
+                  {work.data.category === 'anime' ? '动画' : work.data.category === 'movie' ? '电影' : work.data.category === 'ova' ? 'OVA' : '其他'}
+                </div>
+              </div>
+              <div class="p-4">
+                <h3 class="font-semibold text-lg mb-1 group-hover:text-purple-400 transition-colors">{work.data.title}</h3>
+                <p class="text-sm text-gray-500 line-clamp-2">{work.data.description}</p>
+                <div class="flex items-center justify-between mt-3">
+                  <span class="text-xs text-gray-500">{work.data.pubDate.toLocaleDateString('zh-CN')}</span>
+                  {work.data.episode && (
+                    <span class="px-2 py-0.5 rounded-full text-xs bg-purple-500/20 text-purple-300">第{work.data.episode}集</span>
+                  )}
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Latest Misc Posts -->
+    {latestMisc.length > 0 && (
+      <section class="py-12 border-t" style="border-color: rgba(45, 27, 78, 0.5);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex items-center justify-between mb-8">
+            <h2 class="text-2xl font-bold flex items-center gap-2">
+              <span class="w-1 h-8 rounded-full bg-gradient-to-b from-blue-500 to-cyan-500"></span>
+              最新杂谈
+            </h2>
+            <a href="/misc" class="text-sm text-blue-400 hover:text-blue-300 transition-colors">查看全部 →</a>
+          </div>
+          
+          <div class="space-y-4">
+            {latestMisc.map(post => (
+              <a href={`/misc/${post.slug}`} class="flex items-start gap-4 p-4 rounded-xl border border-white/5 hover:border-purple-500/30 transition-all group">
+                <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-500/20 to-cyan-500/20 flex items-center justify-center flex-shrink-0">
+                  <span class="text-xl">📝</span>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <h3 class="font-semibold group-hover:text-purple-400 transition-colors truncate">{post.data.title}</h3>
+                  <p class="text-sm text-gray-500 mt-1 line-clamp-1">{post.data.description}</p>
+                </div>
+                <span class="text-xs text-gray-500 flex-shrink-0">{post.data.pubDate.toLocaleDateString('zh-CN')}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+  </main>
+  
+  <Footer lang={lang} />
+</Layout>
