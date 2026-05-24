@@ -27,7 +27,7 @@ if (about) {
         {siteConfig.logo.image ? (
           <img src={siteConfig.logo.image} alt={siteName} class="w-20 h-20 mx-auto rounded-2xl mb-6" />
         ) : (
-          <div class="w-20 h-20 mx-auto rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white font-bold text-3xl mb-6 glow-purple">
+          <div class="w-20 h-20 mx-auto rounded-2xl bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center text-white font-bold text-3xl mb-6 glow-green">
             {siteConfig.logo.iconText}
           </div>
         )}
@@ -36,14 +36,14 @@ if (about) {
       </div>
 
       {Content ? (
-        <article class="prose prose-invert prose-purple max-w-none">
+        <article class="prose prose-invert prose-emerald max-w-none">
           <Content />
         </article>
       ) : (
         <div class="text-center text-gray-500 py-12">
           关于页面内容尚未编辑，请通过管理后台添加内容。
           <br />
-          <a href="/admin" class="text-purple-400 hover:text-purple-300 mt-4 inline-block">前往后台编辑</a>
+          <a href="/admin" class="text-primary-400 hover:text-primary-300 mt-4 inline-block">前往后台编辑</a>
         </div>
       )}
 
@@ -54,7 +54,7 @@ if (about) {
             {about.data.members.map((member) => (
               <div class="anime-card p-4 text-center">
                 {member.icon && (
-                  <div class="w-16 h-16 mx-auto rounded-full glass bg-purple-500/10 flex items-center justify-center mb-3">
+                  <div class="w-16 h-16 mx-auto rounded-full glass bg-primary-500/10 flex items-center justify-center mb-3">
                     <span class="text-2xl">{member.icon}</span>
                   </div>
                 )}
@@ -76,7 +76,7 @@ if (about) {
                 <Wrapper
                   href={contact.url}
                   target={contact.url ? '_blank' : undefined}
-                  class={`anime-card p-4 flex items-center gap-4 ${contact.url ? 'hover:border-purple-500/30 transition-colors cursor-pointer' : ''}`}
+                  class={`anime-card p-4 flex items-center gap-4 ${contact.url ? 'hover:border-primary-500/30 transition-colors cursor-pointer' : ''}`}
                 >
                   {contact.icon && (
                     <div class="w-12 h-12 rounded-lg glass bg-green-500/10 flex items-center justify-center flex-shrink-0">

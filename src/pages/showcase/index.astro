@@ -60,7 +60,7 @@ function calculateProgress(show: any) {
 // Generate version color map for consistent coloring
 function getVersionColor(versionName: string): string {
   const colors: Record<string, string> = {
-    'Baha': '#a855f7',
+    'Baha': '#00FA9A',
     'CR': '#3b82f6',
     'Web': '#10b981',
     'TV': '#f59e0b',
@@ -130,7 +130,7 @@ function getVersionColor(versionName: string): string {
                         <span class="text-xs text-gray-400">{progress.completed}/{progress.total}</span>
                         <div class="w-20 h-1.5 rounded-full bg-white/5 overflow-hidden">
                           <div 
-                            class="h-full rounded-full bg-gradient-to-r from-purple-500 to-pink-500 transition-all"
+                            class="h-full rounded-full bg-gradient-to-r from-primary-500 to-accent-500 transition-all"
                             style={`width: ${progress.percentage}%`}
                           ></div>
                         </div>
@@ -212,12 +212,12 @@ function getVersionColor(versionName: string): string {
     }
     
     .ep-cell-done {
-      background-color: rgba(168, 85, 247, 0.1);
-      border-color: rgba(168, 85, 247, 0.2);
+      background-color: rgba(0, 255, 127, 0.1);
+      border-color: rgba(0, 255, 127, 0.2);
     }
     
     .ep-cell-done:hover {
-      background-color: rgba(168, 85, 247, 0.25);
+      background-color: rgba(0, 255, 127, 0.25);
       transform: translateY(-1px);
     }
     
@@ -235,7 +235,7 @@ function getVersionColor(versionName: string): string {
     }
     
     .ep-cell-done .ep-number {
-      color: rgb(216, 180, 254);
+      color: rgb(180, 254, 216);
     }
     
     .ep-cell-pending .ep-number {
@@ -285,7 +285,7 @@ function getVersionColor(versionName: string): string {
           b.style.background = '';
           b.style.color = '';
         });
-        btn.style.background = 'linear-gradient(135deg, #c084fc 0%, #f472b6 100%)';
+        btn.style.background = 'linear-gradient(135deg, #00FF7F 0%, #7FFFAA 100%)';
         btn.style.color = 'white';
         
         // Show/hide season content
@@ -302,7 +302,7 @@ function getVersionColor(versionName: string): string {
     // Set initial active
     const firstBtn = document.querySelector('.season-btn');
     if (firstBtn) {
-      firstBtn.style.background = 'linear-gradient(135deg, #c084fc 0%, #f472b6 100%)';
+      firstBtn.style.background = 'linear-gradient(135deg, #00FF7F 0%, #7FFFAA 100%)';
       firstBtn.style.color = 'white';
     }
   </script>

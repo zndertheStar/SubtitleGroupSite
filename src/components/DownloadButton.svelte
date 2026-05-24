@@ -68,13 +68,13 @@
 </script>
 
 <div 
-  class="flex items-center gap-4 p-4 rounded-xl bg-white/5 hover:bg-purple-500/10 transition-all duration-300 border border-transparent hover:border-purple-500/20"
+  class="flex items-center gap-4 p-4 rounded-xl bg-white/5 hover:bg-primary-500/10 transition-all duration-300 border border-transparent hover:border-primary-500/20"
   role="button"
   tabindex="0"
   on:mouseenter={() => isHovered = true}
   on:mouseleave={() => isHovered = false}
 >
-  <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center flex-shrink-0 transition-transform duration-300" class:scale-110={isHovered}>
+  <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-primary-500/20 to-accent-500/20 flex items-center justify-center flex-shrink-0 transition-transform duration-300" class:scale-110={isHovered}>
     <span class="text-lg">{isMagnet ? '🧲' : type === 'subtitles' ? '📜' : '🔤'}</span>
   </div>
   <div class="flex-1 min-w-0">
@@ -90,7 +90,7 @@
   {#if isMagnet}
     <button 
       on:click={handleCopyMagnet}
-      class="px-4 py-2 rounded-lg text-sm font-medium flex-shrink-0 flex items-center gap-2 transition-all duration-300 {copied ? 'bg-green-500/20 text-green-300' : 'bg-purple-500/20 text-purple-300 hover:bg-purple-500/30'}"
+      class="px-4 py-2 rounded-lg text-sm font-medium flex-shrink-0 flex items-center gap-2 transition-all duration-300 {copied ? 'bg-green-500/20 text-green-300' : 'bg-primary-500/20 text-primary-300 hover:bg-primary-500/30'}"
     >
       {#if copied}
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -107,12 +107,12 @@
   {:else}
     <button 
       on:click={handleDownload}
-      class="px-4 py-2 rounded-lg text-sm font-medium bg-purple-500/20 text-purple-300 hover:bg-purple-500/30 transition-all duration-300 flex-shrink-0 flex items-center gap-2"
+      class="px-4 py-2 rounded-lg text-sm font-medium bg-primary-500/20 text-primary-300 hover:bg-primary-500/30 transition-all duration-300 flex-shrink-0 flex items-center gap-2"
       class:opacity-50={isDownloading}
       disabled={isDownloading}
     >
       {#if isDownloading}
-        <div class="w-4 h-4 border-2 border-purple-300 border-t-transparent rounded-full animate-spin"></div>
+        <div class="w-4 h-4 border-2 border-primary-300 border-t-transparent rounded-full animate-spin"></div>
         <span>下载中</span>
       {:else}
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

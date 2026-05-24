@@ -28,7 +28,7 @@
 
 <button 
   on:click={toggleTheme}
-  class="p-2 rounded-lg hover:bg-purple-500/10 transition-colors text-muted relative w-9 h-9 flex items-center justify-center"
+  class="p-2 rounded-lg hover:bg-primary-500/10 transition-colors text-muted relative w-9 h-9 flex items-center justify-center"
   aria-label={isDark ? '切换到亮色模式' : '切换到暗色模式'}
 >
   {#if isDark}

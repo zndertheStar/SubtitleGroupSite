@@ -40,7 +40,7 @@ const languages = [
         {siteConfig.logo.image ? (
           <img src={siteConfig.logo.image} alt={siteName} class="w-8 h-8 rounded-lg group-hover:scale-110 transition-transform" />
         ) : (
-          <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white font-bold text-sm group-hover:scale-110 transition-transform glow-purple">
+          <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center text-white font-bold text-sm group-hover:scale-110 transition-transform glow-green">
             {siteConfig.logo.iconText}
           </div>
         )}
@@ -82,7 +82,7 @@ const languages = [
             {languages.map(l => (
               <a 
                 href={`/${l.code === 'zh' ? '' : l.code + '/'}${Astro.url.pathname.split('/').slice(2).join('/')}`}
-                class="block px-4 py-2 text-sm text-muted hover:bg-purple-500/10 hover:text-purple-500 transition-colors"
+                class="block px-4 py-2 text-sm text-muted hover:bg-primary-500/10 hover:text-primary-500 transition-colors"
               >
                 {l.label}
               </a>

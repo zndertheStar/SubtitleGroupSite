@@ -49,7 +49,7 @@ const categories = ['all', 'anime', 'movie', 'ova', 'other'] as const;
             type="text" 
             id="search-input"
             placeholder="搜索作品标题或描述..."
-            class="w-full pl-10 pr-4 py-2 rounded-xl border border-white/10 bg-white/5 text-sm focus:outline-none focus:border-purple-500/50 focus:ring-1 focus:ring-purple-500/50 transition-all"
+            class="w-full pl-10 pr-4 py-2 rounded-xl border border-white/10 bg-white/5 text-sm focus:outline-none focus:border-primary-500/50 focus:ring-1 focus:ring-primary-500/50 transition-all"
           />
         </div>
         
@@ -78,7 +78,7 @@ const categories = ['all', 'anime', 'movie', 'ova', 'other'] as const;
             data-category={work.data.category}
             style={`animation-delay: ${index * 0.05}s`}
           >
-            <div class="aspect-[3/4] bg-gradient-to-br from-purple-900/50 to-pink-900/50 flex items-center justify-center overflow-hidden relative">
+            <div class="aspect-[3/4] bg-gradient-to-br from-primary-900/50 to-accent-900/50 flex items-center justify-center overflow-hidden relative">
               {work.data.cover ? (
                 <img 
                   src={work.data.cover} 
@@ -96,11 +96,11 @@ const categories = ['all', 'anime', 'movie', 'ova', 'other'] as const;
               </div>
               
               <div class="absolute bottom-0 left-0 right-0 p-3">
-                <h3 class="font-semibold text-sm text-white group-hover:text-purple-300 transition-colors truncate">{work.data.title}</h3>
+                <h3 class="font-semibold text-sm text-white group-hover:text-primary-300 transition-colors truncate">{work.data.title}</h3>
                 <div class="flex items-center justify-between mt-1">
                   <span class="text-[10px] text-gray-400">{work.data.pubDate.toLocaleDateString('zh-CN')}</span>
                   {work.data.episode && (
-                    <span class="text-[10px] px-1.5 py-0.5 rounded-full glass text-purple-300">第{work.data.episode}集</span>
+                    <span class="text-[10px] px-1.5 py-0.5 rounded-full glass text-primary-300">第{work.data.episode}集</span>
                   )}
                 </div>
               </div>
@@ -161,7 +161,7 @@ const categories = ['all', 'anime', 'movie', 'ova', 'other'] as const;
           b.style.background = 'rgba(255,255,255,0.05)';
           b.style.color = '';
         });
-        btn.style.background = 'linear-gradient(135deg, #c084fc 0%, #f472b6 100%)';
+        btn.style.background = 'linear-gradient(135deg, #00FF7F 0%, #7FFFAA 100%)';
         btn.style.color = 'white';
         
         filterWorks();
@@ -171,7 +171,7 @@ const categories = ['all', 'anime', 'movie', 'ova', 'other'] as const;
     // Set initial active
     const firstBtn = document.querySelector('.filter-btn');
     if (firstBtn) {
-      firstBtn.style.background = 'linear-gradient(135deg, #c084fc 0%, #f472b6 100%)';
+      firstBtn.style.background = 'linear-gradient(135deg, #00FF7F 0%, #7FFFAA 100%)';
       firstBtn.style.color = 'white';
     }
   </script>

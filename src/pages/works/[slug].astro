@@ -80,7 +80,7 @@ const producers = data.crew?.filter(c =>
         <!-- Info Panel -->
         <div class="flex-1">
           <div class="flex items-center gap-2 mb-3 flex-wrap">
-            <span class="glass-badge text-purple-300 text-base px-3 py-1">
+            <span class="glass-badge text-primary-300 text-base px-3 py-1">
               {data.category === 'anime' ? '动画' : data.category === 'movie' ? '电影' : data.category === 'ova' ? 'OVA' : '其他'}
             </span>
             {data.episode && (
@@ -100,63 +100,63 @@ const producers = data.crew?.filter(c =>
           <div class="space-y-1.5 text-sm mt-6">
             {data.genres && data.genres.length > 0 && (
               <div class="flex gap-2">
-                <span class="text-purple-400 font-medium min-w-[120px]">❁ Genres:</span>
+                <span class="text-primary-400 font-medium min-w-[120px]">❁ Genres:</span>
                 <span class="text-muted">{formatList(data.genres, ' / ')}</span>
               </div>
             )}
             
             {data.language && (
               <div class="flex gap-2">
-                <span class="text-purple-400 font-medium min-w-[120px]">❁ Languages:</span>
+                <span class="text-primary-400 font-medium min-w-[120px]">❁ Languages:</span>
                 <span class="text-muted">{data.language}</span>
               </div>
             )}
             
             {data.firstAirDate && (
               <div class="flex gap-2">
-                <span class="text-purple-400 font-medium min-w-[120px]">❁ First Air Date:</span>
+                <span class="text-primary-400 font-medium min-w-[120px]">❁ First Air Date:</span>
                 <span class="text-muted">{formatDate(data.firstAirDate)}</span>
               </div>
             )}
             
             {data.numberOfEpisodes && (
               <div class="flex gap-2">
-                <span class="text-purple-400 font-medium min-w-[120px]">❁ Number of Episodes:</span>
+                <span class="text-primary-400 font-medium min-w-[120px]">❁ Number of Episodes:</span>
                 <span class="text-muted">{data.numberOfEpisodes}</span>
               </div>
             )}
             
             {data.numberOfSeasons && (
               <div class="flex gap-2">
-                <span class="text-purple-400 font-medium min-w-[120px]">❁ Number of Seasons:</span>
+                <span class="text-primary-400 font-medium min-w-[120px]">❁ Number of Seasons:</span>
                 <span class="text-muted">{data.numberOfSeasons}</span>
               </div>
             )}
             
             {data.episodeRuntime && (
               <div class="flex gap-2">
-                <span class="text-purple-400 font-medium min-w-[120px]">❁ Episode Runtime:</span>
+                <span class="text-primary-400 font-medium min-w-[120px]">❁ Episode Runtime:</span>
                 <span class="text-muted">{formatRuntime(data.episodeRuntime)}</span>
               </div>
             )}
             
             {data.productionCountries && data.productionCountries.length > 0 && (
               <div class="flex gap-2">
-                <span class="text-purple-400 font-medium min-w-[120px]">❁ Production Countries:</span>
+                <span class="text-primary-400 font-medium min-w-[120px]">❁ Production Countries:</span>
                 <span class="text-muted">{formatList(data.productionCountries)}</span>
               </div>
             )}
             
             {data.rating && (
               <div class="flex gap-2">
-                <span class="text-purple-400 font-medium min-w-[120px]">❁ Rating:</span>
+                <span class="text-primary-400 font-medium min-w-[120px]">❁ Rating:</span>
                 <span class="text-muted">{formatRating(data.rating)}</span>
               </div>
             )}
             
             {data.tmdbUrl && (
               <div class="flex gap-2">
-                <span class="text-purple-400 font-medium min-w-[120px]">❁ TMDB Link:</span>
+                <span class="text-primary-400 font-medium min-w-[120px]">❁ TMDB Link:</span>
                 <a href={data.tmdbUrl} target="_blank" rel="noopener" class="text-blue-400 hover:text-blue-300 transition-colors">
                   {data.tmdbUrl}
                 </a>
@@ -165,7 +165,7 @@ const producers = data.crew?.filter(c =>
             
             {data.imdbId && (
               <div class="flex gap-2">
-                <span class="text-purple-400 font-medium min-w-[120px]">❁ IMDb Link:</span>
+                <span class="text-primary-400 font-medium min-w-[120px]">❁ IMDb Link:</span>
                 <a href={`https://www.imdb.com/title/${data.imdbId}/`} target="_blank" rel="noopener" class="text-blue-400 hover:text-blue-300 transition-colors">
                   https://www.imdb.com/title/{data.imdbId}/
                 </a>
@@ -174,7 +174,7 @@ const producers = data.crew?.filter(c =>
             
             {producers.length > 0 && (
               <div class="flex gap-2">
-                <span class="text-purple-400 font-medium min-w-[120px]">❁ Producers:</span>
+                <span class="text-primary-400 font-medium min-w-[120px]">❁ Producers:</span>
                 <span class="text-muted">{formatList(producers, ' / ')}</span>
               </div>
             )}
@@ -184,7 +184,7 @@ const producers = data.crew?.filter(c =>
           {data.tags.length > 0 && (
             <div class="flex items-center gap-2 mt-4 flex-wrap">
               {data.tags.map(tag => (
-                <span class="glass-badge text-purple-300 text-sm px-3 py-1">{tag}</span>
+                <span class="glass-badge text-primary-300 text-sm px-3 py-1">{tag}</span>
               ))}
             </div>
           )}
@@ -194,7 +194,7 @@ const producers = data.crew?.filter(c =>
       <!-- Cast Section -->
       {data.cast && data.cast.length > 0 && (
         <section class="anime-card p-6 mb-8">
-          <h2 class="text-xl font-bold mb-4 text-purple-400 flex items-center gap-2">
+          <h2 class="text-xl font-bold mb-4 text-primary-400 flex items-center gap-2">
             <span>❁</span> Cast
           </h2>
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
@@ -207,7 +207,7 @@ const producers = data.crew?.filter(c =>
                     class="w-10 h-10 rounded-full object-cover"
                   />
                 ) : (
-                  <div class="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center text-sm">
+                  <div class="w-10 h-10 rounded-full bg-gradient-to-br from-primary-500/20 to-accent-500/20 flex items-center justify-center text-sm">
                     {actor.name.charAt(0)}
                   </div>
                 )}
@@ -226,7 +226,7 @@ const producers = data.crew?.filter(c =>
       <!-- Introduction -->
       {data.description && (
         <section class="anime-card p-6 mb-8">
-          <h2 class="text-xl font-bold mb-4 text-purple-400 flex items-center gap-2">
+          <h2 class="text-xl font-bold mb-4 text-primary-400 flex items-center gap-2">
             <span>❁</span> Introduction
           </h2>
           <div class="prose-custom max-w-none leading-relaxed">
@@ -243,7 +243,7 @@ const producers = data.crew?.filter(c =>
       <!-- Downloads Section -->
       <section class="anime-card p-6 mb-12">
         <h2 class="text-xl font-bold mb-4 flex items-center gap-2 text-theme">
-          <svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-5 h-5 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
           </svg>
           {t('download.title')}

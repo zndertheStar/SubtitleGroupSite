@@ -1,27 +1,27 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary-50: #fff0f5;
-  --color-primary-100: #ffe4e6;
-  --color-primary-200: #fecdd3;
-  --color-primary-300: #fda4af;
-  --color-primary-400: #fb7185;
-  --color-primary-500: #f43f5e;
-  --color-primary-600: #e11d48;
-  --color-primary-700: #be123c;
-  --color-primary-800: #9f1239;
-  --color-primary-900: #881337;
+  --color-primary-50: #f0fdf4;
+  --color-primary-100: #dcfce7;
+  --color-primary-200: #bbf7d0;
+  --color-primary-300: #86efac;
+  --color-primary-400: #4ade80;
+  --color-primary-500: #00FF7F;
+  --color-primary-600: #00CC66;
+  --color-primary-700: #00994d;
+  --color-primary-800: #006633;
+  --color-primary-900: #003d1f;
 
-  --color-accent-50: #eff6ff;
-  --color-accent-100: #dbeafe;
-  --color-accent-200: #bfdbfe;
-  --color-accent-300: #93c5fd;
-  --color-accent-400: #60a5fa;
-  --color-accent-500: #3b82f6;
-  --color-accent-600: #2563eb;
-  --color-accent-700: #1d4ed8;
-  --color-accent-800: #1e40af;
-  --color-accent-900: #1e3a8a;
+  --color-accent-50: #f0fdf4;
+  --color-accent-100: #dcfce7;
+  --color-accent-200: #bbf7d0;
+  --color-accent-300: #86efac;
+  --color-accent-400: #4ade80;
+  --color-accent-500: #00FF7F;
+  --color-accent-600: #00CC66;
+  --color-accent-700: #00994d;
+  --color-accent-800: #006633;
+  --color-accent-900: #003d1f;
 
   --font-sans: 'Noto Sans SC', 'Noto Sans JP', system-ui, -apple-system, sans-serif;
 }
@@ -39,23 +39,23 @@
   /* Dark Theme (Default - Anime Night) */
   [data-theme="dark"] body {
     background-color: transparent;
-    color: #e2d5f5;
+    color: #d5f5e2;
   }
 
   [data-theme="dark"] .bg-theme {
-    background-color: #0f0a1e;
+    background-color: #0a1e12;
   }
 
   [data-theme="dark"] .bg-surface {
-    background-color: #1a102e;
+    background-color: #0e1e14;
   }
 
   [data-theme="dark"] .border-theme {
-    border-color: rgba(139, 92, 246, 0.2);
+    border-color: rgba(0, 255, 127, 0.2);
   }
 
   [data-theme="dark"] .text-theme {
-    color: #e2d5f5;
+    color: #d5f5e2;
   }
 
   [data-theme="dark"] .text-muted {
@@ -64,18 +64,18 @@
 
   [data-theme="dark"] .header-blur {
     backdrop-filter: blur(20px);
-    background: rgba(15, 10, 30, 0.6);
+    background: rgba(10, 30, 18, 0.6);
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   }
 
   /* Light Theme (Anime Day/Sakura) */
   [data-theme="light"] body {
     background-color: transparent;
-    color: #1e1b2e;
+    color: #0e1e14;
   }
 
   [data-theme="light"] .bg-theme {
-    background-color: #faf5ff;
+    background-color: #f0fff4;
   }
 
   [data-theme="light"] .bg-surface {
@@ -83,11 +83,11 @@
   }
 
   [data-theme="light"] .border-theme {
-    border-color: rgba(139, 92, 246, 0.15);
+    border-color: rgba(0, 255, 127, 0.15);
   }
 
   [data-theme="light"] .text-theme {
-    color: #1e1b2e;
+    color: #0e1e14;
   }
 
   [data-theme="light"] .text-muted {
@@ -96,8 +96,8 @@
 
   [data-theme="light"] .header-blur {
     backdrop-filter: blur(20px);
-    background: rgba(250, 245, 255, 0.7);
-    border-bottom: 1px solid rgba(139, 92, 246, 0.08);
+    background: rgba(240, 255, 244, 0.7);
+    border-bottom: 1px solid rgba(0, 255, 127, 0.08);
   }
 }
 
@@ -111,36 +111,36 @@
   [data-theme="dark"] .anime-card {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 4px 20px rgba(139, 92, 246, 0.08);
+    box-shadow: 0 4px 20px rgba(0, 255, 127, 0.08);
   }
 
   [data-theme="light"] .anime-card {
     background: rgba(255, 255, 255, 0.7);
-    border: 1px solid rgba(139, 92, 246, 0.12);
-    box-shadow: 0 4px 20px rgba(139, 92, 246, 0.06);
+    border: 1px solid rgba(0, 255, 127, 0.12);
+    box-shadow: 0 4px 20px rgba(0, 255, 127, 0.06);
   }
 
   .anime-card:hover {
     transform: translateY(-4px);
-    border-color: rgba(192, 132, 252, 0.25);
-    box-shadow: 0 8px 30px rgba(139, 92, 246, 0.12);
+    border-color: rgba(0, 255, 127, 0.25);
+    box-shadow: 0 8px 30px rgba(0, 255, 127, 0.12);
   }
 
   .gradient-text {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, #c084fc 0%, #f472b6 50%, #60a5fa 100%);
+    background-image: linear-gradient(135deg, #00FF7F 0%, #7FFFAA 50%, #00FA9A 100%);
   }
 
   .btn-primary {
     @apply px-6 py-2 rounded-full font-medium transition-all duration-300;
     backdrop-filter: blur(12px);
-    background: rgba(192, 132, 252, 0.15);
-    border: 1px solid rgba(192, 132, 252, 0.3);
+    background: rgba(0, 255, 127, 0.15);
+    border: 1px solid rgba(0, 255, 127, 0.3);
     color: white;
   }
 
   .btn-primary:hover {
-    box-shadow: 0 4px 15px rgba(192, 132, 252, 0.15);
+    box-shadow: 0 4px 15px rgba(0, 255, 127, 0.15);
     transform: translateY(-2px);
   }
 
@@ -149,18 +149,18 @@
     backdrop-filter: blur(8px);
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    color: #e2d5f5;
+    color: #d5f5e2;
   }
 
   [data-theme="light"] .search-input {
     backdrop-filter: blur(8px);
-    background: rgba(139, 92, 246, 0.05);
-    border: 1px solid rgba(139, 92, 246, 0.15);
-    color: #1e1b2e;
+    background: rgba(0, 255, 127, 0.05);
+    border: 1px solid rgba(0, 255, 127, 0.15);
+    color: #0e1e14;
   }
 
   .search-input:focus {
-    border-color: rgba(139, 92, 246, 0.5);
+    border-color: rgba(0, 255, 127, 0.5);
   }
 
   /* Nav link theming */
@@ -170,7 +170,7 @@
 
   [data-theme="dark"] .nav-link:hover {
     background: rgba(255, 255, 255, 0.05);
-    color: #c084fc;
+    color: #00FF7F;
   }
 
   [data-theme="light"] .nav-link {
@@ -178,8 +178,8 @@
   }
 
   [data-theme="light"] .nav-link:hover {
-    background: rgba(139, 92, 246, 0.08);
-    color: #7c3aed;
+    background: rgba(0, 255, 127, 0.08);
+    color: #00CC66;
   }
 
   /* Filter button theming */
@@ -192,20 +192,20 @@
 
   [data-theme="light"] .filter-btn {
     backdrop-filter: blur(8px);
-    background: rgba(139, 92, 246, 0.05);
-    border: 1px solid rgba(139, 92, 246, 0.12);
+    background: rgba(0, 255, 127, 0.05);
+    border: 1px solid rgba(0, 255, 127, 0.12);
     color: #4b5563;
   }
 
   /* Episode grid theming */
   [data-theme="dark"] .episode-done {
-    background: linear-gradient(135deg, #c084fc 0%, #f472b6 100%);
+    background: linear-gradient(135deg, #00FF7F 0%, #7FFFAA 100%);
     color: white;
-    box-shadow: 0 0 10px rgba(192, 132, 252, 0.15);
+    box-shadow: 0 0 10px rgba(0, 255, 127, 0.15);
   }
 
   [data-theme="light"] .episode-done {
-    background: linear-gradient(135deg, #c084fc 0%, #f472b6 100%);
+    background: linear-gradient(135deg, #00FF7F 0%, #7FFFAA 100%);
     color: white;
   }
 
@@ -216,8 +216,8 @@
   }
 
   [data-theme="light"] .episode-pending {
-    background: rgba(139, 92, 246, 0.05);
-    border: 1px solid rgba(139, 92, 246, 0.15);
+    background: rgba(0, 255, 127, 0.05);
+    border: 1px solid rgba(0, 255, 127, 0.15);
     color: #6b7280;
   }
 
@@ -230,8 +230,8 @@
   }
 
   [data-theme="light"] .glass-badge {
-    background: rgba(139, 92, 246, 0.1);
-    border: 1px solid rgba(139, 92, 246, 0.15);
+    background: rgba(0, 255, 127, 0.1);
+    border: 1px solid rgba(0, 255, 127, 0.15);
   }
 
   /* Language dropdown liquid glass */
@@ -242,7 +242,7 @@
 
   [data-theme="light"] .lang-dropdown {
     background: rgba(255, 255, 255, 0.7);
-    border-color: rgba(192, 132, 252, 0.3);
+    border-color: rgba(0, 255, 127, 0.3);
   }
 
   /* Mobile search toggle liquid glass */
@@ -253,28 +253,28 @@
 
   [data-theme="light"] .search-toggle-btn {
     background: rgba(255, 255, 255, 0.7);
-    border: 1px solid rgba(192, 132, 252, 0.3);
+    border: 1px solid rgba(0, 255, 127, 0.3);
   }
 
   /* Prose/Markdown theming */
   [data-theme="dark"] .prose-custom {
-    color: #e2d5f5;
+    color: #d5f5e2;
   }
 
   [data-theme="dark"] .prose-custom h1,
   [data-theme="dark"] .prose-custom h2,
   [data-theme="dark"] .prose-custom h3 {
-    color: #f3e8ff;
+    color: #e2f5d5;
   }
 
   [data-theme="light"] .prose-custom {
-    color: #1e1b2e;
+    color: #0e1e14;
   }
 
   [data-theme="light"] .prose-custom h1,
   [data-theme="light"] .prose-custom h2,
   [data-theme="light"] .prose-custom h3 {
-    color: #4c1d95;
+    color: #006633;
   }
 }
 
@@ -295,7 +295,7 @@
 
   .glass-nav-item:hover {
     background: rgba(255, 255, 255, 0.1);
-    border-color: rgba(192, 132, 252, 0.2);
+    border-color: rgba(0, 255, 127, 0.2);
   }
 
   /* 一组按钮连在一起的液态玻璃容器 */
@@ -325,7 +325,7 @@
 
   .glass-nav-btn:hover {
     background: rgba(255, 255, 255, 0.08);
-    color: #c084fc;
+    color: #00FF7F;
   }
 
   /* 导航按钮激活状态 */
@@ -334,9 +334,9 @@
     border-radius: 10px;
     font-size: 0.875rem;
     font-weight: 500;
-    background: linear-gradient(135deg, rgba(192, 132, 252, 0.2) 0%, rgba(244, 114, 182, 0.2) 100%);
-    color: #e2d5f5;
-    border: 1px solid rgba(192, 132, 252, 0.25);
+    background: linear-gradient(135deg, rgba(0, 255, 127, 0.2) 0%, rgba(127, 255, 170, 0.2) 100%);
+    color: #d5f5e2;
+    border: 1px solid rgba(0, 255, 127, 0.25);
     white-space: nowrap;
     cursor: pointer;
   }
@@ -344,17 +344,17 @@
   /* 浅色模式 */
   [data-theme="light"] .glass-nav-item {
     background: rgba(255, 255, 255, 0.5);
-    border-color: rgba(139, 92, 246, 0.12);
+    border-color: rgba(0, 255, 127, 0.12);
   }
 
   [data-theme="light"] .glass-nav-item:hover {
     background: rgba(255, 255, 255, 0.7);
-    border-color: rgba(192, 132, 252, 0.25);
+    border-color: rgba(0, 255, 127, 0.25);
   }
 
   [data-theme="light"] .glass-nav-group {
     background: rgba(255, 255, 255, 0.5);
-    border-color: rgba(139, 92, 246, 0.12);
+    border-color: rgba(0, 255, 127, 0.12);
   }
 
   [data-theme="light"] .glass-nav-btn {
@@ -362,22 +362,22 @@
   }
 
   [data-theme="light"] .glass-nav-btn:hover {
-    background: rgba(139, 92, 246, 0.08);
-    color: #7c3aed;
+    background: rgba(0, 255, 127, 0.08);
+    color: #00CC66;
   }
 
   [data-theme="light"] .glass-nav-active {
-    background: linear-gradient(135deg, rgba(192, 132, 252, 0.15) 0%, rgba(244, 114, 182, 0.15) 100%);
-    color: #6b21a8;
-    border-color: rgba(192, 132, 252, 0.3);
+    background: linear-gradient(135deg, rgba(0, 255, 127, 0.15) 0%, rgba(127, 255, 170, 0.15) 100%);
+    color: #006633;
+    border-color: rgba(0, 255, 127, 0.3);
   }
 
 @layer utilities {
-  .glow-purple {
-    box-shadow: 0 0 40px rgba(139, 92, 246, 0.3);
+  .glow-green {
+    box-shadow: 0 0 40px rgba(0, 255, 127, 0.3);
   }
 
-  .glow-pink {
-    box-shadow: 0 0 40px rgba(244, 114, 182, 0.3);
+  .glow-light-green {
+    box-shadow: 0 0 40px rgba(127, 255, 170, 0.3);
   }
 }

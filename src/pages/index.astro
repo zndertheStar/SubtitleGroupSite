@@ -46,7 +46,7 @@ const latestMisc = allMisc
                     loading="eager"
                   />
                 ) : (
-                  <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-purple-900/50 to-pink-900/50">
+                  <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary-900/50 to-accent-900/50">
                     <span class="text-3xl">🎬</span>
                   </div>
                 )}
@@ -69,7 +69,7 @@ const latestMisc = allMisc
                     loading="eager"
                   />
                 ) : (
-                  <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-purple-900/50 to-pink-900/50">
+                  <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary-900/50 to-accent-900/50">
                     <span class="text-3xl">🎬</span>
                   </div>
                 )}
@@ -90,14 +90,14 @@ const latestMisc = allMisc
         <!-- Left Column: Latest Works -->
         <div class="flex-1">
           <h2 class="text-xl font-bold mb-6 flex items-center gap-2">
-            <span class="w-1 h-6 rounded-full bg-gradient-to-b from-purple-500 to-pink-500"></span>
+            <span class="w-1 h-6 rounded-full bg-gradient-to-b from-primary-500 to-accent-500"></span>
             {t('home.latest')}
           </h2>
           
           <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
             {latestWorks.map(work => (
               <a href={`/works/${work.id}`} class="anime-card group block">
-                <div class="aspect-[3/4] bg-gradient-to-br from-purple-900/50 to-pink-900/50 flex items-center justify-center overflow-hidden relative">
+                <div class="aspect-[3/4] bg-gradient-to-br from-primary-900/50 to-accent-900/50 flex items-center justify-center overflow-hidden relative">
                   {work.data.cover ? (
                     <img 
                       src={work.data.cover} 
@@ -116,11 +116,11 @@ const latestMisc = allMisc
                   </div>
                   
                   <div class="absolute bottom-0 left-0 right-0 p-3">
-                    <h3 class="font-semibold text-sm text-white group-hover:text-purple-300 transition-colors truncate">{work.data.title}</h3>
+                    <h3 class="font-semibold text-sm text-white group-hover:text-primary-300 transition-colors truncate">{work.data.title}</h3>
                     <div class="flex items-center justify-between mt-1">
                       <span class="text-[10px] text-gray-400">{work.data.pubDate.toLocaleDateString('zh-CN')}</span>
                       {work.data.episode && (
-                        <span class="text-[10px] px-1.5 py-0.5 rounded-full glass text-purple-200">第{work.data.episode}集</span>
+                        <span class="text-[10px] px-1.5 py-0.5 rounded-full glass text-primary-200">第{work.data.episode}集</span>
                       )}
                     </div>
                   </div>
@@ -141,7 +141,7 @@ const latestMisc = allMisc
             <div class="space-y-3">
               {latestMisc.map(post => (
                 <a href={`/misc/${post.id}`} class="anime-card block p-4 transition-all group">
-                  <h3 class="font-semibold text-sm group-hover:text-purple-400 transition-colors line-clamp-2">{post.data.title}</h3>
+                  <h3 class="font-semibold text-sm group-hover:text-primary-400 transition-colors line-clamp-2">{post.data.title}</h3>
                   <p class="text-xs text-gray-500 mt-1.5 line-clamp-2">{post.data.description}</p>
                   <div class="flex items-center gap-2 mt-2">
                     <span class="text-[10px] text-gray-500">{post.data.pubDate.toLocaleDateString('zh-CN')}</span>

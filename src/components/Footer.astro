@@ -20,7 +20,7 @@ const siteName = getSiteName(lang);
         {siteConfig.logo.image ? (
           <img src={siteConfig.logo.image} alt={siteName} class="w-7 h-7 rounded-lg flex-shrink-0" />
         ) : (
-          <div class="w-7 h-7 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white font-bold text-xs flex-shrink-0">
+          <div class="w-7 h-7 rounded-lg bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center text-white font-bold text-xs flex-shrink-0">
             {siteConfig.logo.iconText}
           </div>
         )}
@@ -46,16 +46,16 @@ const siteName = getSiteName(lang);
                 href={link.url} 
                 target="_blank" 
                 rel="noopener" 
-                class="text-gray-400 hover:text-purple-400 transition-colors"
+                class="text-gray-400 hover:text-primary-400 transition-colors"
                 title={link.description}
               >
                 {link.name}
               </a>
             ))}
-            <a href="/friends" class="text-purple-500 hover:text-purple-400 transition-colors">更多 →</a>
+            <a href="/friends" class="text-primary-500 hover:text-primary-400 transition-colors">更多 →</a>
           </div>
         ) : (
-          <a href="/friends" class="text-gray-500 hover:text-purple-400 transition-colors">友站链接</a>
+          <a href="/friends" class="text-gray-500 hover:text-primary-400 transition-colors">友站链接</a>
         )}
       </div>
     </div>
