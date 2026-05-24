@@ -21,7 +21,7 @@ contacts:
   - icon: "🐙"
     name: "GitHub"
     description: "开源项目与字幕归档"
-    url: "https://github.com/green-tea-subs"
+    url: "https://github.com/Studio-Green-Tea"
 ---
 
 ## 绿茶字幕组
@@ -40,5 +40,5 @@ contacts:
 
 ### 联系方式
 
-- GitHub: [green-tea-subs](https://github.com/green-tea-subs)
+- GitHub: [Studio GreenTea](https://github.com/Studio-Green-Tea)
 - 交流群: QQ群 XXXXXX
