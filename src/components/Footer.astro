@@ -17,9 +17,13 @@ const siteName = getSiteName(lang);
     <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
       <!-- Left: Site Stats - 液态玻璃遮罩 -->
       <div class="glass-nav-item">
-        <div class="w-7 h-7 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white font-bold text-xs flex-shrink-0">
-          {siteConfig.logo.iconText}
-        </div>
+        {siteConfig.logo.image ? (
+          <img src={siteConfig.logo.image} alt={siteName} class="w-7 h-7 rounded-lg flex-shrink-0" />
+        ) : (
+          <div class="w-7 h-7 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white font-bold text-xs flex-shrink-0">
+            {siteConfig.logo.iconText}
+          </div>
+        )}
         <span class="text-muted text-sm">{siteName}</span>
         <span class="text-gray-600">|</span>
         <!-- Umami Stats -->
