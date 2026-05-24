@@ -10,6 +10,10 @@ const __dirname = path.dirname(__filename);
 const TMDB_API_KEY = process.env.TMDB_API_KEY;
 const RSS_BASE_URL = 'https://share.dmhy.org/topics/rss/rss.xml';
 
+// Cache TMDB info by tmdb_id to avoid repeated API calls
+const tmdbCache = new Map();
+const coverCache = new Map();
+
 // Cache directory for tracking collected episodes (stored in repo)
 const CACHE_DIR = path.join(process.cwd(), 'src/content/.rss-cache');
 if (!fs.existsSync(CACHE_DIR)) {
@@ -145,11 +149,15 @@ function isEpisodeComplete(episodeData, expectedVersions) {
   return expectedVersions.every(v => collectedVersions.includes(v));
 }
 
-// Call TMDB API
+// Call TMDB API (with caching)
 async function fetchTMDBInfo(tmdbId, type = 'tv') {
   if (!TMDB_API_KEY) {
-    console.error('Warning: TMDB_API_KEY not set, skipping TMDB fetch');
     return null;
+  }
+  
+  const cacheKey = `${type}-${tmdbId}`;
+  if (tmdbCache.has(cacheKey)) {
+    return tmdbCache.get(cacheKey);
   }
   
   try {
@@ -158,23 +166,38 @@ async function fetchTMDBInfo(tmdbId, type = 'tv') {
     if (!response.ok) {
       throw new Error(`TMDB API error: ${response.status}`);
     }
-    return await response.json();
+    const data = await response.json();
+    tmdbCache.set(cacheKey, data);
+    return data;
   } catch (e) {
     console.error('TMDB fetch error:', e.message);
     return null;
   }
 }
 
-// Download cover image
-async function downloadCover(imageUrl, filename) {
+// Download cover image (cached by showSlug)
+async function downloadCover(imageUrl, showSlug) {
   if (!imageUrl) return null;
+  
+  const cacheKey = showSlug;
+  if (coverCache.has(cacheKey)) {
+    return coverCache.get(cacheKey);
+  }
   
   const coversDir = path.join(process.cwd(), 'public/images/covers');
   if (!fs.existsSync(coversDir)) {
     fs.mkdirSync(coversDir, { recursive: true });
   }
   
+  const filename = `${showSlug}.jpg`;
   const filepath = path.join(coversDir, filename);
+  
+  // If already downloaded, reuse
+  if (fs.existsSync(filepath)) {
+    const coverPath = `/images/covers/${filename}`;
+    coverCache.set(cacheKey, coverPath);
+    return coverPath;
+  }
   
   try {
     const response = await fetch(`https://image.tmdb.org/t/p/w500${imageUrl}`);
@@ -183,15 +206,19 @@ async function downloadCover(imageUrl, filename) {
     const buffer = await response.arrayBuffer();
     fs.writeFileSync(filepath, Buffer.from(buffer));
     console.log(`  Downloaded cover: ${filename}`);
-    return `/images/covers/${filename}`;
+    const coverPath = `/images/covers/${filename}`;
+    coverCache.set(cacheKey, coverPath);
+    return coverPath;
   } catch (e) {
     console.error('  Cover download error:', e.message);
-    return `https://image.tmdb.org/t/p/w500${imageUrl}`;
+    const fallbackUrl = `https://image.tmdb.org/t/p/w500${imageUrl}`;
+    coverCache.set(cacheKey, fallbackUrl);
+    return fallbackUrl;
   }
 }
 
 // Generate work file
-async function publishWork(show, episode, episodeData, tmdbInfo) {
+async function publishWork(show, episode, episodeData, tmdbInfo, coverPath) {
   const worksDir = path.join(process.cwd(), 'src/content/works');
   if (!fs.existsSync(worksDir)) {
     fs.mkdirSync(worksDir, { recursive: true });
@@ -209,16 +236,13 @@ async function publishWork(show, episode, episodeData, tmdbInfo) {
   
   let title = show.title.split('/')[0].trim();
   let description = show.title.split('/')[0].trim();
-  let cover = '';
+  let cover = coverPath || '';
   let tags = ['动画'];
   
   if (tmdbInfo) {
     title = tmdbInfo.name || title;
     description = tmdbInfo.overview || description;
     tags = tmdbInfo.genres ? tmdbInfo.genres.map(g => g.name) : tags;
-    
-    const coverFilename = `${showSlug}-${String(episode).padStart(2, '0')}.jpg`;
-    cover = await downloadCover(tmdbInfo.poster_path, coverFilename);
   }
   
   const versionsYaml = Object.values(episodeData.versions).map(v => 
@@ -388,18 +412,24 @@ async function main() {
         // Update showcase progress
         updateShowcaseEpisodes(showcase.file, show.title, episodes);
         
+        // Fetch TMDB info once per show (reused for all episodes)
+        let tmdbInfo = null;
+        let coverPath = '';
+        if (show.tmdb_id && TMDB_API_KEY) {
+          tmdbInfo = await fetchTMDBInfo(show.tmdb_id, 'tv');
+          if (tmdbInfo && tmdbInfo.poster_path) {
+            const showSlug = slugify(show.title.split('/')[0].trim());
+            coverPath = await downloadCover(tmdbInfo.poster_path, showSlug);
+          }
+        }
+        
         // Check for complete episodes and publish
         for (const [episodeNum, episodeData] of Object.entries(episodes)) {
           if (isEpisodeComplete(episodeData, show.versions_expected)) {
             console.log(`\n    Episode ${episodeNum} complete`);
             console.log(`      Versions: ${Object.keys(episodeData.versions).join(', ')}`);
             
-            let tmdbInfo = null;
-            if (show.tmdb_id && TMDB_API_KEY) {
-              tmdbInfo = await fetchTMDBInfo(show.tmdb_id, 'tv');
-            }
-            
-            const published = await publishWork(show, parseInt(episodeNum), episodeData, tmdbInfo);
+            const published = await publishWork(show, parseInt(episodeNum), episodeData, tmdbInfo, coverPath);
             if (published) totalPublished++;
             
             // Remove from cache after publishing
