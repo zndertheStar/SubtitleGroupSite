@@ -80,11 +80,11 @@ const producers = data.crew?.filter(c =>
         <!-- Info Panel -->
         <div class="flex-1">
           <div class="flex items-center gap-2 mb-3 flex-wrap">
-            <span class="glass-badge text-purple-300 text-sm">
+            <span class="glass-badge text-purple-300 text-base px-3 py-1">
               {data.category === 'anime' ? '动画' : data.category === 'movie' ? '电影' : data.category === 'ova' ? 'OVA' : '其他'}
             </span>
             {data.episode && (
-              <span class="glass-badge text-blue-300 text-sm">
+              <span class="glass-badge text-blue-300 text-base px-3 py-1">
                 第{data.episode}集
               </span>
             )}
@@ -101,56 +101,56 @@ const producers = data.crew?.filter(c =>
             {data.genres && data.genres.length > 0 && (
               <div class="flex gap-2">
                 <span class="text-purple-400 font-medium min-w-[120px]">❁ Genres:</span>
-                <span class="text-gray-300">{formatList(data.genres, ' / ')}</span>
+                <span class="text-muted">{formatList(data.genres, ' / ')}</span>
               </div>
             )}
             
             {data.language && (
               <div class="flex gap-2">
                 <span class="text-purple-400 font-medium min-w-[120px]">❁ Languages:</span>
-                <span class="text-gray-300">{data.language}</span>
+                <span class="text-muted">{data.language}</span>
               </div>
             )}
             
             {data.firstAirDate && (
               <div class="flex gap-2">
                 <span class="text-purple-400 font-medium min-w-[120px]">❁ First Air Date:</span>
-                <span class="text-gray-300">{formatDate(data.firstAirDate)}</span>
+                <span class="text-muted">{formatDate(data.firstAirDate)}</span>
               </div>
             )}
             
             {data.numberOfEpisodes && (
               <div class="flex gap-2">
                 <span class="text-purple-400 font-medium min-w-[120px]">❁ Number of Episodes:</span>
-                <span class="text-gray-300">{data.numberOfEpisodes}</span>
+                <span class="text-muted">{data.numberOfEpisodes}</span>
               </div>
             )}
             
             {data.numberOfSeasons && (
               <div class="flex gap-2">
                 <span class="text-purple-400 font-medium min-w-[120px]">❁ Number of Seasons:</span>
-                <span class="text-gray-300">{data.numberOfSeasons}</span>
+                <span class="text-muted">{data.numberOfSeasons}</span>
               </div>
             )}
             
             {data.episodeRuntime && (
               <div class="flex gap-2">
                 <span class="text-purple-400 font-medium min-w-[120px]">❁ Episode Runtime:</span>
-                <span class="text-gray-300">{formatRuntime(data.episodeRuntime)}</span>
+                <span class="text-muted">{formatRuntime(data.episodeRuntime)}</span>
               </div>
             )}
             
             {data.productionCountries && data.productionCountries.length > 0 && (
               <div class="flex gap-2">
                 <span class="text-purple-400 font-medium min-w-[120px]">❁ Production Countries:</span>
-                <span class="text-gray-300">{formatList(data.productionCountries)}</span>
+                <span class="text-muted">{formatList(data.productionCountries)}</span>
               </div>
             )}
             
             {data.rating && (
               <div class="flex gap-2">
                 <span class="text-purple-400 font-medium min-w-[120px]">❁ Rating:</span>
-                <span class="text-gray-300">{formatRating(data.rating)}</span>
+                <span class="text-muted">{formatRating(data.rating)}</span>
               </div>
             )}
             
@@ -175,7 +175,7 @@ const producers = data.crew?.filter(c =>
             {producers.length > 0 && (
               <div class="flex gap-2">
                 <span class="text-purple-400 font-medium min-w-[120px]">❁ Producers:</span>
-                <span class="text-gray-300">{formatList(producers, ' / ')}</span>
+                <span class="text-muted">{formatList(producers, ' / ')}</span>
               </div>
             )}
           </div>
@@ -184,7 +184,7 @@ const producers = data.crew?.filter(c =>
           {data.tags.length > 0 && (
             <div class="flex items-center gap-2 mt-4 flex-wrap">
               {data.tags.map(tag => (
-                <span class="glass-badge text-purple-300 text-xs">{tag}</span>
+                <span class="glass-badge text-purple-300 text-sm px-3 py-1">{tag}</span>
               ))}
             </div>
           )}
@@ -229,7 +229,7 @@ const producers = data.crew?.filter(c =>
           <h2 class="text-xl font-bold mb-4 text-purple-400 flex items-center gap-2">
             <span>❁</span> Introduction
           </h2>
-          <div class="prose-custom max-w-none text-gray-300 leading-relaxed">
+          <div class="prose-custom max-w-none leading-relaxed">
             <p>{data.description}</p>
           </div>
         </section>

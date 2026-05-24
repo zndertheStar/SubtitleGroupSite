@@ -12,14 +12,13 @@ const t = useTranslations(lang);
 const allWorks = await getCollection('works');
 const allMisc = await getCollection('misc');
 
-// 准备轮播数据（5个随机作品）
-const carouselWorks = allWorks
-  .sort(() => Math.random() - 0.5)
-  .slice(0, 5);
-
+// 最新作品（用于 marquee 和列表）
 const latestWorks = allWorks
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-  .slice(0, 5);
+  .slice(0, 12);
+
+// Marquee 展示前 8 个
+const marqueeWorks = latestWorks.slice(0, 8);
 
 const latestMisc = allMisc
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
@@ -31,67 +30,56 @@ const latestMisc = allMisc
   <Header lang={lang} />
   
   <main class="flex-1">
-    <!-- Carousel Section -->
-    {carouselWorks.length > 0 && (
-      <section class="relative overflow-hidden">
-        <div id="carousel" class="relative h-[320px] sm:h-[420px] w-full">
-          {carouselWorks.map((work, index) => (
-            <a 
-href={`/works/${work.id}`}
-              class={`carousel-slide absolute inset-0 transition-opacity duration-700 ${index === 0 ? 'opacity-100' : 'opacity-0'}`}
-              data-index={index}
-            >
-              {/* Full width cover image - no blur, no background */}
-              {work.data.cover ? (
-                <img 
-                  src={work.data.cover} 
-                  alt={work.data.title}
-                  class="w-full h-full object-cover"
-                  style="object-position: center 20%;"
-                />
-              ) : (
-                <div class="w-full h-full flex items-center justify-center">
-                  <span class="text-6xl">🎬</span>
-                </div>
-              )}
-              
-              {/* Bottom gradient for text readability */}
-              <div class="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
-              
-              {/* Content */}
-              <div class="absolute bottom-0 left-0 right-0 p-6 sm:p-10">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                  <span class="glass-badge text-xs text-purple-300 px-2 py-1 rounded-full mb-2 inline-block backdrop-blur-md">
-                    {work.data.category === 'anime' ? '动画' : work.data.category === 'movie' ? '电影' : work.data.category === 'ova' ? 'OVA' : '其他'}
-                  </span>
-                  <h2 class="text-2xl sm:text-4xl font-bold text-white mb-2 drop-shadow-lg">{work.data.title}</h2>
-                  <p class="text-sm text-gray-200 max-w-xl line-clamp-2 drop-shadow-md">{work.data.description}</p>
+    <!-- Marquee Banner -->
+    {marqueeWorks.length > 0 && (
+      <section class="relative overflow-hidden py-6">
+        <div class="marquee-container flex" style="width: max-content;">
+          {/* First set */}
+          {marqueeWorks.map(work => (
+            <a href={`/works/${work.id}`} class="marquee-item flex-shrink-0 mx-2 group">
+              <div class="relative w-36 sm:w-44 aspect-[3/4] rounded-xl overflow-hidden shadow-lg border border-white/10">
+                {work.data.cover ? (
+                  <img 
+                    src={work.data.cover} 
+                    alt={work.data.title}
+                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    loading="eager"
+                  />
+                ) : (
+                  <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-purple-900/50 to-pink-900/50">
+                    <span class="text-3xl">🎬</span>
+                  </div>
+                )}
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div class="absolute bottom-0 left-0 right-0 p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <p class="text-xs text-white font-medium truncate">{work.data.title}</p>
                 </div>
               </div>
             </a>
           ))}
-          
-          <!-- Carousel Indicators -->
-          <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
-            {carouselWorks.map((_, index) => (
-              <button 
-                class={`w-2 h-2 rounded-full transition-all carousel-dot ${index === 0 ? 'bg-white w-6' : 'bg-white/40'}`}
-                data-index={index}
-              ></button>
-            ))}
-          </div>
-          
-          <!-- Carousel Arrows -->
-          <button id="carousel-prev" class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-all z-10 backdrop-blur-xl border border-white/10">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-            </svg>
-          </button>
-          <button id="carousel-next" class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-all z-10 backdrop-blur-xl border border-white/10">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
+          {/* Duplicate set for seamless loop */}
+          {marqueeWorks.map(work => (
+            <a href={`/works/${work.id}`} class="marquee-item flex-shrink-0 mx-2 group">
+              <div class="relative w-36 sm:w-44 aspect-[3/4] rounded-xl overflow-hidden shadow-lg border border-white/10">
+                {work.data.cover ? (
+                  <img 
+                    src={work.data.cover} 
+                    alt={work.data.title}
+                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    loading="eager"
+                  />
+                ) : (
+                  <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-purple-900/50 to-pink-900/50">
+                    <span class="text-3xl">🎬</span>
+                  </div>
+                )}
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div class="absolute bottom-0 left-0 right-0 p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <p class="text-xs text-white font-medium truncate">{work.data.title}</p>
+                </div>
+              </div>
+            </a>
+          ))}
         </div>
       </section>
     )}
@@ -167,76 +155,18 @@ href={`/works/${work.id}`}
     </div>
   </main>
 
-  <script is:inline>
-    // Carousel Logic
-    (function() {
-      const slides = document.querySelectorAll('.carousel-slide');
-      const dots = document.querySelectorAll('.carousel-dot');
-      const prevBtn = document.getElementById('carousel-prev');
-      const nextBtn = document.getElementById('carousel-next');
-      
-      if (slides.length === 0) return;
-      
-      let currentIndex = 0;
-      let interval;
-      
-      function showSlide(index) {
-        slides.forEach((slide, i) => {
-          slide.classList.toggle('opacity-100', i === index);
-          slide.classList.toggle('opacity-0', i !== index);
-        });
-        
-        dots.forEach((dot, i) => {
-          dot.classList.toggle('bg-white', i === index);
-          dot.classList.toggle('bg-white/40', i !== index);
-          dot.classList.toggle('w-6', i === index);
-          dot.classList.toggle('w-2', i !== index);
-        });
-        
-        currentIndex = index;
-      }
-      
-      function nextSlide() {
-        showSlide((currentIndex + 1) % slides.length);
-      }
-      
-      function prevSlide() {
-        showSlide((currentIndex - 1 + slides.length) % slides.length);
-      }
-      
-      function startAutoplay() {
-        interval = setInterval(nextSlide, 5000);
-      }
-      
-      function stopAutoplay() {
-        clearInterval(interval);
-      }
-      
-      // Event listeners
-      nextBtn?.addEventListener('click', () => {
-        stopAutoplay();
-        nextSlide();
-        startAutoplay();
-      });
-      
-      prevBtn?.addEventListener('click', () => {
-        stopAutoplay();
-        prevSlide();
-        startAutoplay();
-      });
-      
-      dots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
-          stopAutoplay();
-          showSlide(index);
-          startAutoplay();
-        });
-      });
-      
-      // Start autoplay
-      startAutoplay();
-    })();
-  </script>
+  <style is:inline>
+    @keyframes marquee-scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .marquee-container {
+      animation: marquee-scroll 40s linear infinite;
+    }
+    .marquee-container:hover {
+      animation-play-state: paused;
+    }
+  </style>
 
   <Footer lang={lang} />
 </Layout>

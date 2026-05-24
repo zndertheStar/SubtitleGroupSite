@@ -226,7 +226,7 @@
     backdrop-filter: blur(8px);
     background: rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 9999px;
+    border-radius: 8px;
   }
 
   [data-theme="light"] .glass-badge {
