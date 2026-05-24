@@ -102,7 +102,8 @@ function extractVersion(title) {
   // Extract version from the end of title: [简日内嵌], [繁日内嵌], [简繁日内封], etc.
   const versionMatch = title.match(/\[([^\]]+?)\](?!.*\[)/);
   if (versionMatch) {
-    return versionMatch[1];
+    // Normalize: convert traditional "內" to simplified "内"
+    return versionMatch[1].replace(/內/g, '内');
   }
   return '默认';
 }
@@ -203,7 +204,7 @@ async function publishWork(show, episode, episodeData, tmdbInfo) {
   
   if (fs.existsSync(filepath)) {
     console.log(`  Work already exists: ${filename}`);
-    return;
+    return false;
   }
   
   let title = show.title.split('/')[0].trim();
@@ -241,6 +242,7 @@ ${versionsYaml}
   
   fs.writeFileSync(filepath, content);
   console.log(`  Published: ${filename}`);
+  return true;
 }
 
 // Fetch RSS for a specific show
@@ -261,6 +263,68 @@ async function fetchShowRSS(searchKeyword) {
   } catch (e) {
     console.error(`  Error fetching RSS: ${e.message}`);
     return [];
+  }
+}
+
+// Update showcase file with collected episodes
+function updateShowcaseEpisodes(showcaseFile, showTitle, episodes) {
+  const filePath = path.join(process.cwd(), 'src/content/showcase', showcaseFile);
+  let content = fs.readFileSync(filePath, 'utf-8');
+  
+  // Build version -> episodes map from cache
+  const versionEpisodes = {};
+  for (const [epNum, epData] of Object.entries(episodes)) {
+    for (const versionName of Object.keys(epData.versions || {})) {
+      if (!versionEpisodes[versionName]) {
+        versionEpisodes[versionName] = [];
+      }
+      versionEpisodes[versionName].push(parseInt(epNum));
+    }
+  }
+  
+  // Sort episodes for each version
+  for (const versionName of Object.keys(versionEpisodes)) {
+    versionEpisodes[versionName].sort((a, b) => a - b);
+  }
+  
+  // Find the show block in the file
+  const titleMarker = `- title: "${showTitle}"`;
+  const titleIndex = content.indexOf(titleMarker);
+  
+  if (titleIndex === -1) {
+    console.log(`    Warning: Could not find show "${showTitle}" in showcase file`);
+    return;
+  }
+  
+  // Find the end of this show block (next show or end of file)
+  let blockEnd = content.indexOf('\n  - title:', titleIndex + titleMarker.length);
+  if (blockEnd === -1) {
+    blockEnd = content.indexOf('\n---', titleIndex + titleMarker.length);
+  }
+  if (blockEnd === -1) {
+    blockEnd = content.length;
+  }
+  
+  let showBlock = content.substring(titleIndex, blockEnd);
+  let updated = false;
+  
+  // Update each version's episodes
+  for (const [versionName, eps] of Object.entries(versionEpisodes)) {
+    const versionRegex = new RegExp(`(- name:\\s*"${versionName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}"\\s*\\n\\s*episodes:\\s*)\\[[^\\]]*\\]`);
+    if (versionRegex.test(showBlock)) {
+      showBlock = showBlock.replace(
+        versionRegex,
+        `$1[${eps.join(', ')}]`
+      );
+      updated = true;
+      console.log(`    Updated ${versionName}: [${eps.join(', ')}]`);
+    }
+  }
+  
+  if (updated) {
+    content = content.substring(0, titleIndex) + showBlock + content.substring(blockEnd);
+    fs.writeFileSync(filePath, content);
+    console.log(`    Updated showcase: ${showcaseFile}`);
   }
 }
 
@@ -321,6 +385,9 @@ async function main() {
         // Save cache
         saveEpisodeCache(show.title, episodes);
         
+        // Update showcase progress
+        updateShowcaseEpisodes(showcase.file, show.title, episodes);
+        
         // Check for complete episodes and publish
         for (const [episodeNum, episodeData] of Object.entries(episodes)) {
           if (isEpisodeComplete(episodeData, show.versions_expected)) {
@@ -332,8 +399,8 @@ async function main() {
               tmdbInfo = await fetchTMDBInfo(show.tmdb_id, 'tv');
             }
             
-            await publishWork(show, parseInt(episodeNum), episodeData, tmdbInfo);
-            totalPublished++;
+            const published = await publishWork(show, parseInt(episodeNum), episodeData, tmdbInfo);
+            if (published) totalPublished++;
             
             // Remove from cache after publishing
             delete episodes[episodeNum];

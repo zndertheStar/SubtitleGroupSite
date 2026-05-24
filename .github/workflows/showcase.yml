@@ -21,10 +21,8 @@ jobs:
       - name: Install dependencies
         run: npm install
         
-      - name: Parse RSS and auto publish works
-        run: |
-          node scripts/parse-rss.js
-          node scripts/auto-publish.js
+      - name: Auto publish works and update showcase
+        run: node scripts/auto-publish.js
         env:
           TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
           
