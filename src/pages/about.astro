@@ -76,7 +76,11 @@ if (about) {
                 >
                   {contact.icon && (
                     <div class="w-12 h-12 rounded-lg glass bg-green-500/10 flex items-center justify-center flex-shrink-0">
-                      <span class="text-xl">{contact.icon}</span>
+                      {contact.icon.endsWith('.png') || contact.icon.endsWith('.svg') || contact.icon.endsWith('.jpg') ? (
+                        <img src={contact.icon} alt={contact.name} class="w-7 h-7 object-contain" />
+                      ) : (
+                        <span class="text-xl">{contact.icon}</span>
+                      )}
                     </div>
                   )}
                   <div>

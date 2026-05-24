@@ -15,7 +15,7 @@ members:
     name: "技术组"
     role: "网站/工具"
 contacts:
-  - icon: "📺"
+  - icon: "/bilibili.png"
     name: "哔哩哔哩"
     description: "关注我们的B站空间"
     url: "https://space.bilibili.com/1007391147"
