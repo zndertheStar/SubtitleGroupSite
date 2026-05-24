@@ -16,8 +16,8 @@ if (!RSS_FEED_URL || !GROUP_NAME) {
   process.exit(1);
 }
 
-// Cache directory for tracking collected episodes
-const CACHE_DIR = path.join(process.cwd(), '.rss-cache');
+// Cache directory for tracking collected episodes (stored in repo)
+const CACHE_DIR = path.join(process.cwd(), 'src/content/.rss-cache');
 if (!fs.existsSync(CACHE_DIR)) {
   fs.mkdirSync(CACHE_DIR, { recursive: true });
 }

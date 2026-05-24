@@ -37,5 +37,6 @@ jobs:
           git config --local user.name "GitHub Action"
           git add src/content/showcase/
           git add src/content/works/
+          git add src/content/.rss-cache/
           git diff --cached --quiet || git commit -m "chore: auto-publish works from RSS [skip ci]"
           git push
