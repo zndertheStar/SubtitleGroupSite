@@ -71,7 +71,7 @@
   /* Light Theme (Anime Day/Sakura) */
   [data-theme="light"] body {
     background-color: transparent;
-    color: #4c1d95;
+    color: #1e1b2e;
   }
 
   [data-theme="light"] .bg-theme {
@@ -87,11 +87,11 @@
   }
 
   [data-theme="light"] .text-theme {
-    color: #4c1d95;
+    color: #1e1b2e;
   }
 
   [data-theme="light"] .text-muted {
-    color: #6b7280;
+    color: #374151;
   }
 
   [data-theme="light"] .header-blur {
@@ -156,7 +156,7 @@
     backdrop-filter: blur(8px);
     background: rgba(139, 92, 246, 0.05);
     border: 1px solid rgba(139, 92, 246, 0.15);
-    color: #4c1d95;
+    color: #1e1b2e;
   }
 
   .search-input:focus {
@@ -174,7 +174,7 @@
   }
 
   [data-theme="light"] .nav-link {
-    color: #6b7280;
+    color: #4b5563;
   }
 
   [data-theme="light"] .nav-link:hover {
@@ -194,7 +194,7 @@
     backdrop-filter: blur(8px);
     background: rgba(139, 92, 246, 0.05);
     border: 1px solid rgba(139, 92, 246, 0.12);
-    color: #6b7280;
+    color: #4b5563;
   }
 
   /* Episode grid theming */
@@ -218,7 +218,7 @@
   [data-theme="light"] .episode-pending {
     background: rgba(139, 92, 246, 0.05);
     border: 1px solid rgba(139, 92, 246, 0.15);
-    color: #9ca3af;
+    color: #6b7280;
   }
 
   /* Glass badge */
@@ -268,13 +268,13 @@
   }
 
   [data-theme="light"] .prose-custom {
-    color: #4c1d95;
+    color: #1e1b2e;
   }
 
   [data-theme="light"] .prose-custom h1,
   [data-theme="light"] .prose-custom h2,
   [data-theme="light"] .prose-custom h3 {
-    color: #6b21a8;
+    color: #4c1d95;
   }
 }
 
@@ -358,7 +358,7 @@
   }
 
   [data-theme="light"] .glass-nav-btn {
-    color: #6b7280;
+    color: #4b5563;
   }
 
   [data-theme="light"] .glass-nav-btn:hover {
