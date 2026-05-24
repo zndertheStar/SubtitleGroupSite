@@ -26,9 +26,6 @@ jobs:
           node scripts/parse-rss.js
           node scripts/auto-publish.js
         env:
-          RSS_FEED_URL: ${{ secrets.RSS_FEED_URL }}
-          GROUP_NAME: ${{ secrets.GROUP_NAME }}
-          GROUP_NAME_ALT: ${{ secrets.GROUP_NAME_ALT }}
           TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
           
       - name: Commit and push changes

@@ -7,14 +7,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Config
-const RSS_FEED_URL = process.env.RSS_FEED_URL;
-const GROUP_NAME = process.env.GROUP_NAME;
 const TMDB_API_KEY = process.env.TMDB_API_KEY;
-
-if (!RSS_FEED_URL || !GROUP_NAME) {
-  console.error('Error: RSS_FEED_URL and GROUP_NAME environment variables are required');
-  process.exit(1);
-}
+const RSS_BASE_URL = 'https://share.dmhy.org/topics/rss/rss.xml';
 
 // Cache directory for tracking collected episodes (stored in repo)
 const CACHE_DIR = path.join(process.cwd(), 'src/content/.rss-cache');
@@ -42,48 +36,34 @@ function loadShowcases() {
     const seasonMatch = frontmatter.match(/season:\s*"([^"]+)"/);
     const season = seasonMatch ? seasonMatch[1] : '';
     
-    // Parse shows
+    // Parse shows - improved regex to handle multiline
     const shows = [];
-    const showRegex = /- title:\s*"([^"]+)"\n(?:\s+regex:\s*'([^']+)'\n)?(?:\s+tmdb_id:\s*(\d+)\n)?(?:\s+versions_expected:\s*\[([^\]]*)\]\n)?(?:\s+alsoIn:[^\n]*\n)?(?:\s+versions:[^\n]*\n)?/g;
+    const showBlocks = frontmatter.split(/\n  - title:/).slice(1);
     
-    let showMatch;
-    while ((showMatch = showRegex.exec(frontmatter)) !== null) {
-      shows.push({
-        title: showMatch[1],
-        regex: showMatch[2] || '',
-        tmdb_id: showMatch[3] ? parseInt(showMatch[3]) : null,
-        versions_expected: showMatch[4] 
-          ? showMatch[4].split(',').map(v => v.trim().replace(/^"|"$/g, '')).filter(Boolean)
-          : ['简日内嵌', '繁日内嵌', '简繁日内封'],
-      });
+    for (const block of showBlocks) {
+      const titleMatch = block.match(/^\s*"([^"]+)"/);
+      const regexMatch = block.match(/regex:\s*'([^']+)'/);
+      const tmdbMatch = block.match(/tmdb_id:\s*(\d+)/);
+      const searchMatch = block.match(/rss_search:\s*"([^"]+)"/);
+      const versionsExpectedMatch = block.match(/versions_expected:\s*\[([^\]]*)\]/);
+      
+      if (titleMatch) {
+        shows.push({
+          title: titleMatch[1],
+          regex: regexMatch ? regexMatch[1] : '',
+          tmdb_id: tmdbMatch ? parseInt(tmdbMatch[1]) : null,
+          rss_search: searchMatch ? searchMatch[1] : null,
+          versions_expected: versionsExpectedMatch 
+            ? versionsExpectedMatch[1].split(',').map(v => v.trim().replace(/^"|"$/g, '')).filter(Boolean)
+            : ['简日内嵌', '繁日内嵌', '简繁日内封'],
+        });
+      }
     }
     
     showcases.push({ file, season, shows, body });
   }
   
   return showcases;
-}
-
-function getGroupPatterns(groupName) {
-  const tradName = groupName
-    .replace(/绿/g, '綠')
-    .replace(/茶/g, '茶')
-    .replace(/组/g, '組');
-  
-  const patterns = [
-    `[${groupName}]`,
-    `【${groupName}】`,
-  ];
-  
-  if (tradName !== groupName) {
-    patterns.push(`[${tradName}]`, `【${tradName}】`);
-  }
-  
-  return patterns;
-}
-
-function isOurGroup(title, patterns) {
-  return patterns.some(pattern => title.includes(pattern));
 }
 
 function extractEpisode(title, customRegex) {
@@ -137,7 +117,7 @@ function extractMagnet(enclosure) {
 function slugify(text) {
   return text
     .toLowerCase()
-    .replace(/[^\w\s\u4e00-\u9fa5-]/g, '')  // Keep Chinese characters
+    .replace(/[^\w\s\u4e00-\u9fa5-]/g, '')
     .replace(/\s+/g, '-')
     .substring(0, 50);
 }
@@ -205,7 +185,6 @@ async function downloadCover(imageUrl, filename) {
     return `/images/covers/${filename}`;
   } catch (e) {
     console.error('  Cover download error:', e.message);
-    // Fallback: use TMDB CDN URL directly
     return `https://image.tmdb.org/t/p/w500${imageUrl}`;
   }
 }
@@ -222,7 +201,6 @@ async function publishWork(show, episode, episodeData, tmdbInfo) {
   const filename = `${pubDate}-${showSlug}-${String(episode).padStart(2, '0')}.md`;
   const filepath = path.join(worksDir, filename);
   
-  // Skip if already published
   if (fs.existsSync(filepath)) {
     console.log(`  Work already exists: ${filename}`);
     return;
@@ -246,14 +224,16 @@ async function publishWork(show, episode, episodeData, tmdbInfo) {
     `    - name: "${v.name}"\n      magnet: "${v.magnet}"`
   ).join('\n');
   
+  const coverLine = cover ? `\ncover: "${cover}"` : '';
+  const tmdbLine = show.tmdb_id ? `\ntmdbId: ${show.tmdb_id}` : '';
+  
   const content = `---
 title: "${title} 第${episode}集"
-description: "${description}"${cover ? `\ncover: "${cover}"` : ''}
+description: "${description}"${coverLine}
 tags: [${tags.map(t => `"${t}"`).join(', ')}]
 category: "anime"
 pubDate: ${pubDate}
-episode: ${episode}
-${show.tmdb_id ? `tmdbId: ${show.tmdb_id}` : ''}
+episode: ${episode}${tmdbLine}
 versions:
 ${versionsYaml}
 ---
@@ -263,21 +243,13 @@ ${versionsYaml}
   console.log(`  Published: ${filename}`);
 }
 
-async function main() {
+// Fetch RSS for a specific show
+async function fetchShowRSS(searchKeyword) {
+  const searchUrl = `${RSS_BASE_URL}?keyword=${encodeURIComponent(searchKeyword)}`;
+  console.log(`  Fetching: ${searchUrl}`);
+  
   try {
-    console.log(`Fetching RSS from: ${RSS_FEED_URL}`);
-    console.log(`Looking for group: ${GROUP_NAME}`);
-    
-    const showcases = loadShowcases();
-    if (showcases.length === 0) {
-      console.log('No showcase files found');
-      return;
-    }
-    
-    const groupPatterns = getGroupPatterns(GROUP_NAME);
-    
-    // Fetch RSS
-    const response = await fetch(RSS_FEED_URL);
+    const response = await fetch(searchUrl);
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
@@ -285,87 +257,93 @@ async function main() {
     const xmlText = await response.text();
     const parser = new XMLParser({ ignoreAttributes: false, attributeNamePrefix: '@_' });
     const feed = parser.parse(xmlText);
-    const items = feed.rss?.channel?.item || [];
+    return feed.rss?.channel?.item || [];
+  } catch (e) {
+    console.error(`  Error fetching RSS: ${e.message}`);
+    return [];
+  }
+}
+
+async function main() {
+  try {
+    console.log('Auto-publish works from RSS search\n');
     
-    console.log(`Found ${items.length} items in RSS feed`);
+    const showcases = loadShowcases();
+    if (showcases.length === 0) {
+      console.log('No showcase files found');
+      return;
+    }
     
-    // Collect episodes for each show
-    const showCaches = {};
+    let totalPublished = 0;
     
-    for (const item of items) {
-      const title = item.title || '';
+    for (const showcase of showcases) {
+      console.log(`\nSeason: ${showcase.season}`);
       
-      if (!isOurGroup(title, groupPatterns)) {
-        continue;
-      }
-      
-      // Find matching show
-      for (const showcase of showcases) {
-        for (const show of showcase.shows) {
-          const showName = show.title.split('/')[0].trim();
-          const showNameEn = show.title.split('/')[1]?.trim();
+      for (const show of showcase.shows) {
+        console.log(`\n  Show: ${show.title}`);
+        
+        // Skip shows without rss_search
+        if (!show.rss_search) {
+          console.log('    Skipped: no rss_search configured');
+          continue;
+        }
+        
+        // Load existing cache
+        const episodes = loadEpisodeCache(show.title);
+        
+        // Fetch RSS for this show
+        const items = await fetchShowRSS(show.rss_search);
+        console.log(`    Found ${items.length} items`);
+        
+        if (items.length === 0) continue;
+        
+        // Process each item
+        for (const item of items) {
+          const title = item.title || '';
+          const episode = extractEpisode(title, show.regex);
+          const version = extractVersion(title);
+          const magnet = extractMagnet(item.enclosure);
           
-          // Match by title (simplified - check if title contains show name)
-          if (title.includes(showName) || (showNameEn && title.includes(showNameEn))) {
-            const episode = extractEpisode(title, show.regex);
-            const version = extractVersion(title);
-            const magnet = extractMagnet(item.enclosure);
+          if (episode && magnet) {
+            console.log(`      [${title.substring(0, 60)}...] Ep${episode} [${version}]`);
             
-            if (episode && magnet) {
-              console.log(`Found: ${showName} Ep${episode} [${version}]`);
-              
-              // Initialize cache
-              if (!showCaches[show.title]) {
-                showCaches[show.title] = {
-                  show,
-                  episodes: loadEpisodeCache(show.title),
-                };
-              }
-              
-              // Add version to episode
-              if (!showCaches[show.title].episodes[episode]) {
-                showCaches[show.title].episodes[episode] = { versions: {} };
-              }
-              
-              showCaches[show.title].episodes[episode].versions[version] = {
-                name: version,
-                magnet,
-              };
-              
-              // Save cache immediately
-              saveEpisodeCache(show.title, showCaches[show.title].episodes);
+            if (!episodes[episode]) {
+              episodes[episode] = { versions: {} };
             }
+            
+            episodes[episode].versions[version] = {
+              name: version,
+              magnet,
+            };
+          }
+        }
+        
+        // Save cache
+        saveEpisodeCache(show.title, episodes);
+        
+        // Check for complete episodes and publish
+        for (const [episodeNum, episodeData] of Object.entries(episodes)) {
+          if (isEpisodeComplete(episodeData, show.versions_expected)) {
+            console.log(`\n    Episode ${episodeNum} complete`);
+            console.log(`      Versions: ${Object.keys(episodeData.versions).join(', ')}`);
+            
+            let tmdbInfo = null;
+            if (show.tmdb_id && TMDB_API_KEY) {
+              tmdbInfo = await fetchTMDBInfo(show.tmdb_id, 'tv');
+            }
+            
+            await publishWork(show, parseInt(episodeNum), episodeData, tmdbInfo);
+            totalPublished++;
+            
+            // Remove from cache after publishing
+            delete episodes[episodeNum];
+            saveEpisodeCache(show.title, episodes);
           }
         }
       }
     }
     
-    // Check for complete episodes and publish
-    for (const [showTitle, cacheData] of Object.entries(showCaches)) {
-      const { show, episodes } = cacheData;
-      
-      for (const [episodeNum, episodeData] of Object.entries(episodes)) {
-        if (isEpisodeComplete(episodeData, show.versions_expected)) {
-          console.log(`\nEpisode ${episodeNum} complete for "${showTitle}"`);
-          console.log(`  Versions: ${Object.keys(episodeData.versions).join(', ')}`);
-          
-          // Fetch TMDB info if available
-          let tmdbInfo = null;
-          if (show.tmdb_id && TMDB_API_KEY) {
-            tmdbInfo = await fetchTMDBInfo(show.tmdb_id, 'tv');
-          }
-          
-          // Publish work
-          await publishWork(show, parseInt(episodeNum), episodeData, tmdbInfo);
-          
-          // Remove from cache after publishing
-          delete episodes[episodeNum];
-          saveEpisodeCache(showTitle, episodes);
-        }
-      }
-    }
-    
-    console.log('\nDone!');
+    console.log(`\n\nDone! Published ${totalPublished} new work(s).`);
     
   } catch (error) {
     console.error('Error:', error);

@@ -46,6 +46,7 @@ const showcase = defineCollection({
       z.object({
         title: z.string(),
         regex: z.string(),
+        rss_search: z.string().optional(),
         tmdb_id: z.number().optional(),
         versions_expected: z.array(z.string()).default([]),
         versions: z.array(
