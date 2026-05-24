@@ -6,8 +6,8 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const RSS_FEED_URL = process.env.RSS_FEED_URL || 'https://api.animes.garden/feed.xml';
-const GROUP_NAME = process.env.GROUP_NAME || '绿茶字幕组';
+const RSS_FEED_URL = process.env.RSS_FEED_URL;
+const GROUP_NAME = process.env.GROUP_NAME;
 const GROUP_NAME_ALT = process.env.GROUP_NAME_ALT || '';
 
 // Common group patterns in RSS titles
@@ -117,6 +117,18 @@ function isOurGroup(title, patterns) {
 
 async function main() {
   try {
+    if (!RSS_FEED_URL) {
+      console.error('Error: RSS_FEED_URL environment variable is required');
+      console.error('Please set it in your .env file or environment');
+      process.exit(1);
+    }
+    
+    if (!GROUP_NAME) {
+      console.error('Error: GROUP_NAME environment variable is required');
+      console.error('Please set it in your .env file or environment');
+      process.exit(1);
+    }
+    
     console.log(`Fetching RSS from: ${RSS_FEED_URL}`);
     console.log(`Looking for group: ${GROUP_NAME}`);
     
