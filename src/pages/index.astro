@@ -37,7 +37,7 @@ const latestMisc = allMisc
         <div id="carousel" class="relative h-[320px] sm:h-[420px] w-full">
           {carouselWorks.map((work, index) => (
             <a 
-              href={`/works/${work.slug}`}
+href={`/works/${work.id}`}
               class={`carousel-slide absolute inset-0 transition-opacity duration-700 ${index === 0 ? 'opacity-100' : 'opacity-0'}`}
               data-index={index}
             >
@@ -108,7 +108,7 @@ const latestMisc = allMisc
           
           <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
             {latestWorks.map(work => (
-              <a href={`/works/${work.slug}`} class="anime-card group block">
+              <a href={`/works/${work.id}`} class="anime-card group block">
                 <div class="aspect-[3/4] bg-gradient-to-br from-purple-900/50 to-pink-900/50 flex items-center justify-center overflow-hidden relative">
                   {work.data.cover ? (
                     <img 
@@ -152,7 +152,7 @@ const latestMisc = allMisc
             
             <div class="space-y-3">
               {latestMisc.map(post => (
-                <a href={`/misc/${post.slug}`} class="anime-card block p-4 transition-all group">
+                <a href={`/misc/${post.id}`} class="anime-card block p-4 transition-all group">
                   <h3 class="font-semibold text-sm group-hover:text-purple-400 transition-colors line-clamp-2">{post.data.title}</h3>
                   <p class="text-xs text-gray-500 mt-1.5 line-clamp-2">{post.data.description}</p>
                   <div class="flex items-center gap-2 mt-2">

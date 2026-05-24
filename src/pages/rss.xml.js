@@ -16,7 +16,7 @@ export async function GET(context) {
       title: work.data.title,
       pubDate: work.data.pubDate,
       description: work.data.description || '',
-      link: `/works/${work.slug}/`,
+      link: `/works/${work.id}/`,
       categories: work.data.tags,
     })),
     customData: `<language>zh-CN</language>`,

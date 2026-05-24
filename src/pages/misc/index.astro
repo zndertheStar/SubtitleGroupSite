@@ -23,7 +23,7 @@ const posts = miscPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate
 
       <div class="space-y-4">
         {posts.map(post => (
-          <a href={`/misc/${post.slug}`} class="anime-card block p-5 group transition-all hover:bg-white/[0.08]">
+          <a href={`/misc/${post.id}`} class="anime-card block p-5 group transition-all hover:bg-white/[0.08]">
             <div class="flex items-start gap-4">
               <div class="w-10 h-10 rounded-lg glass bg-blue-500/10 flex items-center justify-center flex-shrink-0 text-lg">
                 📝

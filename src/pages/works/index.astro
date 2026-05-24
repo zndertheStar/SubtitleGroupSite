@@ -73,7 +73,7 @@ const categories = ['all', 'anime', 'movie', 'ova', 'other'] as const;
       <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4" id="works-grid">
         {works.map((work, index) => (
           <a 
-            href={`/works/${work.slug}`} 
+            href={`/works/${work.id}`} 
             class="anime-card group block work-item"
             data-category={work.data.category}
             style={`animation-delay: ${index * 0.05}s`}
