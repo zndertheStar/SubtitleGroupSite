@@ -1,0 +1,582 @@
+{
+  "adult": false,
+  "backdrop_path": "/yozfbzwLhGe81YKTDoNDRdJrIuC.jpg",
+  "created_by": [],
+  "episode_run_time": [
+    25
+  ],
+  "first_air_date": "2020-07-11",
+  "genres": [
+    {
+      "id": 16,
+      "name": "动画"
+    },
+    {
+      "id": 35,
+      "name": "喜剧"
+    }
+  ],
+  "homepage": "https://kanokari-official.com",
+  "id": 96316,
+  "in_production": true,
+  "languages": [
+    "ja"
+  ],
+  "last_air_date": "2026-05-16",
+  "last_episode_to_air": {
+    "id": 7134973,
+    "name": "情人节和女友",
+    "overview": "",
+    "vote_average": 0,
+    "vote_count": 0,
+    "air_date": "2026-05-23",
+    "episode_number": 55,
+    "episode_type": "standard",
+    "production_code": "",
+    "runtime": 25,
+    "season_number": 1,
+    "show_id": 96316,
+    "still_path": "/zTN0kjsxbw4tQvP5ciDVV3X381l.jpg"
+  },
+  "name": "租借女友",
+  "next_episode_to_air": {
+    "id": 7134975,
+    "name": "第 56 集",
+    "overview": "",
+    "vote_average": 0,
+    "vote_count": 0,
+    "air_date": "2026-05-30",
+    "episode_number": 56,
+    "episode_type": "standard",
+    "production_code": "",
+    "runtime": null,
+    "season_number": 1,
+    "show_id": 96316,
+    "still_path": null
+  },
+  "networks": [
+    {
+      "id": 94,
+      "logo_path": "/7RNXnyiMbjgqtPAjja13wchcrGI.png",
+      "name": "MBS",
+      "origin_country": "JP"
+    },
+    {
+      "id": 160,
+      "logo_path": "/lUACMATs6jcscXIrzNCQzbvNVN5.png",
+      "name": "TBS",
+      "origin_country": "JP"
+    },
+    {
+      "id": 201,
+      "logo_path": "/qNooLje0YQh1y3y9LUM2Y5QCtiF.png",
+      "name": "CBC",
+      "origin_country": "JP"
+    },
+    {
+      "id": 896,
+      "logo_path": "/qfUzYnpnN5bnd2bqGUH0OlAMell.png",
+      "name": "Tulip Television",
+      "origin_country": "JP"
+    },
+    {
+      "id": 1559,
+      "logo_path": "/artkCykJgOAh6lAjfrNNgANasgk.png",
+      "name": "SBC",
+      "origin_country": "JP"
+    },
+    {
+      "id": 2460,
+      "logo_path": "/34sNEcsgcTAuDidRMrgxdfNyVjL.png",
+      "name": "BSN",
+      "origin_country": "JP"
+    },
+    {
+      "id": 2461,
+      "logo_path": "/b4Ivxqz6UY0EogjYc09Y22ctC6F.png",
+      "name": "tys",
+      "origin_country": "JP"
+    },
+    {
+      "id": 2462,
+      "logo_path": "/7zXfwh5ZhFqvdOWgWX80weU6Sqb.png",
+      "name": "NBC",
+      "origin_country": "JP"
+    },
+    {
+      "id": 3658,
+      "logo_path": "/sJwRsE1lfMwAwYZi1OtRfn7V03t.png",
+      "name": "HBC",
+      "origin_country": "JP"
+    },
+    {
+      "id": 3705,
+      "logo_path": "/zOgixhlAa61yUb32bsXvRtD63wI.png",
+      "name": "RKK",
+      "origin_country": "JP"
+    },
+    {
+      "id": 3969,
+      "logo_path": "/nhCsLIGjzIIp6jIFCdHN0cQEzjP.png",
+      "name": "i-Television",
+      "origin_country": "JP"
+    },
+    {
+      "id": 3970,
+      "logo_path": "/9coKtCf4jSNCdSqGveVFyzvjrZt.png",
+      "name": "SBS",
+      "origin_country": "JP"
+    },
+    {
+      "id": 3971,
+      "logo_path": "/6bhZ2SWdYTbSTQf8Bhmf1q0aBef.png",
+      "name": "IBC",
+      "origin_country": "JP"
+    },
+    {
+      "id": 3972,
+      "logo_path": "/rL2IlndcEiQnIbym5EoSEM7rGlx.png",
+      "name": "BSS",
+      "origin_country": "JP"
+    },
+    {
+      "id": 3973,
+      "logo_path": "/dh4E8hGvqD9Xqu51kbqUU06UKbt.png",
+      "name": "MRO",
+      "origin_country": "JP"
+    },
+    {
+      "id": 3974,
+      "logo_path": "/yMQxsmGs88q54bslmcSeXlmpObC.png",
+      "name": "OBS",
+      "origin_country": "JP"
+    },
+    {
+      "id": 3975,
+      "logo_path": "/6ACZlk44MWsIIwYHxjRGXGKlpRb.png",
+      "name": "TUF",
+      "origin_country": "JP"
+    },
+    {
+      "id": 3977,
+      "logo_path": "/sGMMrdCmptaLLwJX7CsXTDaduLO.png",
+      "name": "RSK",
+      "origin_country": "JP"
+    },
+    {
+      "id": 3978,
+      "logo_path": "/zOz9LK6WWLUWGuG0fthzDzCIXlA.png",
+      "name": "TUY",
+      "origin_country": "JP"
+    },
+    {
+      "id": 3979,
+      "logo_path": "/yWlWHPUn6FHjNUulL1vp8croYFw.png",
+      "name": "tbc",
+      "origin_country": "JP"
+    },
+    {
+      "id": 4748,
+      "logo_path": "/o5Hlt7ZXJPEm4Qrx2Pl2rtc9A5y.png",
+      "name": "RKB",
+      "origin_country": "JP"
+    },
+    {
+      "id": 4792,
+      "logo_path": "/8kzeHaKeW3gZubs3cqlGWFvfJI7.png",
+      "name": "KUTV",
+      "origin_country": "JP"
+    },
+    {
+      "id": 4859,
+      "logo_path": "/6jr76BpIItwLV5oKbZmRJsVh3c6.png",
+      "name": "RBC",
+      "origin_country": "JP"
+    },
+    {
+      "id": 6171,
+      "logo_path": "/ekXN1cfYutjLfudy1MKyGzNynEa.png",
+      "name": "UTY",
+      "origin_country": "JP"
+    },
+    {
+      "id": 6172,
+      "logo_path": "/mKslL0MTHHt9ukugWOv3Vh8Tn0E.png",
+      "name": "RCC",
+      "origin_country": "JP"
+    },
+    {
+      "id": 6173,
+      "logo_path": "/YfewT1YYtAqkgvdu8oCX4mnJCs.png",
+      "name": "MRT",
+      "origin_country": "JP"
+    },
+    {
+      "id": 6174,
+      "logo_path": "/aawphEBuBGT9RVP6xG3BZV8NOCw.png",
+      "name": "ATV",
+      "origin_country": "JP"
+    },
+    {
+      "id": 6175,
+      "logo_path": "/iaaU6q82URj2mBbjQIbfAMUz14J.png",
+      "name": "MBC",
+      "origin_country": "JP"
+    }
+  ],
+  "number_of_episodes": 60,
+  "number_of_seasons": 1,
+  "origin_country": [
+    "JP"
+  ],
+  "original_language": "ja",
+  "original_name": "彼女、お借りします",
+  "overview": "20岁的废柴大学生——木之下和也。和初恋女友仅接吻了一次，可只过了一个月就被甩了。“啊……不行了……感觉什么都不行了……”自暴自弃的和也，使用了“某种方法”，和女孩子去约会了。到了碰头的地点——“你是和也，对吧？”一边将飘逸的黑发挂于耳后，一边看着和也的脸的美少女水原千鹤露出了微笑。在仅有一次的租赁中，有着闪耀光辉的真实！恋爱×心动MAX的冒失恋爱故事，揭幕！",
+  "popularity": 54.706,
+  "poster_path": "/pp1gwYC7Jv36fEWEpPLpbJjuBTG.jpg",
+  "production_companies": [
+    {
+      "id": 7164,
+      "logo_path": "/vHsaqTkQ2ZTbdqrCA272YahoVlg.png",
+      "name": "TMS Entertainment",
+      "origin_country": "JP"
+    },
+    {
+      "id": 3363,
+      "logo_path": "/sj3vD7n63bTCih7bcf6GnWvRf1Q.png",
+      "name": "MBS",
+      "origin_country": "JP"
+    },
+    {
+      "id": 59118,
+      "logo_path": "/9nTCEBgGaaI5swkv8gy2vny0Mb5.png",
+      "name": "Kodansha",
+      "origin_country": "JP"
+    },
+    {
+      "id": 156999,
+      "logo_path": "/yOPNMsW68we3cA9XNPsZsmZtVOj.png",
+      "name": "DMM pictures",
+      "origin_country": "JP"
+    },
+    {
+      "id": 87211,
+      "logo_path": "/lzBP1lTYoqqfvGriMMdlvFWDRH7.png",
+      "name": "DMM.com",
+      "origin_country": "JP"
+    },
+    {
+      "id": 237375,
+      "logo_path": null,
+      "name": "TMS Entertainment Studio 6",
+      "origin_country": "JP"
+    }
+  ],
+  "production_countries": [
+    {
+      "iso_3166_1": "JP",
+      "name": "Japan"
+    }
+  ],
+  "seasons": [
+    {
+      "air_date": "2020-06-13",
+      "episode_count": 138,
+      "id": 165447,
+      "name": "特别篇",
+      "overview": "",
+      "poster_path": "/la5wQaO8DiBCyTNmJCI4PDM5BUX.jpg",
+      "season_number": 0,
+      "vote_average": 0
+    },
+    {
+      "air_date": "2020-07-11",
+      "episode_count": 60,
+      "id": 137788,
+      "name": "第 1 季",
+      "overview": "20岁的废柴大学生——木之下和也。和初恋女友仅接吻了壹次，可只过了壹个月就被甩了。“啊……不行了……感觉什么都不行了……”自暴自弃的和也，使用了“某种方法”，和女孩子去约会了。到了碰头的地点——“妳是和也，对吧？”壹边将飘逸的黑发挂于耳后，壹边看着和也的脸的美少女水原千鹤露出了微笑。在仅有壹次的租赁中，有着闪耀光辉的真实！恋爱×心动MAX的冒失恋爱故事，揭幕！",
+      "poster_path": "/pp1gwYC7Jv36fEWEpPLpbJjuBTG.jpg",
+      "season_number": 1,
+      "vote_average": 6.9
+    }
+  ],
+  "softcore": false,
+  "spoken_languages": [
+    {
+      "english_name": "Japanese",
+      "iso_639_1": "ja",
+      "name": "日本語"
+    }
+  ],
+  "status": "Returning Series",
+  "tagline": "",
+  "type": "Scripted",
+  "vote_average": 8.3,
+  "vote_count": 959,
+  "credits": {
+    "cast": [
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 1922640,
+        "known_for_department": "Acting",
+        "name": "堀江瞬",
+        "original_name": "堀江瞬",
+        "popularity": 1.3335,
+        "profile_path": "/1OFi5ofRX0B2ldTPF8ThzLI2wKa.jpg",
+        "character": "Kazuya Kinoshita (voice)",
+        "credit_id": "5df4c9c3d1a893001976b63e",
+        "order": 0
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 1325034,
+        "known_for_department": "Acting",
+        "name": "雨宫天",
+        "original_name": "雨宮天",
+        "popularity": 2.163,
+        "profile_path": "/4ZZcdFH4QgbIC8AeJ3BLG1ue7G5.jpg",
+        "character": "Chizuru Mizuhara (voice)",
+        "credit_id": "5df4c922d1a893001276990a",
+        "order": 1
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 936275,
+        "known_for_department": "Acting",
+        "name": "悠木碧",
+        "original_name": "悠木碧",
+        "popularity": 3.5202,
+        "profile_path": "/a5Mkd66GV1l3c9bZZtnvjUf33T2.jpg",
+        "character": "Mami Nanami (voice)",
+        "credit_id": "5df4c94cd1a8930012769957",
+        "order": 2
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 1168909,
+        "known_for_department": "Acting",
+        "name": "东山奈央",
+        "original_name": "東山奈央",
+        "popularity": 2.3919,
+        "profile_path": "/6WJDd1z946yFfZBgpC7dWi0FyQw.jpg",
+        "character": "Ruka Sarashina (voice)",
+        "credit_id": "5df4c97226dac100124eec2e",
+        "order": 3
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 1492982,
+        "known_for_department": "Acting",
+        "name": "高桥李依",
+        "original_name": "高橋李依",
+        "popularity": 2.3394,
+        "profile_path": "/aeB7z0cBTASdjKOjQriBAO6hYq4.jpg",
+        "character": "Sumi Sakurasawa (voice)",
+        "credit_id": "5df4c9a20486380019039545",
+        "order": 4
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 1356201,
+        "known_for_department": "Acting",
+        "name": "芹泽优",
+        "original_name": "芹澤優",
+        "popularity": 1.4261,
+        "profile_path": "/mQITB0XYHCZjYef39xsHnSHIH56.jpg",
+        "character": "Mini Yaemori (voice)",
+        "credit_id": "640489f0021cee00810e7501",
+        "order": 5
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 1251011,
+        "known_for_department": "Acting",
+        "name": "野泽由香里",
+        "original_name": "野沢由香里",
+        "popularity": 1.2249,
+        "profile_path": "/fItDKJF3RDg2EgOQcgW6z9mXeoY.jpg",
+        "character": "Nagomi Kinoshita (voice)",
+        "credit_id": "5eca73146c8492001f2c1e5f",
+        "order": 6
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 1253138,
+        "known_for_department": "Acting",
+        "name": "定冈小百合",
+        "original_name": "定岡小百合",
+        "popularity": 0.8196,
+        "profile_path": "/a0GG5lHBCwTdAQJDEUvw2hDbOFH.jpg",
+        "character": "Sayuri Ichinose (voice)",
+        "credit_id": "6327662c74d6c0009068647d",
+        "order": 7
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 2318578,
+        "known_for_department": "Acting",
+        "name": "赤坂柩之",
+        "original_name": "赤坂柾之",
+        "popularity": 0.783,
+        "profile_path": "/bl7NzF6LzE2CrIr4gB06YCmeLJM.jpg",
+        "character": "Yoshiaki Kibe (voice)",
+        "credit_id": "5eca7334d2147c0021b8c9cb",
+        "order": 8
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 1919881,
+        "known_for_department": "Acting",
+        "name": "梶原岳人",
+        "original_name": "梶原岳人",
+        "popularity": 1.3728,
+        "profile_path": "/kUer38jXf7vTD2TGGxJMZVYL5Te.jpg",
+        "character": "Shun Kuribayashi (voice)",
+        "credit_id": "5eca735a8e2e00002024a6cb",
+        "order": 9
+      }
+    ],
+    "crew": [
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 1294589,
+        "known_for_department": "Writing",
+        "name": "广田光毅",
+        "original_name": "広田光毅",
+        "popularity": 0.8989,
+        "profile_path": null,
+        "credit_id": "5df4ca02d1a8930012769c1c",
+        "department": "Writing",
+        "job": "Series Composition"
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 2482224,
+        "known_for_department": "Visual Effects",
+        "name": "平山宽菜",
+        "original_name": "平山寛菜",
+        "popularity": 0.4528,
+        "profile_path": null,
+        "credit_id": "5df4ca1ad1a893001476caa3",
+        "department": "Visual Effects",
+        "job": "Character Designer"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 1149594,
+        "known_for_department": "Sound",
+        "name": "高桑一",
+        "original_name": "高桑一",
+        "popularity": 0.2678,
+        "profile_path": null,
+        "credit_id": "603a72805a07f50051538452",
+        "department": "Sound",
+        "job": "Sound Director"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 1368821,
+        "known_for_department": "Art",
+        "name": "秋葉みのる",
+        "original_name": "秋葉みのる",
+        "popularity": 0.2471,
+        "profile_path": null,
+        "credit_id": "603fde617e9d5f00593abe04",
+        "department": "Art",
+        "job": "Art Direction"
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 1583514,
+        "known_for_department": "Editing",
+        "name": "中叶由美子",
+        "original_name": "中葉由美子",
+        "popularity": 0.1468,
+        "profile_path": null,
+        "credit_id": "603fe121a843c1006e3fd7e2",
+        "department": "Editing",
+        "job": "Editor"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 2213126,
+        "known_for_department": "Camera",
+        "name": "坂井慎太郎",
+        "original_name": "坂井慎太郎",
+        "popularity": 0.2557,
+        "profile_path": null,
+        "credit_id": "603fdf5f079a97001f10a0e4",
+        "department": "Camera",
+        "job": "Director of Photography"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 1423160,
+        "known_for_department": "Sound",
+        "name": "前山田健一",
+        "original_name": "ヒャダイン",
+        "popularity": 0.3311,
+        "profile_path": "/9ANw6J5WWzARXmriJqyPRpfqCaH.jpg",
+        "credit_id": "61ead393cedac400dfe94574",
+        "department": "Sound",
+        "job": "Original Music Composer"
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 4817213,
+        "known_for_department": "Production",
+        "name": "寺尾友里",
+        "original_name": "寺尾友里",
+        "popularity": 0.1685,
+        "profile_path": null,
+        "credit_id": "67af29c8f7d37fc2db1cbd4b",
+        "department": "Production",
+        "job": "Producer"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 2415166,
+        "known_for_department": "Writing",
+        "name": "宫岛礼吏",
+        "original_name": "宮島礼吏",
+        "popularity": 0.2055,
+        "profile_path": null,
+        "credit_id": "689144dc7e850e6202f3ead2",
+        "department": "Writing",
+        "job": "Original Story"
+      }
+    ],
+    "id": 96316
+  },
+  "external_ids": {
+    "id": 96316,
+    "imdb_id": "tt11448214",
+    "freebase_mid": null,
+    "freebase_id": null,
+    "tvdb_id": 380654,
+    "tvrage_id": null,
+    "wikidata_id": "Q98923955",
+    "facebook_id": null,
+    "instagram_id": null,
+    "twitter_id": "kanokari_anime"
+  }
+}

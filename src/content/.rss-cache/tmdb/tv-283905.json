@@ -1,0 +1,601 @@
+{
+  "adult": false,
+  "backdrop_path": "/krbKWrBEOjPdUmp1CGRgRVnLsrs.jpg",
+  "created_by": [],
+  "episode_run_time": [
+    24
+  ],
+  "first_air_date": "2026-04-11",
+  "genres": [
+    {
+      "id": 16,
+      "name": "动画"
+    },
+    {
+      "id": 35,
+      "name": "喜剧"
+    }
+  ],
+  "homepage": "https://kamiina-botan.com",
+  "id": 283905,
+  "in_production": true,
+  "languages": [
+    "ja"
+  ],
+  "last_air_date": "2026-05-16",
+  "last_episode_to_air": {
+    "id": 7135882,
+    "name": "第 7 集",
+    "overview": "伊吹、奏以及景岚来到了武甲山。在树影摇曳的壮丽自然中，伊吹还没理解登山的乐趣，就已经开始感到疲惫。就在这时，一位面露难色的老婆婆出现在了她的面前。前往天文馆的牡丹与伊吹，决定在开映前到河边的长椅上打发时间。喝着以宇宙为主题的啤酒，牡丹一边注视着伊吹，一边向她传达了自己的心意。",
+    "vote_average": 8.5,
+    "vote_count": 2,
+    "air_date": "2026-05-23",
+    "episode_number": 7,
+    "episode_type": "standard",
+    "production_code": "",
+    "runtime": 24,
+    "season_number": 1,
+    "show_id": 283905,
+    "still_path": "/aCdaKAGqUWJLysAolfpjrlSP4m1.jpg"
+  },
+  "name": "上伊那牡丹，酒醉身姿似百合花般",
+  "next_episode_to_air": {
+    "id": 7135888,
+    "name": "第 8 集",
+    "overview": "",
+    "vote_average": 0,
+    "vote_count": 0,
+    "air_date": "2026-05-30",
+    "episode_number": 8,
+    "episode_type": "standard",
+    "production_code": "",
+    "runtime": null,
+    "season_number": 1,
+    "show_id": 283905,
+    "still_path": null
+  },
+  "networks": [
+    {
+      "id": 343,
+      "logo_path": "/9rNqtDYAnD6yTOutvHI3synSEs2.png",
+      "name": "Gunma TV",
+      "origin_country": "JP"
+    },
+    {
+      "id": 614,
+      "logo_path": "/hSdroyVthq3CynxTIIY7lnS8w1.png",
+      "name": "Tokyo MX",
+      "origin_country": "JP"
+    },
+    {
+      "id": 715,
+      "logo_path": "/yhFNPfWqQTOj8olwR4Gk2H5397X.png",
+      "name": "Teletama",
+      "origin_country": "JP"
+    },
+    {
+      "id": 861,
+      "logo_path": "/JQ5bx6n7Qmdmyqz6sqjo5Fz2iR.png",
+      "name": "BS11",
+      "origin_country": "JP"
+    },
+    {
+      "id": 2478,
+      "logo_path": "/2v82HpzoKRveJEJcGHkeTcktMRM.png",
+      "name": "Tochigi TV",
+      "origin_country": "JP"
+    }
+  ],
+  "number_of_episodes": 12,
+  "number_of_seasons": 1,
+  "origin_country": [
+    "JP"
+  ],
+  "original_language": "ja",
+  "original_name": "上伊那ぼたん、酔へる姿は百合の花",
+  "overview": "　　新晋大学生上伊那牡丹，在参观秩父特产市场时，目睹了学姐砺波伊吹独自坐在长椅上喝酒的模样，不由得发出了“看起来好好喝”的感想。\n\n　　从牡丹向伊吹讨酒喝开始，两人不但一起喝酒，还结伴购物、吃饭、旅行，相互间的距离逐渐拉近。",
+  "popularity": 10.5793,
+  "poster_path": "/wpUGWITiEBNrRxLg0DoXXOZiVMA.jpg",
+  "production_companies": [
+    {
+      "id": 224212,
+      "logo_path": "/88W2hvQ8t88YaDEU0cSv9yctdHw.png",
+      "name": "Soigne",
+      "origin_country": "JP"
+    },
+    {
+      "id": 2883,
+      "logo_path": "/rDYExnBV61jGQnkhVVrPN4Yl7O1.png",
+      "name": "Aniplex",
+      "origin_country": "JP"
+    },
+    {
+      "id": 157002,
+      "logo_path": "/hSdroyVthq3CynxTIIY7lnS8w1.png",
+      "name": "Tokyo MX",
+      "origin_country": "JP"
+    },
+    {
+      "id": 62866,
+      "logo_path": "/uYawQ0Lb8smRXNNCoq8gTHG92Pz.png",
+      "name": "Futabasha",
+      "origin_country": "JP"
+    },
+    {
+      "id": 134892,
+      "logo_path": "/euHs3v7wg48dr580eeilS1gZStQ.png",
+      "name": "ABEMA",
+      "origin_country": "JP"
+    },
+    {
+      "id": 43682,
+      "logo_path": "/3OTFn2ZFNtfPdPCamfmdyrUy1fI.png",
+      "name": "SANKYO",
+      "origin_country": "JP"
+    },
+    {
+      "id": 256882,
+      "logo_path": null,
+      "name": "SEIBU RAILWAY",
+      "origin_country": "JP"
+    },
+    {
+      "id": 118502,
+      "logo_path": "/JQ5bx6n7Qmdmyqz6sqjo5Fz2iR.png",
+      "name": "BS11",
+      "origin_country": "JP"
+    },
+    {
+      "id": 3466,
+      "logo_path": "/lmCg0zarmM52wrmsZRUY0QlPKLh.png",
+      "name": "movic",
+      "origin_country": "JP"
+    },
+    {
+      "id": 225584,
+      "logo_path": "/sl4baSg3dQLHgVN9F7OVr62Hvxe.png",
+      "name": "Yostar",
+      "origin_country": "JP"
+    }
+  ],
+  "production_countries": [
+    {
+      "iso_3166_1": "JP",
+      "name": "Japan"
+    }
+  ],
+  "seasons": [
+    {
+      "air_date": "2026-04-11",
+      "episode_count": 12,
+      "id": 441827,
+      "name": "第 1 季",
+      "overview": "",
+      "poster_path": "/wpUGWITiEBNrRxLg0DoXXOZiVMA.jpg",
+      "season_number": 1,
+      "vote_average": 7.5
+    }
+  ],
+  "softcore": false,
+  "spoken_languages": [
+    {
+      "english_name": "Japanese",
+      "iso_639_1": "ja",
+      "name": "日本語"
+    }
+  ],
+  "status": "Returning Series",
+  "tagline": "",
+  "type": "Scripted",
+  "vote_average": 7.5,
+  "vote_count": 9,
+  "credits": {
+    "cast": [
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 2206133,
+        "known_for_department": "Acting",
+        "name": "铃代纱弓",
+        "original_name": "鈴代紗弓",
+        "popularity": 1.6852,
+        "profile_path": "/7wEX0bXCs2djnp0dKsCqmMKZpZV.jpg",
+        "character": "Botan Kamiina (voice)",
+        "credit_id": "68c6af5536187be96bf21b88",
+        "order": 0
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 1643476,
+        "known_for_department": "Acting",
+        "name": "青山吉能",
+        "original_name": "青山吉能",
+        "popularity": 1.8322,
+        "profile_path": "/yPOprcT7tPKR3p79RMYtogTEXGr.jpg",
+        "character": "Ibuki Tonami (voice)",
+        "credit_id": "68ceb4c15679047ab8cc2ed9",
+        "order": 1
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 1249310,
+        "known_for_department": "Acting",
+        "name": "寿美菜子",
+        "original_name": "寿美菜子",
+        "popularity": 1.2298,
+        "profile_path": "/puocmMfvql6X1AvhFTolaV6Vh2r.jpg",
+        "character": "Kanade Gujō (voice)",
+        "credit_id": "68d801c48a2840a1d6e1b37f",
+        "order": 2
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 2539429,
+        "known_for_department": "Acting",
+        "name": "天海由梨奈",
+        "original_name": "天海由梨奈",
+        "popularity": 0.8929,
+        "profile_path": "/peSPIgRkaiowkDTNfw7GpbW2J5Z.jpg",
+        "character": "Akane Yusa (voice)",
+        "credit_id": "68e0e4853e2b181ccc36dbe0",
+        "order": 3
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 1647636,
+        "known_for_department": "Acting",
+        "name": "富田美忧",
+        "original_name": "富田美憂",
+        "popularity": 2.0295,
+        "profile_path": "/rSR17l4HdchLkhpRuAZbGbXNmUS.jpg",
+        "character": "Yaeka Kitamori (voice)",
+        "credit_id": "68ea0b204ffbcb7e429fd66b",
+        "order": 4
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 2102121,
+        "known_for_department": "Acting",
+        "name": "河濑茉希",
+        "original_name": "河瀬茉希",
+        "popularity": 1.0384,
+        "profile_path": "/3LgHKyXM33oOtBzmYTDesftIzY0.jpg",
+        "character": "Chang Chin-Lan (voice)",
+        "credit_id": "68f39eaad8598737b089c6b1",
+        "order": 5
+      }
+    ],
+    "crew": [
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 1848209,
+        "known_for_department": "Visual Effects",
+        "name": "吉成钢",
+        "original_name": "吉成鋼",
+        "popularity": 0.6044,
+        "profile_path": null,
+        "credit_id": "67d1668586fea60ab81e2175",
+        "department": "Visual Effects",
+        "job": "Character Designer"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 1796082,
+        "known_for_department": "Directing",
+        "name": "佐久间贵史",
+        "original_name": "佐久間貴史",
+        "popularity": 0.4877,
+        "profile_path": null,
+        "credit_id": "67d2730da97c646cb58113ec",
+        "department": "Directing",
+        "job": "Series Director"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 1491324,
+        "known_for_department": "Visual Effects",
+        "name": "松尾祐辅",
+        "original_name": "松尾祐輔",
+        "popularity": 0.2853,
+        "profile_path": null,
+        "credit_id": "67d27364a97c646cb581140d",
+        "department": "Visual Effects",
+        "job": "Lead Animator"
+      },
+      {
+        "adult": false,
+        "gender": 0,
+        "id": 2934611,
+        "known_for_department": "Visual Effects",
+        "name": "宫泽友希",
+        "original_name": "みやち",
+        "popularity": 0.3421,
+        "profile_path": null,
+        "credit_id": "67d2736b2ea1389f9f608319",
+        "department": "Visual Effects",
+        "job": "Lead Animator"
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 2562955,
+        "known_for_department": "Writing",
+        "name": "米内山阳子",
+        "original_name": "米内山陽子",
+        "popularity": 0.6736,
+        "profile_path": null,
+        "credit_id": "67d27385a97c646cb581141e",
+        "department": "Writing",
+        "job": "Series Composition"
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 3419267,
+        "known_for_department": "Sound",
+        "name": "橋口佳奈",
+        "original_name": "橋口佳奈",
+        "popularity": 0.1359,
+        "profile_path": null,
+        "credit_id": "67d273903fa0a67cdf1de8a7",
+        "department": "Sound",
+        "job": "Original Music Composer"
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 2388350,
+        "known_for_department": "Art",
+        "name": "宫越步",
+        "original_name": "宮越歩",
+        "popularity": 0.2127,
+        "profile_path": null,
+        "credit_id": "699d59671a47fe27af6a4714",
+        "department": "Art",
+        "job": "Art Direction"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 1680864,
+        "known_for_department": "Visual Effects",
+        "name": "小川耕平",
+        "original_name": "小川耕平",
+        "popularity": 0.425,
+        "profile_path": null,
+        "credit_id": "699d59820018171c160e5d44",
+        "department": "Visual Effects",
+        "job": "CGI Director"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 570486,
+        "known_for_department": "Sound",
+        "name": "明田川仁",
+        "original_name": "明田川仁",
+        "popularity": 0.5188,
+        "profile_path": null,
+        "credit_id": "699d5990c9531839ff6a4406",
+        "department": "Sound",
+        "job": "Sound Director"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 3313419,
+        "known_for_department": "Camera",
+        "name": "富田喜允",
+        "original_name": "富田喜允",
+        "popularity": 0.138,
+        "profile_path": null,
+        "credit_id": "699d59984bf8e6b4d4d745ff",
+        "department": "Camera",
+        "job": "Director of Photography"
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 3766811,
+        "known_for_department": "Production",
+        "name": "村上光",
+        "original_name": "村上光",
+        "popularity": 0.0712,
+        "profile_path": null,
+        "credit_id": "699d59a5e03a725accd74606",
+        "department": "Production",
+        "job": "Other"
+      },
+      {
+        "adult": false,
+        "gender": 0,
+        "id": 2930067,
+        "known_for_department": "Visual Effects",
+        "name": "Yui Ito",
+        "original_name": "Yui Ito",
+        "popularity": 0.0071,
+        "profile_path": null,
+        "credit_id": "699d59c1e03a725accd7460c",
+        "department": "Visual Effects",
+        "job": "Color Designer"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 1570184,
+        "known_for_department": "Editing",
+        "name": "广濑清志",
+        "original_name": "廣瀬清志",
+        "popularity": 0.4656,
+        "profile_path": null,
+        "credit_id": "699d59cb4bf8e6b4d4d74621",
+        "department": "Editing",
+        "job": "Editor"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 1491324,
+        "known_for_department": "Visual Effects",
+        "name": "松尾祐辅",
+        "original_name": "松尾祐輔",
+        "popularity": 0.2853,
+        "profile_path": null,
+        "credit_id": "699d59ddfd04cf8918d477ff",
+        "department": "Art",
+        "job": "Prop Designer"
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 5187784,
+        "known_for_department": "Sound",
+        "name": "ごっきん",
+        "original_name": "ごっきん",
+        "popularity": 0.0673,
+        "profile_path": null,
+        "credit_id": "69af04da3b8575d0b04eb515",
+        "department": "Sound",
+        "job": "Theme Song Performance"
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 5187757,
+        "known_for_department": "Sound",
+        "name": "牛丸ありさ",
+        "original_name": "牛丸ありさ",
+        "popularity": 0.0958,
+        "profile_path": null,
+        "credit_id": "69af04e1e09e37aecedd3151",
+        "department": "Sound",
+        "job": "Theme Song Performance"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 3046630,
+        "known_for_department": "Sound",
+        "name": "山内真治",
+        "original_name": "山内真治",
+        "popularity": 0.4391,
+        "profile_path": "/zvUJh1vW61OqOYyhirjjJ7GOg5p.jpg",
+        "credit_id": "69df391f863440316ab7f625",
+        "department": "Sound",
+        "job": "Music Producer"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 5368539,
+        "known_for_department": "Production",
+        "name": "田中瑛",
+        "original_name": "田中瑛",
+        "popularity": 0.0398,
+        "profile_path": null,
+        "credit_id": "69df43067f58bb64c23af275",
+        "department": "Production",
+        "job": "Producer"
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 3861874,
+        "known_for_department": "Production",
+        "name": "橋本京佳",
+        "original_name": "橋本京佳",
+        "popularity": 0.0516,
+        "profile_path": null,
+        "credit_id": "69df430ff96f092868af8f79",
+        "department": "Production",
+        "job": "Producer"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 6118132,
+        "known_for_department": "Production",
+        "name": "古川雄太",
+        "original_name": "古川雄太",
+        "popularity": 0.0338,
+        "profile_path": null,
+        "credit_id": "69df4321bb07e9f034af8f09",
+        "department": "Production",
+        "job": "Producer"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 3296386,
+        "known_for_department": "Production",
+        "name": "井东真一",
+        "original_name": "井東真一",
+        "popularity": 0.1394,
+        "profile_path": null,
+        "credit_id": "69df432b188c9fc2d62d943e",
+        "department": "Production",
+        "job": "Producer"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 1735189,
+        "known_for_department": "Production",
+        "name": "大和田智之",
+        "original_name": "大和田智之",
+        "popularity": 0.5604,
+        "profile_path": "/sif9JEUD8RLZCXx8A2azaIq57Fg.jpg",
+        "credit_id": "69df4335ce1770969ab7f5b6",
+        "department": "Production",
+        "job": "Producer"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 3326922,
+        "known_for_department": "Production",
+        "name": "三浦史",
+        "original_name": "三浦史",
+        "popularity": 0.1873,
+        "profile_path": null,
+        "credit_id": "69df433f8eb03f4b29af8ed5",
+        "department": "Production",
+        "job": "Producer"
+      },
+      {
+        "adult": false,
+        "gender": 0,
+        "id": 3489569,
+        "known_for_department": "Production",
+        "name": "纪东辉",
+        "original_name": "纪东辉",
+        "popularity": 0.0623,
+        "profile_path": null,
+        "credit_id": "69df434c9e783e25aa2d94a4",
+        "department": "Production",
+        "job": "Producer"
+      }
+    ],
+    "id": 283905
+  },
+  "external_ids": {
+    "id": 283905,
+    "imdb_id": "tt38273912",
+    "freebase_mid": null,
+    "freebase_id": null,
+    "tvdb_id": 461374,
+    "tvrage_id": null,
+    "wikidata_id": "Q133263417",
+    "facebook_id": null,
+    "instagram_id": null,
+    "twitter_id": "kamiina_anime"
+  }
+}

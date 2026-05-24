@@ -1,0 +1,614 @@
+{
+  "adult": false,
+  "backdrop_path": "/d3yNn379emGP8xztqeOsB9oLNG2.jpg",
+  "created_by": [],
+  "episode_run_time": [
+    24
+  ],
+  "first_air_date": "2017-07-12",
+  "genres": [
+    {
+      "id": 16,
+      "name": "动画"
+    },
+    {
+      "id": 18,
+      "name": "剧情"
+    },
+    {
+      "id": 9648,
+      "name": "悬疑"
+    }
+  ],
+  "homepage": "http://you-zitsu.com",
+  "id": 72517,
+  "in_production": true,
+  "languages": [
+    "ja"
+  ],
+  "last_air_date": "2026-05-20",
+  "last_episode_to_air": {
+    "id": 7084329,
+    "name": "缘分",
+    "overview": "在昏暗的森林中，绫小路等人寻找紧急警报的发生源时，发现小宫与木下失去意识倒在地上。根据醒来后的小宫所说，当时他们在移动途中。为了等待中途离开去上厕所的篠原，他正和木下说着话，结果小腿突然传来一阵剧烈的冲击，导致他直接从斜坡上摔了下去……",
+    "vote_average": 0,
+    "vote_count": 0,
+    "air_date": "2026-05-20",
+    "episode_number": 11,
+    "episode_type": "standard",
+    "production_code": "",
+    "runtime": 24,
+    "season_number": 4,
+    "show_id": 72517,
+    "still_path": "/yiARNbRGEyRZw1x3zSRNTvqsEIP.jpg"
+  },
+  "name": "欢迎来到实力至上主义的教室",
+  "next_episode_to_air": {
+    "id": 7084330,
+    "name": "第 12 集",
+    "overview": "",
+    "vote_average": 0,
+    "vote_count": 0,
+    "air_date": "2026-05-27",
+    "episode_number": 12,
+    "episode_type": "standard",
+    "production_code": "",
+    "runtime": null,
+    "season_number": 4,
+    "show_id": 72517,
+    "still_path": null
+  },
+  "networks": [
+    {
+      "id": 173,
+      "logo_path": "/fERjndErEpveJmQZccJbJDi93rj.png",
+      "name": "AT-X",
+      "origin_country": "JP"
+    }
+  ],
+  "number_of_episodes": 54,
+  "number_of_seasons": 4,
+  "origin_country": [
+    "JP"
+  ],
+  "original_language": "ja",
+  "original_name": "ようこそ実力至上主義の教室へ",
+  "overview": "这个社会是否平等呢。真正的“实力”是什么？东京都高度育成高等学校。那是宣扬彻底的实力至上主义，以升学率·就业率100%而引以为豪的升学学校。升入那里，被分配到1年D班的绫小路清隆，却发现学校与实力至上主义的招牌相反，学生每个月会得到相当于10万日元、与现金同等价值的分数，在授课和生活态度方面也贯彻放任主义。在梦幻般的高中生活当中，不断地挥金如土、过着自甘堕落日子的同班同学们。但，不久他就得知了学校系统的真面目，并被打入绝望的深渊……！来自吊车尾聚集的D班的少年少女们所发现的，是世界的矛盾，还是正当的实力社会？",
+  "popularity": 65.5158,
+  "poster_path": "/kkVfb6sXIHKIX9B0oHf9dNDkJ8m.jpg",
+  "production_companies": [
+    {
+      "id": 42811,
+      "logo_path": "/2ZPUk3aYOtKbZk1W4Kp6mfeays8.png",
+      "name": "Lerche",
+      "origin_country": "JP"
+    },
+    {
+      "id": 2073,
+      "logo_path": "/tWxRSaKmRJNTcmtlXsmn5R4KOSU.png",
+      "name": "KADOKAWA",
+      "origin_country": "JP"
+    },
+    {
+      "id": 6683,
+      "logo_path": "/reCkuk3GEomdx5gQpsm15Zl1sgX.png",
+      "name": "Lantis",
+      "origin_country": "JP"
+    },
+    {
+      "id": 98553,
+      "logo_path": "/qqyXcZlJQKlRmAD1TCKV7mGLQlt.png",
+      "name": "Crunchyroll",
+      "origin_country": "JP"
+    },
+    {
+      "id": 173133,
+      "logo_path": "/pB59XO7veWGZjzK4MLGKWxYecD.png",
+      "name": "Bandai Namco Music Live",
+      "origin_country": "JP"
+    },
+    {
+      "id": 17981,
+      "logo_path": "/8UABNMysukRi4udTHYxcNUMbPR1.png",
+      "name": "AT-X",
+      "origin_country": "JP"
+    },
+    {
+      "id": 36342,
+      "logo_path": "/3xYrMZn6SrupK4R83EUgNPjzqj4.png",
+      "name": "Sammy",
+      "origin_country": "JP"
+    },
+    {
+      "id": 3466,
+      "logo_path": "/lmCg0zarmM52wrmsZRUY0QlPKLh.png",
+      "name": "movic",
+      "origin_country": "JP"
+    },
+    {
+      "id": 157001,
+      "logo_path": "/vDBycpPRLKBf7T0RQbQtU49BQO6.png",
+      "name": "KADOKAWA Media House",
+      "origin_country": "JP"
+    },
+    {
+      "id": 78802,
+      "logo_path": "/1S4IJs06T5Twxq3qWdt4lAcIGbJ.png",
+      "name": "Studio Hibari",
+      "origin_country": "JP"
+    },
+    {
+      "id": 198847,
+      "logo_path": "/qqyXcZlJQKlRmAD1TCKV7mGLQlt.png",
+      "name": "Crunchyroll",
+      "origin_country": "US"
+    },
+    {
+      "id": 192573,
+      "logo_path": "/naTpOY8AjRtgBw0JXafrhAD8ZBT.png",
+      "name": "BS Nippon Corporation",
+      "origin_country": "JP"
+    }
+  ],
+  "production_countries": [
+    {
+      "iso_3166_1": "JP",
+      "name": "Japan"
+    },
+    {
+      "iso_3166_1": "US",
+      "name": "United States of America"
+    }
+  ],
+  "seasons": [
+    {
+      "air_date": "2017-07-12",
+      "episode_count": 12,
+      "id": 89821,
+      "name": "第 1 季",
+      "overview": "这个社会是否平等呢。真正的“实力”是什么——东京都高度育成高等学校。那是宣扬彻底的实力至上主义，以升学率·就业率100%而引以为豪的升学学校。升入那里，被分配到1年D班的绫小路清隆，却发现学校与实力至上主义的招牌相反，学生每个月会得到相当于10万日元、与现金同等价值的分数，在授课和生活态度方面也贯彻放任主义。在梦幻般的高中生活当中，不断地挥金如土、过着自甘堕落日子的同班同学们。但不久他就得知了学校系统的真面目，并被打入绝望的深渊。来自吊车尾聚集的D班的少年少女们所发现的，是世界的矛盾，还是正当的实力社会？",
+      "poster_path": "/vTR8aztXsB8THZpTGe1nZ1KhiY2.jpg",
+      "season_number": 1,
+      "vote_average": 7.3
+    },
+    {
+      "air_date": "2022-07-04",
+      "episode_count": 13,
+      "id": 245063,
+      "name": "第 2 季",
+      "overview": "东京都高度育成高等中学。标榜升学率、就职率达百分之百，每个月会提供相当于十万圆的点数，是一间乐园学校。但其实是一间只有成绩优秀的人，才拥有优良待遇的实力至上主义学校。\n\n绫小路清隆被分配到问题学生云集的D班，决定帮助同班同学堀北铃音升上A班。无人岛的生存考试结束后，学生在豪华客船上享受短暂的休息，却又很快展开一场打乱班级的新考试。该为了班级？为了小组？还是为了自己呢？当别班的人展开可疑的行动，欠缺团结的D班陷入困境当中。\n\n在信赖与猜疑的夹缝中行动的学生们，能看破真相吗？全新的校园启示录，现在再度开幕。",
+      "poster_path": "/tjIwx8bqqlHhGnDEyUg9z4NSXVr.jpg",
+      "season_number": 2,
+      "vote_average": 7.4
+    },
+    {
+      "air_date": "2024-01-03",
+      "episode_count": 13,
+      "id": 362603,
+      "name": "第 3 季",
+      "overview": "第三学期开始，绫小路和他的同学们从D班升到了C班，前往学校营，参加一项名为“混合训练营”的特殊测试，该测试将所有成绩相结合顾名思义，考试是按性别划分的，由混班组成若干组，以小组为单位进行评分，必须与曾经敌对的班级的学生合作，才能获得胜利。最重要的是，他们对未能达到标准的学生将被开除的规定感到震惊。 风雨飘摇的第三学期的帷幕即将拉开！",
+      "poster_path": "/h90yELjLaos0N67jbbOS9srY3Qy.jpg",
+      "season_number": 3,
+      "vote_average": 7.8
+    },
+    {
+      "air_date": "2026-04-01",
+      "episode_count": 16,
+      "id": 416716,
+      "name": "第 4 季",
+      "overview": "东京都高度育成高等教育学校——这是一所以升学率与就业率100%为傲，且每月发放价值10万日元点数的梦幻学校。然而，其内部实则是一所只有少数成绩优秀者才能享受优待的“实力至上主义”学校。\n\n绫小路一行人在一年级第三学期曾一度晋升至C班，但在一年级最后的特别考试中惜败于A班，再次降回D班。因此，他们的二年级生涯不得不从D班重新起步。\n\n度过春假后，绫小路与轻井泽确立了恋人关系，而堀北也告别了曾经那个一味憧憬优秀哥哥（学）的自己。在人际关系悄然发生变化的进程中，他们正式升入二年级。\n\n绫小路等新二年级生迎来的第一场特别考试，是必须与新生组队参加的笔试。然而，在新生群体中，正潜伏着由月城理事长代理所安排的、来自“白色房间”的刺客——。\n\n跨越年级的新关系，引来的究竟是暴风雨还是宁静？\n\n第二年的校园生活，如今正式拉开帷幕。",
+      "poster_path": "/pQf2CYvrZBVFEFD1OfDMm9m4ndf.jpg",
+      "season_number": 4,
+      "vote_average": 8
+    }
+  ],
+  "softcore": false,
+  "spoken_languages": [
+    {
+      "english_name": "Japanese",
+      "iso_639_1": "ja",
+      "name": "日本語"
+    }
+  ],
+  "status": "Returning Series",
+  "tagline": "",
+  "type": "Scripted",
+  "vote_average": 8.4,
+  "vote_count": 803,
+  "credits": {
+    "cast": [
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 1429141,
+        "known_for_department": "Acting",
+        "name": "千叶翔也",
+        "original_name": "千葉翔也",
+        "popularity": 2.21,
+        "profile_path": "/pF2urY77wuCYd9Fxh7dTirFYKSF.jpg",
+        "character": "Kiyotaka Ayanokoji (voice)",
+        "credit_id": "5d78bf6d39549a001097d36d",
+        "order": 0
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 1563442,
+        "known_for_department": "Acting",
+        "name": "鬼头明里",
+        "original_name": "鬼頭明里",
+        "popularity": 2.3064,
+        "profile_path": "/AoRQOZRC0yINB0WeKnM569rV1wF.jpg",
+        "character": "Suzune Horikita (voice)",
+        "credit_id": "5d78bf7739549a001397c5b4",
+        "order": 1
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 1072776,
+        "known_for_department": "Acting",
+        "name": "竹达彩奈",
+        "original_name": "竹達彩奈",
+        "popularity": 1.4321,
+        "profile_path": "/5JyZSnHwP18DIcVSqlGUwccA2WE.jpg",
+        "character": "Kei Karuizawa (voice)",
+        "credit_id": "602370afc669ad003ec335de",
+        "order": 2
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 1288294,
+        "known_for_department": "Acting",
+        "name": "久保由利香",
+        "original_name": "久保ユリカ",
+        "popularity": 1.4687,
+        "profile_path": "/tpzwj1J6HRq2H6xZjM5Irg7FzT2.jpg",
+        "character": "Kikyo Kushida (voice)",
+        "credit_id": "5d78bfed39549a001097d3e3",
+        "order": 3
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 1161472,
+        "known_for_department": "Acting",
+        "name": "市道真央",
+        "original_name": "市道真央",
+        "popularity": 2.6031,
+        "profile_path": "/a3cflYtrlFK0LXfWODgLDO7E7CP.jpg",
+        "character": "Airi Sakura (voice)",
+        "credit_id": "5d78bff9069f0e0011335aea",
+        "order": 4
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 1324468,
+        "known_for_department": "Acting",
+        "name": "逢坂良太",
+        "original_name": "逢坂良太",
+        "popularity": 1.842,
+        "profile_path": "/d2TGy8Qkxe90tGDr9MCXFGkhbPl.jpg",
+        "character": "Yosuke Hirata (voice)",
+        "credit_id": "5d78c00e39549a001097d413",
+        "order": 5
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 1597101,
+        "known_for_department": "Acting",
+        "name": "竹内荣治",
+        "original_name": "竹内栄治",
+        "popularity": 0.8677,
+        "profile_path": "/1qMbZGM7i9oEiHQvInY14UNZ2gk.jpg",
+        "character": "Ken Sudo (voice)",
+        "credit_id": "62c1e233a313b80059620858",
+        "order": 6
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 1116334,
+        "known_for_department": "Acting",
+        "name": "日高里菜",
+        "original_name": "日高里菜",
+        "popularity": 1.7761,
+        "profile_path": "/7JupZGvqcq4dRxiTKpPxzg8NUS4.jpg",
+        "character": "Arisu Sakayanagi (voice)",
+        "credit_id": "62c1e785924ce6129a17d01c",
+        "order": 12
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 1168909,
+        "known_for_department": "Acting",
+        "name": "东山奈央",
+        "original_name": "東山奈央",
+        "popularity": 2.3919,
+        "profile_path": "/6WJDd1z946yFfZBgpC7dWi0FyQw.jpg",
+        "character": "Honami Ichinose (voice)",
+        "credit_id": "5d78c03839549a000f97c90a",
+        "order": 13
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 1241566,
+        "known_for_department": "Acting",
+        "name": "佐藤利奈",
+        "original_name": "佐藤利奈",
+        "popularity": 1.6895,
+        "profile_path": "/q1VWJEI3b386hEcYzzbiN4KmoPn.jpg",
+        "character": "Sae Chabashira (voice)",
+        "credit_id": "5d78c004069f0e10d732445b",
+        "order": 14
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 1492982,
+        "known_for_department": "Acting",
+        "name": "高桥李依",
+        "original_name": "高橋李依",
+        "popularity": 2.3394,
+        "profile_path": "/aeB7z0cBTASdjKOjQriBAO6hYq4.jpg",
+        "character": "Hiyori Shiina (voice)",
+        "credit_id": "65567a6ad4fe0400ac36d875",
+        "order": 19
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 5154481,
+        "known_for_department": "Acting",
+        "name": "瀬戸桃子",
+        "original_name": "瀬戸桃子",
+        "popularity": 0.3746,
+        "profile_path": "/noCkNSOzqqOwMRA4NZNiuYF0PNd.jpg",
+        "character": "Ichika Amasawa (voice)",
+        "credit_id": "69d01dc9848c42d2469a1b8f",
+        "order": 21
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 2376502,
+        "known_for_department": "Acting",
+        "name": "水中雅章",
+        "original_name": "水中雅章",
+        "popularity": 1.0167,
+        "profile_path": "/cHb2pr4juxk8A3VTuDxgPWHM6WF.jpg",
+        "character": "Kakeru Ryuuen (voice)",
+        "credit_id": "69d01df3212d937cd85a0395",
+        "order": 22
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 1849852,
+        "known_for_department": "Acting",
+        "name": "岩泽俊树",
+        "original_name": "岩澤俊樹",
+        "popularity": 0.5256,
+        "profile_path": "/tphptiwyHraqbuFMVyjUzLGqbfp.jpg",
+        "character": "Rokusuke Kouenji (voice)",
+        "credit_id": "69d01e08fa37fba804a64648",
+        "order": 23
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 3457321,
+        "known_for_department": "Acting",
+        "name": "德留慎乃佑",
+        "original_name": "徳留慎乃佑",
+        "popularity": 0.7869,
+        "profile_path": "/nt57RoIE4SuAslb4BNIXVoYxGwO.jpg",
+        "character": "Takuya Yagami (voice)",
+        "credit_id": "69d01ea015673e13ee4d2618",
+        "order": 24
+      }
+    ],
+    "crew": [
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 2312558,
+        "known_for_department": "Directing",
+        "name": "野亦则行",
+        "original_name": "野亦則行",
+        "popularity": 0.5398,
+        "profile_path": null,
+        "credit_id": "69ce6d6074a0616db82f6f35",
+        "department": "Directing",
+        "job": "Series Director"
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 2835362,
+        "known_for_department": "Visual Effects",
+        "name": "河野真贵",
+        "original_name": "河野真貴",
+        "popularity": 0.3346,
+        "profile_path": null,
+        "credit_id": "69ce6d6672d2f7b4a28fe94d",
+        "department": "Visual Effects",
+        "job": "Character Designer"
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 5291512,
+        "known_for_department": "Visual Effects",
+        "name": "竹川美緒",
+        "original_name": "竹川美緒",
+        "popularity": 0.0974,
+        "profile_path": null,
+        "credit_id": "69ce6d6a4ea643336b0b8933",
+        "department": "Visual Effects",
+        "job": "Color Designer"
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 4115121,
+        "known_for_department": "Camera",
+        "name": "関谷美里",
+        "original_name": "関谷美里",
+        "popularity": 0.0578,
+        "profile_path": null,
+        "credit_id": "69ce6e2388f0a04544d28e72",
+        "department": "Camera",
+        "job": "Director of Photography"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 2279188,
+        "known_for_department": "Writing",
+        "name": "重信康",
+        "original_name": "重信康",
+        "popularity": 0.2319,
+        "profile_path": null,
+        "credit_id": "657c2117176a941733d69907",
+        "department": "Writing",
+        "job": "Series Composition"
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 3419267,
+        "known_for_department": "Sound",
+        "name": "橋口佳奈",
+        "original_name": "橋口佳奈",
+        "popularity": 0.1359,
+        "profile_path": null,
+        "credit_id": "6253fab6ab68491238cf534d",
+        "department": "Sound",
+        "job": "Original Music Composer"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 1493765,
+        "known_for_department": "Sound",
+        "name": "横山克",
+        "original_name": "横山克",
+        "popularity": 0.4992,
+        "profile_path": "/isDF4Cm7oqNDw9UgOI7DvFFJf7y.jpg",
+        "credit_id": "6253fabd67e0f739c1a01fac",
+        "department": "Sound",
+        "job": "Original Music Composer"
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 1492978,
+        "known_for_department": "Editing",
+        "name": "及川雪江",
+        "original_name": "及川雪江",
+        "popularity": 0.1944,
+        "profile_path": null,
+        "credit_id": "62c73437cf62cd004e6c75a6",
+        "department": "Editing",
+        "job": "Editor"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 3615530,
+        "known_for_department": "Visual Effects",
+        "name": "平山知広",
+        "original_name": "平山知広",
+        "popularity": 0.0398,
+        "profile_path": null,
+        "credit_id": "62c732aef6596f004d7902f8",
+        "department": "Visual Effects",
+        "job": "CGI Director"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 1414460,
+        "known_for_department": "Art",
+        "name": "平柳悟",
+        "original_name": "平柳悟",
+        "popularity": 0.4385,
+        "profile_path": null,
+        "credit_id": "62c731b7f6596f005571ae98",
+        "department": "Art",
+        "job": "Art Designer"
+      },
+      {
+        "adult": false,
+        "gender": 0,
+        "id": 3105145,
+        "known_for_department": "Art",
+        "name": "羽根广舟",
+        "original_name": "羽根広舟",
+        "popularity": 0.1838,
+        "profile_path": null,
+        "credit_id": "6214d1020bb07600430031f2",
+        "department": "Art",
+        "job": "Art Direction"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 3315147,
+        "known_for_department": "Sound",
+        "name": "奥田維城",
+        "original_name": "奥田維城",
+        "popularity": 0.209,
+        "profile_path": null,
+        "credit_id": "6214d177383df2006bc08bed",
+        "department": "Sound",
+        "job": "Sound Effects"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 1495403,
+        "known_for_department": "Sound",
+        "name": "饭田里树",
+        "original_name": "飯田里樹",
+        "popularity": 0.4873,
+        "profile_path": "/78tjLO9mi2kjtwQ2ZE4u30YHV2V.jpg",
+        "credit_id": "6214d1720b5fd6001b2b2578",
+        "department": "Sound",
+        "job": "Sound Director"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 1850097,
+        "known_for_department": "Writing",
+        "name": "衣笠彰梧",
+        "original_name": "衣笠彰梧",
+        "popularity": 0.0717,
+        "profile_path": null,
+        "credit_id": "62c5dcecd266a2004ea6ff5f",
+        "department": "Writing",
+        "job": "Novel"
+      }
+    ],
+    "id": 72517
+  },
+  "external_ids": {
+    "id": 72517,
+    "imdb_id": "tt7263328",
+    "freebase_mid": null,
+    "freebase_id": null,
+    "tvdb_id": 329822,
+    "tvrage_id": null,
+    "wikidata_id": "Q61648728",
+    "facebook_id": null,
+    "instagram_id": null,
+    "twitter_id": "youkosozitsu"
+  }
+}

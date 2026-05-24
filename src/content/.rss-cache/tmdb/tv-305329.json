@@ -1,0 +1,492 @@
+{
+  "adult": false,
+  "backdrop_path": "/dot1NI6F5IrLck8xWIOn74ieaDH.jpg",
+  "created_by": [],
+  "episode_run_time": [],
+  "first_air_date": "2026-04-05",
+  "genres": [
+    {
+      "id": 16,
+      "name": "动画"
+    },
+    {
+      "id": 18,
+      "name": "剧情"
+    },
+    {
+      "id": 10759,
+      "name": "动作冒险"
+    }
+  ],
+  "homepage": "https://needygirl-anime.com",
+  "id": 305329,
+  "in_production": true,
+  "languages": [
+    "ja"
+  ],
+  "last_air_date": "2026-05-17",
+  "last_episode_to_air": {
+    "id": 7099580,
+    "name": "Slip Inside This House",
+    "overview": "夜色中的繁华街道，正在散步的祢智祸邀请了一位少女——糖糖一起去咖啡店。虽然意识到对方已经认出自己是超天酱，但糖糖还是接受了祢智祸的邀请。",
+    "vote_average": 8,
+    "vote_count": 1,
+    "air_date": "2026-05-17",
+    "episode_number": 7,
+    "episode_type": "standard",
+    "production_code": "",
+    "runtime": 25,
+    "season_number": 1,
+    "show_id": 305329,
+    "still_path": "/8ZZTLQ2RJSIergj3gUdvhaLRxUq.jpg"
+  },
+  "name": "主播女孩重度依赖",
+  "next_episode_to_air": {
+    "id": 7099581,
+    "name": "Absolute Ego Dance",
+    "overview": "无论是赞美还是诽谤中伤，一切都不断集中到超天酱身上，而卡拉马佐夫的影响力也愈发扩大。在即将公布大型活动消息之际，洛丽波在旋转木马前，再次与糖糖相遇。",
+    "vote_average": 0,
+    "vote_count": 0,
+    "air_date": "2026-05-24",
+    "episode_number": 8,
+    "episode_type": "standard",
+    "production_code": "",
+    "runtime": 24,
+    "season_number": 1,
+    "show_id": 305329,
+    "still_path": "/qG2DT4pMAp9UO6EQxdQtOSSVuvF.jpg"
+  },
+  "networks": [
+    {
+      "id": 343,
+      "logo_path": "/9rNqtDYAnD6yTOutvHI3synSEs2.png",
+      "name": "Gunma TV",
+      "origin_country": "JP"
+    },
+    {
+      "id": 614,
+      "logo_path": "/hSdroyVthq3CynxTIIY7lnS8w1.png",
+      "name": "Tokyo MX",
+      "origin_country": "JP"
+    },
+    {
+      "id": 861,
+      "logo_path": "/JQ5bx6n7Qmdmyqz6sqjo5Fz2iR.png",
+      "name": "BS11",
+      "origin_country": "JP"
+    },
+    {
+      "id": 2478,
+      "logo_path": "/2v82HpzoKRveJEJcGHkeTcktMRM.png",
+      "name": "Tochigi TV",
+      "origin_country": "JP"
+    }
+  ],
+  "number_of_episodes": 13,
+  "number_of_seasons": 1,
+  "origin_country": [
+    "JP"
+  ],
+  "original_language": "ja",
+  "original_name": "NEEDY GIRL OVERDOSE",
+  "overview": "描写了一位想要成为最强的主播同时迫切想要得到他人认可的女孩，与辅佐她的“阿P”共同生活的故事。令全世界着迷的“互联网天使”的动画即将拉开帷幕。",
+  "popularity": 5.7462,
+  "poster_path": "/z0BUpIh50GCN0EytvodWdkHTWZ.jpg",
+  "production_companies": [
+    {
+      "id": 140087,
+      "logo_path": "/lFPM7FXipY4ivUDxsdhrUozNtm8.png",
+      "name": "Yostar Pictures",
+      "origin_country": "JP"
+    },
+    {
+      "id": 2883,
+      "logo_path": "/rDYExnBV61jGQnkhVVrPN4Yl7O1.png",
+      "name": "Aniplex",
+      "origin_country": "JP"
+    },
+    {
+      "id": 225584,
+      "logo_path": "/sl4baSg3dQLHgVN9F7OVr62Hvxe.png",
+      "name": "Yostar",
+      "origin_country": "JP"
+    },
+    {
+      "id": 157002,
+      "logo_path": "/hSdroyVthq3CynxTIIY7lnS8w1.png",
+      "name": "Tokyo MX",
+      "origin_country": "JP"
+    },
+    {
+      "id": 118502,
+      "logo_path": "/JQ5bx6n7Qmdmyqz6sqjo5Fz2iR.png",
+      "name": "BS11",
+      "origin_country": "JP"
+    },
+    {
+      "id": 157807,
+      "logo_path": "/tyrJOOVAUIxQEJzjP1PhP2H5zFi.png",
+      "name": "WOWOW",
+      "origin_country": "JP"
+    }
+  ],
+  "production_countries": [
+    {
+      "iso_3166_1": "JP",
+      "name": "Japan"
+    }
+  ],
+  "seasons": [
+    {
+      "air_date": "2023-05-07",
+      "episode_count": 2,
+      "id": 488357,
+      "name": "特别篇",
+      "overview": "",
+      "poster_path": null,
+      "season_number": 0,
+      "vote_average": 0
+    },
+    {
+      "air_date": "2026-04-05",
+      "episode_count": 13,
+      "id": 484271,
+      "name": "第 1 季",
+      "overview": "描写了一位想要成为最强的主播同时迫切想要得到他人认可的女孩，与辅佐她的“阿P”共同生活的故事。令全世界着迷的“互联网天使”的动画即将拉开帷幕。",
+      "poster_path": "/z0BUpIh50GCN0EytvodWdkHTWZ.jpg",
+      "season_number": 1,
+      "vote_average": 7.4
+    }
+  ],
+  "softcore": false,
+  "spoken_languages": [
+    {
+      "english_name": "Japanese",
+      "iso_639_1": "ja",
+      "name": "日本語"
+    }
+  ],
+  "status": "Returning Series",
+  "tagline": "",
+  "type": "Scripted",
+  "vote_average": 6.5,
+  "vote_count": 6,
+  "credits": {
+    "cast": [
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 3102663,
+        "known_for_department": "Acting",
+        "name": "川口莉奈",
+        "original_name": "川口莉奈",
+        "popularity": 1.4546,
+        "profile_path": "/q4bVGSsulV6vFjJwRg5pIpPoLB0.jpg",
+        "character": "Purple Lollipop (voice)",
+        "credit_id": "69622b92ca377f459cbd3846",
+        "order": 0
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 5830190,
+        "known_for_department": "Acting",
+        "name": "椎名樱月",
+        "original_name": "椎名桜月",
+        "popularity": 0.0398,
+        "profile_path": "/17XFqqDC66KHeY4nSz0sv1SQigm.jpg",
+        "character": "Michica Gokubara (voice)",
+        "credit_id": "69622c56f6078ed8883647c5",
+        "order": 1
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 3824816,
+        "known_for_department": "Acting",
+        "name": "星希成奏",
+        "original_name": "星希成奏",
+        "popularity": 0.2431,
+        "profile_path": "/Ajo0KjBdtYPH6FLjxeexHEStk3T.jpg",
+        "character": "Nechika-sama (voice)",
+        "credit_id": "69622c9d518fe818e4f407cf",
+        "order": 2
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 2889712,
+        "known_for_department": "Acting",
+        "name": "永濑安奈",
+        "original_name": "永瀬アンナ",
+        "popularity": 1.4499,
+        "profile_path": "/748FmLCklgnN8hrlBZ4bNsF4zpk.jpg",
+        "character": "Kache (voice)",
+        "credit_id": "6a021978ad162a3c7013329a",
+        "order": 3
+      }
+    ],
+    "crew": [
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 1452024,
+        "known_for_department": "Production",
+        "name": "稻垣亮祐",
+        "original_name": "稲垣亮祐",
+        "popularity": 0.1692,
+        "profile_path": null,
+        "credit_id": "6911dca734eec9d9e7dd231e",
+        "department": "Production",
+        "job": "Production Supervisor"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 2933187,
+        "known_for_department": "Directing",
+        "name": "中岛政兴",
+        "original_name": "中島政興",
+        "popularity": 0.1451,
+        "profile_path": null,
+        "credit_id": "6911dcb12859dd97554c8443",
+        "department": "Directing",
+        "job": "Series Director"
+      },
+      {
+        "adult": false,
+        "gender": 0,
+        "id": 5808166,
+        "known_for_department": "Visual Effects",
+        "name": "お久しぶり",
+        "original_name": "お久しぶり",
+        "popularity": 0.0071,
+        "profile_path": null,
+        "credit_id": "6911dd13104a5c0a2ddd2324",
+        "department": "Visual Effects",
+        "job": "Character Designer"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 3268192,
+        "known_for_department": "Art",
+        "name": "林龙太",
+        "original_name": "林竜太",
+        "popularity": 0.3328,
+        "profile_path": null,
+        "credit_id": "6911dd88ea22a108723a3188",
+        "department": "Art",
+        "job": "Art Direction"
+      },
+      {
+        "adult": false,
+        "gender": 0,
+        "id": 5424595,
+        "known_for_department": "Visual Effects",
+        "name": "丸本薫",
+        "original_name": "丸本薫",
+        "popularity": 0.0143,
+        "profile_path": null,
+        "credit_id": "6911dd949cdeac55348753bb",
+        "department": "Visual Effects",
+        "job": "CG Artist"
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 5424601,
+        "known_for_department": "Visual Effects",
+        "name": "酒井夢",
+        "original_name": "酒井夢",
+        "popularity": 0.0071,
+        "profile_path": null,
+        "credit_id": "6911dd98600d16f5aedd25e9",
+        "department": "Visual Effects",
+        "job": "CG Artist"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 5424600,
+        "known_for_department": "Visual Effects",
+        "name": "片野太輔",
+        "original_name": "片野太輔",
+        "popularity": 0.0143,
+        "profile_path": null,
+        "credit_id": "6911dd9c91a3814cebdd2096",
+        "department": "Visual Effects",
+        "job": "CG Artist"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 2032393,
+        "known_for_department": "Visual Effects",
+        "name": "近藤直登",
+        "original_name": "近藤直登",
+        "popularity": 0.505,
+        "profile_path": null,
+        "credit_id": "6911dda064a32b21624c8387",
+        "department": "Visual Effects",
+        "job": "Color Designer"
+      },
+      {
+        "adult": false,
+        "gender": 0,
+        "id": 5808175,
+        "known_for_department": "Sound",
+        "name": "Aiobahn +81",
+        "original_name": "Aiobahn +81",
+        "popularity": 0,
+        "profile_path": null,
+        "credit_id": "6911ddb391a3814cebdd20a5",
+        "department": "Sound",
+        "job": "Original Music Composer"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 5099917,
+        "known_for_department": "Sound",
+        "name": "原口沙輔",
+        "original_name": "原口沙輔",
+        "popularity": 0.0143,
+        "profile_path": null,
+        "credit_id": "6911ddb891a3814cebdd20ac",
+        "department": "Sound",
+        "job": "Original Music Composer"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 2933554,
+        "known_for_department": "Sound",
+        "name": "DÉ DÉ MOUSE",
+        "original_name": "DÉ DÉ MOUSE",
+        "popularity": 0.0362,
+        "profile_path": null,
+        "credit_id": "6911ddbc3c6c3c652c4c8633",
+        "department": "Sound",
+        "job": "Original Music Composer"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 1608128,
+        "known_for_department": "Sound",
+        "name": "乡文裕贵",
+        "original_name": "郷文裕貴",
+        "popularity": 0.3027,
+        "profile_path": null,
+        "credit_id": "6911ddc091326c06e2dd227a",
+        "department": "Sound",
+        "job": "Sound Director"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 1807034,
+        "known_for_department": "Sound",
+        "name": "上野励",
+        "original_name": "上野励",
+        "popularity": 0.3069,
+        "profile_path": null,
+        "credit_id": "6911ddc42e2d652ba63a3244",
+        "department": "Sound",
+        "job": "Sound Effects"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 5808164,
+        "known_for_department": "Writing",
+        "name": "にゃるら",
+        "original_name": "にゃるら",
+        "popularity": 0.0404,
+        "profile_path": "/6ckhKFwD5O3dvHkUliDCoTABOb3.jpg",
+        "credit_id": "69172d6edfa21e6e1340e888",
+        "department": "Writing",
+        "job": "Original Concept"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 2498364,
+        "known_for_department": "Visual Effects",
+        "name": "酒井謙次",
+        "original_name": "酒井謙次",
+        "popularity": 0.2449,
+        "profile_path": null,
+        "credit_id": "69172db925425a821b9c55a7",
+        "department": "Visual Effects",
+        "job": "Lead Character Designer"
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 4083896,
+        "known_for_department": "Visual Effects",
+        "name": "武井红璃",
+        "original_name": "武井紅璃",
+        "popularity": 0.0445,
+        "profile_path": null,
+        "credit_id": "69172dc05b452b4483a0e44f",
+        "department": "Visual Effects",
+        "job": "Lead Character Designer"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 3243443,
+        "known_for_department": "Visual Effects",
+        "name": "清水海都",
+        "original_name": "清水海都",
+        "popularity": 0.2121,
+        "profile_path": null,
+        "credit_id": "69172dcb55b34f734fa0e25a",
+        "department": "Visual Effects",
+        "job": "Lead Character Designer"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 2290663,
+        "known_for_department": "Camera",
+        "name": "吴健弘",
+        "original_name": "呉健弘",
+        "popularity": 0.1987,
+        "profile_path": null,
+        "credit_id": "69172e3b41b0b93d78a0e504",
+        "department": "Visual Effects",
+        "job": "Compositing Lead"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 2536500,
+        "known_for_department": "Editing",
+        "name": "柳圭介",
+        "original_name": "柳圭介",
+        "popularity": 0.3633,
+        "profile_path": null,
+        "credit_id": "6975c397ff9d26e701a36d8e",
+        "department": "Editing",
+        "job": "Editor"
+      }
+    ],
+    "id": 305329
+  },
+  "external_ids": {
+    "id": 305329,
+    "imdb_id": "tt39403976",
+    "freebase_mid": null,
+    "freebase_id": null,
+    "tvdb_id": 470270,
+    "tvrage_id": null,
+    "wikidata_id": "Q136751943",
+    "facebook_id": null,
+    "instagram_id": null,
+    "twitter_id": "needygirl_anime"
+  }
+}

@@ -1,0 +1,574 @@
+{
+  "adult": false,
+  "backdrop_path": "/x6y59dJBE1o0r4YRsWVQXE2nnlB.jpg",
+  "created_by": [],
+  "episode_run_time": [
+    25
+  ],
+  "first_air_date": "2016-04-04",
+  "genres": [
+    {
+      "id": 16,
+      "name": "动画"
+    },
+    {
+      "id": 10759,
+      "name": "动作冒险"
+    },
+    {
+      "id": 10765,
+      "name": "Sci-Fi & Fantasy"
+    },
+    {
+      "id": 9648,
+      "name": "悬疑"
+    },
+    {
+      "id": 18,
+      "name": "剧情"
+    }
+  ],
+  "homepage": "http://re-zero-anime.jp/",
+  "id": 65942,
+  "in_production": true,
+  "languages": [
+    "ja"
+  ],
+  "last_air_date": "2026-05-20",
+  "last_episode_to_air": {
+    "id": 7130064,
+    "name": "一走出便利店，就到了不可思议的世界",
+    "overview": "在与雷德的战斗中负伤的由里乌斯，暂且留在绿房间中休养。虽然昴一行人试图从夏乌拉口中打探出攻略初代剑圣的线索，却未能得到任何有用的信息。结束了短暂而欢乐的用餐后，在夜深时分，醒来的昴发现围巾多娜正独自伫立在阳台上。此刻的艾姬多娜不再扮演安娜塔西亚，而是以人工精灵的身份与昴展开了交谈。正当两人相互盘问彼此的真实意图时，这番对话却被由里乌斯听到了——",
+    "vote_average": 7.2,
+    "vote_count": 3,
+    "air_date": "2026-05-20",
+    "episode_number": 73,
+    "episode_type": "standard",
+    "production_code": "",
+    "runtime": 24,
+    "season_number": 1,
+    "show_id": 65942,
+    "still_path": "/uvtsYoh54o5e5FuFr6yUYvlkYdb.jpg"
+  },
+  "name": "Re：从零开始的异世界生活",
+  "next_episode_to_air": {
+    "id": 7130066,
+    "name": "第 74 集",
+    "overview": "",
+    "vote_average": 0,
+    "vote_count": 0,
+    "air_date": "2026-05-27",
+    "episode_number": 74,
+    "episode_type": "standard",
+    "production_code": "",
+    "runtime": null,
+    "season_number": 1,
+    "show_id": 65942,
+    "still_path": null
+  },
+  "networks": [
+    {
+      "id": 98,
+      "logo_path": "/jnuO8pZNEBLEq5YaOP1f5OkmG91.png",
+      "name": "TV Tokyo",
+      "origin_country": "JP"
+    },
+    {
+      "id": 173,
+      "logo_path": "/fERjndErEpveJmQZccJbJDi93rj.png",
+      "name": "AT-X",
+      "origin_country": "JP"
+    }
+  ],
+  "number_of_episodes": 85,
+  "number_of_seasons": 1,
+  "origin_country": [
+    "JP"
+  ],
+  "original_language": "ja",
+  "original_name": "Re:ゼロから始める異世界生活",
+  "overview": "在异世界陷入迷茫的普通高中生菜月昴，邂逅了一位银发的美少女。但想助她一臂之力的昴，却一次次地遭遇敌袭，背叛、暴力，甚至是死亡……“死亡回归”——无力的少年拥有的唯一能力，能将死后时间倒转回一开始。使用了这般力量，便会失去过去的回忆，可为了守护最重要的人们，昴必须抗争到底。“即使你忘却了我，我也不会遗忘你。”",
+  "popularity": 99.7749,
+  "poster_path": "/a1pMK4456dF2j5B9xvkjMEGiOOw.jpg",
+  "production_companies": [
+    {
+      "id": 12569,
+      "logo_path": "/pROt6mT15AC5aTadf7NRBRiTVo3.png",
+      "name": "White Fox",
+      "origin_country": "JP"
+    },
+    {
+      "id": 2073,
+      "logo_path": "/tWxRSaKmRJNTcmtlXsmn5R4KOSU.png",
+      "name": "KADOKAWA",
+      "origin_country": "JP"
+    },
+    {
+      "id": 142186,
+      "logo_path": "/bdXTOuU7PdsDtQngyM7vb47zePs.png",
+      "name": "Hakuhodo DY Music & Pictures",
+      "origin_country": "JP"
+    },
+    {
+      "id": 157002,
+      "logo_path": "/hSdroyVthq3CynxTIIY7lnS8w1.png",
+      "name": "Tokyo MX",
+      "origin_country": "JP"
+    },
+    {
+      "id": 17981,
+      "logo_path": "/8UABNMysukRi4udTHYxcNUMbPR1.png",
+      "name": "AT-X",
+      "origin_country": "JP"
+    },
+    {
+      "id": 12540,
+      "logo_path": null,
+      "name": "Memory-Tech",
+      "origin_country": "JP"
+    },
+    {
+      "id": 225089,
+      "logo_path": "/g2DdqSxJNOzr9uoEwAcOcSi6DRQ.png",
+      "name": "DAXEL",
+      "origin_country": "JP"
+    }
+  ],
+  "production_countries": [
+    {
+      "iso_3166_1": "JP",
+      "name": "Japan"
+    }
+  ],
+  "seasons": [
+    {
+      "air_date": "2016-04-05",
+      "episode_count": 73,
+      "id": 76465,
+      "name": "特别篇",
+      "overview": "",
+      "poster_path": "/4Gsh6zCE6SYNlal3FW6scj3PkAz.jpg",
+      "season_number": 0,
+      "vote_average": 0
+    },
+    {
+      "air_date": "2016-04-04",
+      "episode_count": 85,
+      "id": 75470,
+      "name": "第 1 季",
+      "overview": "在从便利商店回家的路上，突然被异世界召唤的少年菜月昴。在无法依靠任何东西的异世界，无力的少年手唯一的力量……那是“死去然后重新开始”的力量。为了守护最重要的人们，为了取回确实存在着又无可替代的时间，少年抗拒着绝望，勇敢地面对着残酷的命运。",
+      "poster_path": "/hslDfZUH1d4wRq860G9o3vMmcIH.jpg",
+      "season_number": 1,
+      "vote_average": 8.4
+    }
+  ],
+  "softcore": false,
+  "spoken_languages": [
+    {
+      "english_name": "Japanese",
+      "iso_639_1": "ja",
+      "name": "日本語"
+    }
+  ],
+  "status": "Returning Series",
+  "tagline": "死亡不过是下一次重逢的起点",
+  "type": "Scripted",
+  "vote_average": 7.86,
+  "vote_count": 625,
+  "credits": {
+    "cast": [
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 1350418,
+        "known_for_department": "Acting",
+        "name": "小林裕介",
+        "original_name": "小林裕介",
+        "popularity": 1.529,
+        "profile_path": "/y4ukKDSobZJNuB4H3k89hkrKCDC.jpg",
+        "character": "Subaru Natsuki (voice)",
+        "credit_id": "5742e061c3a36852980001b4",
+        "order": 0
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 1492982,
+        "known_for_department": "Acting",
+        "name": "高桥李依",
+        "original_name": "高橋李依",
+        "popularity": 2.3394,
+        "profile_path": "/aeB7z0cBTASdjKOjQriBAO6hYq4.jpg",
+        "character": "Emilia (voice)",
+        "credit_id": "5742e0d8c3a36877550024fb",
+        "order": 1
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 1321070,
+        "known_for_department": "Acting",
+        "name": "内山夕实",
+        "original_name": "内山夕実",
+        "popularity": 1.9225,
+        "profile_path": "/JvavoF3YOLCf4LHfl4XvYobANE.jpg",
+        "character": "Puck (voice)",
+        "credit_id": "5742e1e59251416ce6002901",
+        "order": 2
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 1296666,
+        "known_for_department": "Acting",
+        "name": "赤崎千夏",
+        "original_name": "赤﨑千夏",
+        "popularity": 1.6362,
+        "profile_path": "/nYYs30FgGrgr3uOiQ4ASmRpFca2.jpg",
+        "character": "Felt (voice)",
+        "credit_id": "5742e212c3a3686c8c001914",
+        "order": 3
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 1221114,
+        "known_for_department": "Acting",
+        "name": "中村悠一",
+        "original_name": "中村悠一",
+        "popularity": 1.9569,
+        "profile_path": "/wb8behVKjBHX9XXrEydvNINCYwH.jpg",
+        "character": "Reinhard van Astrea (voice)",
+        "credit_id": "5742e2d8c3a368775500256b",
+        "order": 4
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 1325949,
+        "known_for_department": "Acting",
+        "name": "水濑祈",
+        "original_name": "水瀬いのり",
+        "popularity": 2.3161,
+        "profile_path": "/cqOrQDUbbQLKpujzcK47YqjFdNp.jpg",
+        "character": "Rem (voice)",
+        "credit_id": "5742e556925141111a001c79",
+        "order": 5
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 1324665,
+        "known_for_department": "Acting",
+        "name": "村川梨衣",
+        "original_name": "村川梨衣",
+        "popularity": 1.0756,
+        "profile_path": "/pawIx7uhV1a2fAHjvTnrCP0KcHX.jpg",
+        "character": "Ram (voice)",
+        "credit_id": "5742e644925141019f00028f",
+        "order": 6
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 84508,
+        "known_for_department": "Acting",
+        "name": "子安武人",
+        "original_name": "子安武人",
+        "popularity": 2.5078,
+        "profile_path": "/8uBkNDKPNmp9JWgMUI02NVyfhi1.jpg",
+        "character": "Roswaal L. Mathers (voice)",
+        "credit_id": "5742e6ca9251416ce6002997",
+        "order": 7
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 219563,
+        "known_for_department": "Acting",
+        "name": "新井里美",
+        "original_name": "新井里美",
+        "popularity": 2.9055,
+        "profile_path": "/v95wU1gpSLAOJS5yKFTxyheXAW2.jpg",
+        "character": "Beatrice (voice)",
+        "credit_id": "5742e6af925141111a001ca5",
+        "order": 8
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 1885279,
+        "known_for_department": "Acting",
+        "name": "天崎滉平",
+        "original_name": "天﨑滉平",
+        "popularity": 1.6842,
+        "profile_path": "/tnN5jLiLjcDa7qn88uLb1iAfivL.jpg",
+        "character": "Otto Suwen (voice)",
+        "credit_id": "5ee2425790dde00021aac375",
+        "order": 9
+      }
+    ],
+    "crew": [
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 3345100,
+        "known_for_department": "Production",
+        "name": "岩佐岳",
+        "original_name": "岩佐岳",
+        "popularity": 0.3219,
+        "profile_path": null,
+        "credit_id": "67bc2cb7741152b0420abacd",
+        "department": "Production",
+        "job": "Production Supervisor"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 1624757,
+        "known_for_department": "Camera",
+        "name": "峰岸健太郎",
+        "original_name": "峰岸健太郎",
+        "popularity": 0.2487,
+        "profile_path": null,
+        "credit_id": "67016734f878adfed0856902",
+        "department": "Camera",
+        "job": "Director of Photography"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 1624752,
+        "known_for_department": "Writing",
+        "name": "长月达平",
+        "original_name": "長月達平",
+        "popularity": 0.5654,
+        "profile_path": null,
+        "credit_id": "670127ebb146282f7b855589",
+        "department": "Directing",
+        "job": "Script Supervisor"
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 3173213,
+        "known_for_department": "Crew",
+        "name": "川西美保",
+        "original_name": "川西美保",
+        "popularity": 0.2106,
+        "profile_path": null,
+        "credit_id": "65708670fad8e900adbc5f12",
+        "department": "Crew",
+        "job": "Special Effects"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 1845876,
+        "known_for_department": "Sound",
+        "name": "古谷友二",
+        "original_name": "古谷友二",
+        "popularity": 0.348,
+        "profile_path": null,
+        "credit_id": "6570862e41ad8d06e56ac548",
+        "department": "Sound",
+        "job": "Sound Effects"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 2403769,
+        "known_for_department": "Art",
+        "name": "铃木典孝",
+        "original_name": "鈴木典孝",
+        "popularity": 0.3131,
+        "profile_path": null,
+        "credit_id": "6570860c0cb33500e4bd8d3d",
+        "department": "Art",
+        "job": "Prop Designer"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 2392824,
+        "known_for_department": "Art",
+        "name": "岩畑刚一",
+        "original_name": "岩畑剛一",
+        "popularity": 0.3008,
+        "profile_path": null,
+        "credit_id": "657085f7d18fb9095ecf1656",
+        "department": "Art",
+        "job": "Prop Designer"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 2174356,
+        "known_for_department": "Sound",
+        "name": "若林豪",
+        "original_name": "若林豪",
+        "popularity": 0.2539,
+        "profile_path": null,
+        "credit_id": "657085d1383df200ae503e27",
+        "department": "Sound",
+        "job": "Music Producer"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 1647492,
+        "known_for_department": "Production",
+        "name": "池本昌仁",
+        "original_name": "池本昌仁",
+        "popularity": 0.1405,
+        "profile_path": null,
+        "credit_id": "6570854979a1c3011b4208e5",
+        "department": "Production",
+        "job": "Producer"
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 1819782,
+        "known_for_department": "Production",
+        "name": "青木绘理子",
+        "original_name": "青木絵理子",
+        "popularity": 0.2691,
+        "profile_path": null,
+        "credit_id": "65708508fad8e900e39e7c36",
+        "department": "Production",
+        "job": "Producer"
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 2362599,
+        "known_for_department": "Production",
+        "name": "饭冢彩",
+        "original_name": "飯塚彩",
+        "popularity": 0.4765,
+        "profile_path": null,
+        "credit_id": "657084efd18fb90958e9bdd2",
+        "department": "Production",
+        "job": "Producer"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 1565177,
+        "known_for_department": "Sound",
+        "name": "末广健一郎",
+        "original_name": "末廣健一郎",
+        "popularity": 0.6594,
+        "profile_path": "/aNS2Hb3PfgckUMM8ELnbaDYIF7b.jpg",
+        "credit_id": "61931812957e6d0085c222b5",
+        "department": "Sound",
+        "job": "Original Music Composer"
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 1624759,
+        "known_for_department": "Editing",
+        "name": "须藤瞳",
+        "original_name": "須藤瞳",
+        "popularity": 0.4906,
+        "profile_path": null,
+        "credit_id": "5742ecaac3a36852980003ac",
+        "department": "Editing",
+        "job": "Editor"
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 1624758,
+        "known_for_department": "Visual Effects",
+        "name": "坂本いづみ",
+        "original_name": "坂本いづみ",
+        "popularity": 0.1643,
+        "profile_path": null,
+        "credit_id": "5742ec8cc3a36868e4001aa4",
+        "department": "Visual Effects",
+        "job": "Color Designer"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 570486,
+        "known_for_department": "Sound",
+        "name": "明田川仁",
+        "original_name": "明田川仁",
+        "popularity": 0.5188,
+        "profile_path": null,
+        "credit_id": "5742ec279251411dc8001ce6",
+        "department": "Sound",
+        "job": "Sound Director"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 550581,
+        "known_for_department": "Writing",
+        "name": "横谷昌宏",
+        "original_name": "横谷昌宏",
+        "popularity": 1.1959,
+        "profile_path": "/vFFo7ODIFfKuoKlRqGpGweIDFTE.jpg",
+        "credit_id": "5742e90cc3a368534200033d",
+        "department": "Writing",
+        "job": "Series Composition"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 2355199,
+        "known_for_department": "Art",
+        "name": "大冢真一郎",
+        "original_name": "大塚真一郎",
+        "popularity": 0.1942,
+        "profile_path": null,
+        "credit_id": "67599a57ef269d0b88e3a935",
+        "department": "Visual Effects",
+        "job": "Character Designer"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 2355199,
+        "known_for_department": "Art",
+        "name": "大冢真一郎",
+        "original_name": "大塚真一郎",
+        "popularity": 0.1942,
+        "profile_path": null,
+        "credit_id": "67599a925c364c4a67ffdeec",
+        "department": "Art",
+        "job": "Original Series Design"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 1624752,
+        "known_for_department": "Writing",
+        "name": "长月达平",
+        "original_name": "長月達平",
+        "popularity": 0.5654,
+        "profile_path": null,
+        "credit_id": "67599ab02d200c84f191281e",
+        "department": "Writing",
+        "job": "Novel"
+      }
+    ],
+    "id": 65942
+  },
+  "external_ids": {
+    "id": 65942,
+    "imdb_id": "tt5607616",
+    "freebase_mid": null,
+    "freebase_id": null,
+    "tvdb_id": 305089,
+    "tvrage_id": null,
+    "wikidata_id": "Q65086934",
+    "facebook_id": null,
+    "instagram_id": null,
+    "twitter_id": "Rezero_official"
+  }
+}

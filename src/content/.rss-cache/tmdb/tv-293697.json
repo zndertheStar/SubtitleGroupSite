@@ -1,0 +1,311 @@
+{
+  "adult": false,
+  "backdrop_path": "/rep8uV9N7jSYpxpxH7glSP6qOmp.jpg",
+  "created_by": [],
+  "episode_run_time": [
+    24
+  ],
+  "first_air_date": "2026-04-14",
+  "genres": [
+    {
+      "id": 35,
+      "name": "喜剧"
+    },
+    {
+      "id": 16,
+      "name": "动画"
+    }
+  ],
+  "homepage": "https://www.aishiteru-game.com/",
+  "id": 293697,
+  "in_production": true,
+  "languages": [
+    "ja"
+  ],
+  "last_air_date": "2026-05-12",
+  "last_episode_to_air": {
+    "id": 7148543,
+    "name": "青梅竹马想过夜",
+    "overview": "自己是不是根本没有作为女孩子的魅力呢？因为优希也冷淡的态度而烦恼不已的美玖，若无其事地向优希也的妹妹若菜咨询，并被推荐去看少女漫画。而美玖在那里发现了两人“还没有做过的事情”。那就是……过夜留宿！美玖一边展开各种妄想，一边回想起以前曾经理所当然地去优希也家玩的时光。",
+    "vote_average": 6,
+    "vote_count": 1,
+    "air_date": "2026-05-19",
+    "episode_number": 6,
+    "episode_type": "standard",
+    "production_code": "",
+    "runtime": 24,
+    "season_number": 1,
+    "show_id": 293697,
+    "still_path": "/l1t4n44VNs2rhSaXCjs5M8h1u1w.jpg"
+  },
+  "name": "想结束这场“我爱你”的游戏",
+  "next_episode_to_air": {
+    "id": 7148544,
+    "name": "青梅竹马想要决出胜负",
+    "overview": "",
+    "vote_average": 0,
+    "vote_count": 0,
+    "air_date": "2026-05-26",
+    "episode_number": 7,
+    "episode_type": "standard",
+    "production_code": "",
+    "runtime": 24,
+    "season_number": 1,
+    "show_id": 293697,
+    "still_path": null
+  },
+  "networks": [
+    {
+      "id": 614,
+      "logo_path": "/hSdroyVthq3CynxTIIY7lnS8w1.png",
+      "name": "Tokyo MX",
+      "origin_country": "JP"
+    }
+  ],
+  "number_of_episodes": 12,
+  "number_of_seasons": 1,
+  "origin_country": [
+    "JP"
+  ],
+  "original_language": "ja",
+  "original_name": "愛してるゲームを終わらせたい",
+  "overview": "升上同一所高中的浅葱优希也与樱美玖，是一对“彼此暗恋”的青梅竹马。明明已经察觉到自己的心意，却始终无法坦率面对彼此，距离越近，越喜欢对方，也越是说不出口。无法坦率的两人，连系着他们的是从孩提时期就持续到现在的“我爱你游戏”。两人轮流说出“我爱你”，先害羞的人就输了，这般幼稚的游戏，直到现在这场意气之争仍然持续着。为了摆脱彼此暗恋的关系，倾注所有心意的“恋爱游戏”即将开始！",
+  "popularity": 7.4979,
+  "poster_path": "/zyyaIikcX14ezH2lHoKlWue0Dpt.jpg",
+  "production_companies": [
+    {
+      "id": 106076,
+      "logo_path": "/5FHxgxvhqNC6aOVce3X9T2Wz426.png",
+      "name": "FelixFilm",
+      "origin_country": "JP"
+    },
+    {
+      "id": 258677,
+      "logo_path": null,
+      "name": "NK Animation",
+      "origin_country": "JP"
+    },
+    {
+      "id": 3363,
+      "logo_path": "/sj3vD7n63bTCih7bcf6GnWvRf1Q.png",
+      "name": "MBS",
+      "origin_country": "JP"
+    },
+    {
+      "id": 193095,
+      "logo_path": "/xhOXB3eXGnadZWouVZ1X4NbiGkN.png",
+      "name": "HIKE",
+      "origin_country": "JP"
+    },
+    {
+      "id": 188144,
+      "logo_path": "/tft4KzwjS3okGiN6duB3qwHkIX1.png",
+      "name": "BS Asahi",
+      "origin_country": "JP"
+    },
+    {
+      "id": 3466,
+      "logo_path": "/lmCg0zarmM52wrmsZRUY0QlPKLh.png",
+      "name": "movic",
+      "origin_country": "JP"
+    },
+    {
+      "id": 210007,
+      "logo_path": null,
+      "name": "JIN",
+      "origin_country": "JP"
+    },
+    {
+      "id": 157001,
+      "logo_path": "/vDBycpPRLKBf7T0RQbQtU49BQO6.png",
+      "name": "KADOKAWA Media House",
+      "origin_country": "JP"
+    },
+    {
+      "id": 6681,
+      "logo_path": "/s4RElEnQyM2VrHZCQ3jYemPdxML.png",
+      "name": "THE KLOCKWORX",
+      "origin_country": "JP"
+    }
+  ],
+  "production_countries": [
+    {
+      "iso_3166_1": "JP",
+      "name": "Japan"
+    }
+  ],
+  "seasons": [
+    {
+      "air_date": "2026-04-14",
+      "episode_count": 12,
+      "id": 460601,
+      "name": "第 1 季",
+      "overview": "",
+      "poster_path": "/zyyaIikcX14ezH2lHoKlWue0Dpt.jpg",
+      "season_number": 1,
+      "vote_average": 6.4
+    }
+  ],
+  "softcore": false,
+  "spoken_languages": [
+    {
+      "english_name": "Japanese",
+      "iso_639_1": "ja",
+      "name": "日本語"
+    }
+  ],
+  "status": "Returning Series",
+  "tagline": "无限甜蜜的青春剧场，使尽全力的恋爱游戏",
+  "type": "Scripted",
+  "vote_average": 5.9,
+  "vote_count": 5,
+  "credits": {
+    "cast": [
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 1324666,
+        "known_for_department": "Acting",
+        "name": "石川界人",
+        "original_name": "石川界人",
+        "popularity": 2.2068,
+        "profile_path": "/fzjIkotjUHHs3wgftM9tqdsG8ph.jpg",
+        "character": "Yukiya Asagi (voice)",
+        "credit_id": "69de5ee7b9b7e801e8c7454c",
+        "order": 0
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 1530921,
+        "known_for_department": "Acting",
+        "name": "伊藤美来",
+        "original_name": "伊藤美来",
+        "popularity": 2.6352,
+        "profile_path": "/kP7JBvveQO9ucYpmOvUNcW5RLAp.jpg",
+        "character": "Miku Sakura (voice)",
+        "credit_id": "69de5f0d89fadc1d2a3746ae",
+        "order": 1
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 3114235,
+        "known_for_department": "Acting",
+        "name": "丸冈和佳奈",
+        "original_name": "丸岡和佳奈",
+        "popularity": 0.9318,
+        "profile_path": "/zXjLchp5JdobASNbU8WOU8hugsM.jpg",
+        "character": "Wakana Asagi (voice)",
+        "credit_id": "69de5f339d3da8268f02826b",
+        "order": 2
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 84508,
+        "known_for_department": "Acting",
+        "name": "子安武人",
+        "original_name": "子安武人",
+        "popularity": 2.5078,
+        "profile_path": "/8uBkNDKPNmp9JWgMUI02NVyfhi1.jpg",
+        "character": "Masaru Shinonome (voice)",
+        "credit_id": "69de5faa28d0821637028731",
+        "order": 3
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 1057990,
+        "known_for_department": "Acting",
+        "name": "小仓唯",
+        "original_name": "小倉唯",
+        "popularity": 2.0842,
+        "profile_path": "/vUuyLWde2CEd5G0oqeEzzFE6qqA.jpg",
+        "character": "Hinako Hanaba (voice)",
+        "credit_id": "69de5f67aed09908d0c74940",
+        "order": 4
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 1779027,
+        "known_for_department": "Acting",
+        "name": "本渡枫",
+        "original_name": "本渡楓",
+        "popularity": 1.6305,
+        "profile_path": "/11BcHnuJYrOZhIftgUiQqfm7TK6.jpg",
+        "character": "Natsuki Moegi (voice)",
+        "credit_id": "69de5f84ace24ff22dd94322",
+        "order": 5
+      }
+    ],
+    "crew": [
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 1736405,
+        "known_for_department": "Directing",
+        "name": "谷東",
+        "original_name": "谷東",
+        "popularity": 0.2298,
+        "profile_path": null,
+        "credit_id": "69e2a158b7a2ff3eab39574f",
+        "department": "Directing",
+        "job": "Director"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 1845135,
+        "known_for_department": "Writing",
+        "name": "大知庆一郎",
+        "original_name": "大知慶一郎",
+        "popularity": 0.6364,
+        "profile_path": null,
+        "credit_id": "69e2a18115a1f2f6f926e4f3",
+        "department": "Writing",
+        "job": "Series Composition"
+      },
+      {
+        "adult": false,
+        "gender": 0,
+        "id": 1569490,
+        "known_for_department": "Visual Effects",
+        "name": "福地友树",
+        "original_name": "福地友樹",
+        "popularity": 0.1911,
+        "profile_path": null,
+        "credit_id": "69e2a1cda5d31d0514bedefb",
+        "department": "Visual Effects",
+        "job": "Character Designer"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 1368258,
+        "known_for_department": "Sound",
+        "name": "松田彬人",
+        "original_name": "松田彬人",
+        "popularity": 0.1838,
+        "profile_path": null,
+        "credit_id": "69e2a225f62d9a1e1d7c7ffb",
+        "department": "Sound",
+        "job": "Music"
+      }
+    ],
+    "id": 293697
+  },
+  "external_ids": {
+    "id": 293697,
+    "imdb_id": "tt39122671",
+    "freebase_mid": null,
+    "freebase_id": null,
+    "tvdb_id": 464717,
+    "tvrage_id": null,
+    "wikidata_id": "Q134880954",
+    "facebook_id": null,
+    "instagram_id": null,
+    "twitter_id": "aishiterugame"
+  }
+}

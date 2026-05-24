@@ -1,0 +1,731 @@
+{
+  "adult": false,
+  "backdrop_path": "/hZJglA9AC48swSFgzJCHG11B9zV.jpg",
+  "created_by": [],
+  "episode_run_time": [
+    24
+  ],
+  "first_air_date": "2023-01-07",
+  "genres": [
+    {
+      "id": 16,
+      "name": "动画"
+    },
+    {
+      "id": 35,
+      "name": "喜剧"
+    }
+  ],
+  "homepage": "https://otonarino-tenshisama.jp",
+  "id": 154743,
+  "in_production": true,
+  "languages": [
+    "ja"
+  ],
+  "last_air_date": "2026-05-15",
+  "last_episode_to_air": {
+    "id": 7109296,
+    "name": "文化节，开幕",
+    "overview": "周的班级决定在文化节上举办“女仆执事咖啡厅”。作为负责接待的店员，换上新装的真昼与周都被彼此的模样深深吸引，并开始察觉到自己心中那份强烈的独占欲。看到周在女生中大受欢迎而坐立不安的真昼，周告诉她“我唯一在意的人只有真昼”让她放下心来。然而，周自己同样也因为真昼吸引了周围众多目光而感到心情复杂。他暗自下定决心，在文化节当天一定要守护在真昼的身边。",
+    "vote_average": 0,
+    "vote_count": 0,
+    "air_date": "2026-05-22",
+    "episode_number": 8,
+    "episode_type": "standard",
+    "production_code": "",
+    "runtime": 24,
+    "season_number": 2,
+    "show_id": 154743,
+    "still_path": "/iBZbY3jcgXC4xUngyrj5WzWhxHS.jpg"
+  },
+  "name": "邻家的天使同学",
+  "next_episode_to_air": {
+    "id": 7109297,
+    "name": "第 9 集",
+    "overview": "",
+    "vote_average": 0,
+    "vote_count": 0,
+    "air_date": "2026-05-29",
+    "episode_number": 9,
+    "episode_type": "standard",
+    "production_code": "",
+    "runtime": 24,
+    "season_number": 2,
+    "show_id": 154743,
+    "still_path": null
+  },
+  "networks": [
+    {
+      "id": 614,
+      "logo_path": "/hSdroyVthq3CynxTIIY7lnS8w1.png",
+      "name": "Tokyo MX",
+      "origin_country": "JP"
+    }
+  ],
+  "number_of_episodes": 24,
+  "number_of_seasons": 2,
+  "origin_country": [
+    "JP"
+  ],
+  "original_language": "ja",
+  "original_name": "お隣の天使様にいつの間にか駄目人間にされていた件",
+  "overview": "高一学生藤宫周在升学后开始了他的独居生活。他所在的公寓隔壁，住着他们学校第一的美少女——椎名真昼。他们二人平时几乎没有交集。而一次大雨中，周把伞借给了浑身湿透的真昼。自此，二人便开始了奇妙的交流。周的懒散独居生活让真昼实在看不下去。她便开始为他做饭，打扫卫生，照顾他的起居。互为邻居的二人渐渐地开始对彼此有所了解。这是一个与可爱邻居之间的甜蜜又让人心急的恋爱故事——",
+  "popularity": 30.4234,
+  "poster_path": "/vNslQo6TikLZLXnHDda3PHJ3CG8.jpg",
+  "production_companies": [
+    {
+      "id": 74464,
+      "logo_path": "/q0CjdGQy6d59QkUTP2yWHk5Oa6E.png",
+      "name": "project No.9",
+      "origin_country": "JP"
+    },
+    {
+      "id": 882,
+      "logo_path": "/fRSWWjquvzcHjACbtF53utZFIll.png",
+      "name": "TOHO",
+      "origin_country": "JP"
+    },
+    {
+      "id": 142185,
+      "logo_path": "/1gWzgRKlpVVHLY8yYzTFesSZzR2.png",
+      "name": "SB Creative",
+      "origin_country": "JP"
+    },
+    {
+      "id": 9148,
+      "logo_path": "/rtW3NadfF4kR5mTW00ahiFxw6k7.png",
+      "name": "Pony Canyon",
+      "origin_country": "JP"
+    },
+    {
+      "id": 3466,
+      "logo_path": "/lmCg0zarmM52wrmsZRUY0QlPKLh.png",
+      "name": "movic",
+      "origin_country": "JP"
+    },
+    {
+      "id": 60197,
+      "logo_path": "/D5B8l99tlFJGoMpYJk1kqxYdey.png",
+      "name": "Good Smile Company",
+      "origin_country": "JP"
+    },
+    {
+      "id": 14981,
+      "logo_path": "/fIi2iU63SyDSIx6u61vERxlmsET.png",
+      "name": "PIA Corporation",
+      "origin_country": "JP"
+    },
+    {
+      "id": 157002,
+      "logo_path": "/hSdroyVthq3CynxTIIY7lnS8w1.png",
+      "name": "Tokyo MX",
+      "origin_country": "JP"
+    }
+  ],
+  "production_countries": [
+    {
+      "iso_3166_1": "JP",
+      "name": "Japan"
+    }
+  ],
+  "seasons": [
+    {
+      "air_date": "2023-01-07",
+      "episode_count": 12,
+      "id": 238374,
+      "name": "第 1 季",
+      "overview": "高一学生藤宫周在升学后开始了他的独居生活。他所在的公寓隔壁，住着他们学校第一的美少女——椎名真昼。他们二人平时几乎没有交集。而一次大雨中，周把伞借给了浑身湿透的真昼。自此，二人便开始了奇妙的交流。周的懒散独居生活让真昼实在看不下去。她便开始为他做饭，打扫卫生，照顾他的起居。互为邻居的二人渐渐地开始对彼此有所了解。这是一个与可爱邻居之间的甜蜜又让人心急的恋爱故事——",
+      "poster_path": "/vNslQo6TikLZLXnHDda3PHJ3CG8.jpg",
+      "season_number": 1,
+      "vote_average": 7.7
+    },
+    {
+      "air_date": "2026-04-03",
+      "episode_count": 12,
+      "id": 360133,
+      "name": "第 2 季",
+      "overview": "因为在公寓里碰巧是邻居而开始交流的藤宫周和椎名真昼，在高中2年级的体育节后，公开交往。\n\n亲手做的饭和浴衣约会等，简直就像新婚一样的气氛，但是两个人还是心跳加速。\n\n然后以各种各样的事情为契机，两人跨越了过往。\n\n两人甜蜜而焦躁的恋爱故事还在继续——",
+      "poster_path": "/xv8FOKQlVwb0b21t1F2VywpPLqf.jpg",
+      "season_number": 2,
+      "vote_average": 0
+    }
+  ],
+  "softcore": false,
+  "spoken_languages": [
+    {
+      "english_name": "Japanese",
+      "iso_639_1": "ja",
+      "name": "日本語"
+    }
+  ],
+  "status": "Returning Series",
+  "tagline": "",
+  "type": "Scripted",
+  "vote_average": 7.8,
+  "vote_count": 107,
+  "credits": {
+    "cast": [
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 2106489,
+        "known_for_department": "Acting",
+        "name": "坂泰斗",
+        "original_name": "坂泰斗",
+        "popularity": 1.5235,
+        "profile_path": "/pSExEOVmjAujKUyJJJSxC1WEzOM.jpg",
+        "character": "Amane Fujimiya (voice)",
+        "credit_id": "61d44960bb2602001c72513d",
+        "order": 0
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 1835721,
+        "known_for_department": "Acting",
+        "name": "石见舞菜香",
+        "original_name": "石見舞菜香",
+        "popularity": 1.6218,
+        "profile_path": "/leKMaCBswXG8u4mfQNQ7J3y6Xow.jpg",
+        "character": "Mahiru Shiina (voice)",
+        "credit_id": "61d449804975600067a8305b",
+        "order": 1
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 1613379,
+        "known_for_department": "Acting",
+        "name": "八代拓",
+        "original_name": "八代拓",
+        "popularity": 1.5842,
+        "profile_path": "/eVdB6myaNJ4h38UU9hHHlsaCWHn.jpg",
+        "character": "Itsuki Akazawa (voice)",
+        "credit_id": "61d449a1a22d3e00430fce6a",
+        "order": 2
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 1124536,
+        "known_for_department": "Acting",
+        "name": "白石晴香",
+        "original_name": "白石晴香",
+        "popularity": 1.7055,
+        "profile_path": "/hrQxTVNGLi3jXC7v4kETArpA0dV.jpg",
+        "character": "Chitose Shirakawa (voice)",
+        "credit_id": "61d449c35541fa00678f193e",
+        "order": 3
+      }
+    ],
+    "crew": [
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 5730406,
+        "known_for_department": "Production",
+        "name": "川合乃彩",
+        "original_name": "河合乃彩",
+        "popularity": 0.0602,
+        "profile_path": null,
+        "credit_id": "69e36c4b069945c8c2bee3d9",
+        "department": "Production",
+        "job": "Publicist"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 2044642,
+        "known_for_department": "Production",
+        "name": "大田圭二",
+        "original_name": "大田圭二",
+        "popularity": 0.6455,
+        "profile_path": "/15NZaRqZHSguv6wF2SvuFoYlkiO.jpg",
+        "credit_id": "69e36c75f62d9a1e1d7c83b7",
+        "department": "Production",
+        "job": "Other"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 2800859,
+        "known_for_department": "Production",
+        "name": "山中一孝",
+        "original_name": "山中一孝",
+        "popularity": 0.3235,
+        "profile_path": null,
+        "credit_id": "69e36cc33c7a430ef724fde9",
+        "department": "Production",
+        "job": "Executive Producer"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 2814144,
+        "known_for_department": "Production",
+        "name": "高桥敦司",
+        "original_name": "高橋敦司",
+        "popularity": 0.468,
+        "profile_path": null,
+        "credit_id": "69e36ccccc2cd04b2b7c84f6",
+        "department": "Production",
+        "job": "Supervising Producer"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 1735187,
+        "known_for_department": "Production",
+        "name": "武井克弘",
+        "original_name": "武井克弘",
+        "popularity": 0.2759,
+        "profile_path": "/8x2aVss0atoUlH0ID3Oboro6Mhd.jpg",
+        "credit_id": "69e36cd5e5d41f29aa77c3f9",
+        "department": "Production",
+        "job": "Supervising Producer"
+      },
+      {
+        "adult": false,
+        "gender": 0,
+        "id": 5708853,
+        "known_for_department": "Production",
+        "name": "清水大雅",
+        "original_name": "清水大雅",
+        "popularity": 0.0143,
+        "profile_path": null,
+        "credit_id": "69e36cf63c7a430ef724fdf1",
+        "department": "Production",
+        "job": "Producer"
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 2398504,
+        "known_for_department": "Production",
+        "name": "岡崎梢枝",
+        "original_name": "岡崎梢枝",
+        "popularity": 0.0214,
+        "profile_path": null,
+        "credit_id": "69e36cfd399b4fc76d26eb20",
+        "department": "Production",
+        "job": "Producer"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 4333802,
+        "known_for_department": "Production",
+        "name": "岩田誉生",
+        "original_name": "岩田誉生",
+        "popularity": 0.2117,
+        "profile_path": null,
+        "credit_id": "69e36d10483675000677c494",
+        "department": "Production",
+        "job": "Associate Producer"
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 3803534,
+        "known_for_department": "Production",
+        "name": "长濑奈津子",
+        "original_name": "長瀬奈津子",
+        "popularity": 0.2818,
+        "profile_path": null,
+        "credit_id": "69e36d1715a1f2f6f926e927",
+        "department": "Production",
+        "job": "Associate Producer"
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 6150770,
+        "known_for_department": "Production",
+        "name": "遠山美沙子",
+        "original_name": "遠山美沙子",
+        "popularity": 0.0168,
+        "profile_path": null,
+        "credit_id": "69e36d46329ae9585c24fd5b",
+        "department": "Production",
+        "job": "Associate Producer"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 4333820,
+        "known_for_department": "Production",
+        "name": "土居耕介",
+        "original_name": "土居耕介",
+        "popularity": 0.0852,
+        "profile_path": null,
+        "credit_id": "69e36f3688f5470b34395ba4",
+        "department": "Production",
+        "job": "Publicist"
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 6150778,
+        "known_for_department": "Production",
+        "name": "松田結衣",
+        "original_name": "松田結衣",
+        "popularity": 0.0071,
+        "profile_path": null,
+        "credit_id": "69e36f70c83bf721e10d13e7",
+        "department": "Production",
+        "job": "Publicist"
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 3992783,
+        "known_for_department": "Production",
+        "name": "木立己百花",
+        "original_name": "木立己百花",
+        "popularity": 0.3509,
+        "profile_path": null,
+        "credit_id": "69e36fa7e4be0eeef026e909",
+        "department": "Production",
+        "job": "Publicist"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 5174053,
+        "known_for_department": "Art",
+        "name": "早川瑛大",
+        "original_name": "早川瑛大",
+        "popularity": 0.0214,
+        "profile_path": null,
+        "credit_id": "69e36fcd1d7fee7abdadf012",
+        "department": "Art",
+        "job": "Art Designer"
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 5197853,
+        "known_for_department": "Art",
+        "name": "赤冢美歌",
+        "original_name": "赤塚美歌",
+        "popularity": 0.0071,
+        "profile_path": null,
+        "credit_id": "69e36fd3496d543c7b395b46",
+        "department": "Art",
+        "job": "Art Designer"
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 5197861,
+        "known_for_department": "Art",
+        "name": "田中志乃",
+        "original_name": "田中志乃",
+        "popularity": 0.0928,
+        "profile_path": null,
+        "credit_id": "69e36fda96a327aa6dbee345",
+        "department": "Art",
+        "job": "Art Designer"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 3860425,
+        "known_for_department": "Visual Effects",
+        "name": "星野拓海",
+        "original_name": "星野拓海",
+        "popularity": 0.1549,
+        "profile_path": null,
+        "credit_id": "69e36ff5fb983dc9df819114",
+        "department": "Art",
+        "job": "Assistant Director of Photography"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 1991938,
+        "known_for_department": "Visual Effects",
+        "name": "滨村敏郎",
+        "original_name": "濱村敏郎",
+        "popularity": 0.296,
+        "profile_path": null,
+        "credit_id": "69e37088cb51a8a6c8bee4c1",
+        "department": "Visual Effects",
+        "job": "CGI Director"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 6150786,
+        "known_for_department": "Art",
+        "name": "柿本晋吾",
+        "original_name": "柿本晋吾",
+        "popularity": 0.0357,
+        "profile_path": null,
+        "credit_id": "69e370acbade08acd524fd72",
+        "department": "Art",
+        "job": "Art Designer"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 1316309,
+        "known_for_department": "Editing",
+        "name": "三岛章纪",
+        "original_name": "三嶋章紀",
+        "popularity": 0.3185,
+        "profile_path": null,
+        "credit_id": "69d051391061f7486a4b5d92",
+        "department": "Editing",
+        "job": "Editor"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 3698368,
+        "known_for_department": "Art",
+        "name": "河合良介",
+        "original_name": "河合良介",
+        "popularity": 0.1575,
+        "profile_path": null,
+        "credit_id": "69d0512c21ec8ed4f42f7d2a",
+        "department": "Art",
+        "job": "Art Direction"
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 3770907,
+        "known_for_department": "Visual Effects",
+        "name": "鈴木ようこ",
+        "original_name": "鈴木ようこ",
+        "popularity": 0.1982,
+        "profile_path": null,
+        "credit_id": "69d051270064cd28295a0784",
+        "department": "Visual Effects",
+        "job": "Color Designer"
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 2935157,
+        "known_for_department": "Directing",
+        "name": "熊野千寻",
+        "original_name": "熊野千尋",
+        "popularity": 0.5464,
+        "profile_path": null,
+        "credit_id": "69d0510c3b04507b59a64a17",
+        "department": "Directing",
+        "job": "Series Director"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 1845135,
+        "known_for_department": "Writing",
+        "name": "大知庆一郎",
+        "original_name": "大知慶一郎",
+        "popularity": 0.6364,
+        "profile_path": null,
+        "credit_id": "620b33e64dc34a0044260477",
+        "department": "Writing",
+        "job": "Series Composition"
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 2355117,
+        "known_for_department": "Sound",
+        "name": "日向萌",
+        "original_name": "日向萌",
+        "popularity": 0.2586,
+        "profile_path": null,
+        "credit_id": "62ee837c77e1f6007fcce07a",
+        "department": "Sound",
+        "job": "Original Music Composer"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 3930392,
+        "known_for_department": "Production",
+        "name": "三轮靖史",
+        "original_name": "三輪靖史",
+        "popularity": 0.1125,
+        "profile_path": null,
+        "credit_id": "63f2b9394a4bfc009638811c",
+        "department": "Production",
+        "job": "Producer"
+      },
+      {
+        "adult": false,
+        "gender": 0,
+        "id": 3930391,
+        "known_for_department": "Production",
+        "name": "松本一贵",
+        "original_name": "松本一貴",
+        "popularity": 0.1846,
+        "profile_path": null,
+        "credit_id": "63f2b92815376c00cb238c0c",
+        "department": "Production",
+        "job": "Producer"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 2694542,
+        "known_for_department": "Camera",
+        "name": "上条智也",
+        "original_name": "上條智也",
+        "popularity": 0.1232,
+        "profile_path": null,
+        "credit_id": "63f2b6704a4bfc0079c58852",
+        "department": "Camera",
+        "job": "Director of Photography"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 3326922,
+        "known_for_department": "Production",
+        "name": "三浦史",
+        "original_name": "三浦史",
+        "popularity": 0.1873,
+        "profile_path": null,
+        "credit_id": "63f2b956a24c5000d4e3feaf",
+        "department": "Production",
+        "job": "Producer"
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 2568578,
+        "known_for_department": "Sound",
+        "name": "安藤由衣",
+        "original_name": "安藤由衣",
+        "popularity": 0.3108,
+        "profile_path": null,
+        "credit_id": "63f2bb1ca24c500078c95264",
+        "department": "Sound",
+        "job": "Sound Effects"
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 3907584,
+        "known_for_department": "Art",
+        "name": "新谷真昼",
+        "original_name": "新谷真昼",
+        "popularity": 0.138,
+        "profile_path": null,
+        "credit_id": "63f2b87133a53300a179905b",
+        "department": "Art",
+        "job": "Prop Designer"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 1970584,
+        "known_for_department": "Production",
+        "name": "田口翔一朗",
+        "original_name": "田口翔一朗",
+        "popularity": 0.3577,
+        "profile_path": null,
+        "credit_id": "63f2b909524978008efdd1e8",
+        "department": "Production",
+        "job": "Producer"
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 3145525,
+        "known_for_department": "Sound",
+        "name": "有马由衣",
+        "original_name": "有馬由衣",
+        "popularity": 0.4213,
+        "profile_path": null,
+        "credit_id": "63f2b885a24c5000848d4c78",
+        "department": "Sound",
+        "job": "Music Producer"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 3930406,
+        "known_for_department": "Sound",
+        "name": "佐佐木侑弥",
+        "original_name": "佐々木侑弥",
+        "popularity": 0.0814,
+        "profile_path": null,
+        "credit_id": "63f2bb33a24c5000c0b98e3a",
+        "department": "Sound",
+        "job": "Music Director"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 2102835,
+        "known_for_department": "Production",
+        "name": "金子广孝",
+        "original_name": "金子広孝",
+        "popularity": 0.297,
+        "profile_path": null,
+        "credit_id": "63f2b96733a53300d40fcd62",
+        "department": "Production",
+        "job": "Producer"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 3517534,
+        "known_for_department": "Sound",
+        "name": "小笠原頌",
+        "original_name": "小笠原頌",
+        "popularity": 0.2094,
+        "profile_path": null,
+        "credit_id": "63f2bb22524978009642a268",
+        "department": "Sound",
+        "job": "Sound Mixer"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 570486,
+        "known_for_department": "Sound",
+        "name": "明田川仁",
+        "original_name": "明田川仁",
+        "popularity": 0.5188,
+        "profile_path": null,
+        "credit_id": "63f2b87fa6725400865dcea8",
+        "department": "Sound",
+        "job": "Sound Director"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 2382852,
+        "known_for_department": "Visual Effects",
+        "name": "野口孝行",
+        "original_name": "野口孝行",
+        "popularity": 0.1921,
+        "profile_path": null,
+        "credit_id": "61d44aba77c01f0042a6d23e",
+        "department": "Visual Effects",
+        "job": "Character Designer"
+      }
+    ],
+    "id": 154743
+  },
+  "external_ids": {
+    "id": 154743,
+    "imdb_id": "tt19064770",
+    "freebase_mid": null,
+    "freebase_id": null,
+    "tvdb_id": 414221,
+    "tvrage_id": null,
+    "wikidata_id": "Q110419753",
+    "facebook_id": null,
+    "instagram_id": null,
+    "twitter_id": "tenshisama_PR"
+  }
+}
