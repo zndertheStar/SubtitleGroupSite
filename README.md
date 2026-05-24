@@ -30,7 +30,7 @@
 ```
 1. 个性化配置  →  2. 选择部署方式  →  3. 配置第三方服务  →  4. 开始使用
      ↓                  ↓                      ↓
-  改站点名称      Vercel 或自建          Giscus / RSS / TMDB
+  改站点名称      Vercel 或自建          Giscus / TMDB
   换图标颜色      服务器               Umami（可选）
 ```
 
@@ -109,9 +109,8 @@ export const siteConfig = {
 |------|------|------|
 | GitHub 账号 | ✅ 必需 | 代码托管 + CMS 认证 |
 | Giscus | ✅ 必需 | 评论区 |
-| RSS 源 | ✅ 必需 | 展示板 + 自动发布作品 |
-| TMDB API Key | ❌ 可选 | 自动填充作品信息（封面、简介、标签） |
 | Vercel / 服务器 | ✅ 必需 | 网站托管 |
+| TMDB API Key | ❌ 可选但推荐 | 自动填充作品信息（封面、简介、标签） |
 | Umami | ❌ 可选 | 访问统计 |
 | 自定义域名 | ❌ 可选 | 品牌域名 |
 
@@ -337,6 +336,7 @@ season: "2025春"
 shows:
   - title: "作品名 / 英文名"
     regex: '\[?(\d{2,3})\]?\[WebRip\]'     # 集数提取正则
+    rss_search: "绿茶字幕组 作品名"          # RSS 搜索关键词
     tmdb_id: 261526                         # TMDB 作品 ID（可选，用于获取封面/简介）
     versions_expected:                       # 等这几个版本齐了才发布
       - "简日内嵌"
@@ -349,12 +349,10 @@ shows:
 ---
 ```
 
-**2. 设置环境变量**
+**2. 设置环境变量（可选）**
 
 ```bash
-RSS_FEED_URL=https://share.dmhy.org/topics/rss/team_id/867/rss/rss.xml
-GROUP_NAME=绿茶字幕组
-TMDB_API_KEY=your-tmdb-api-key    # 可选，用于自动填充封面/简介/标签
+TMDB_API_KEY=your-tmdb-api-key    # 可选但推荐，用于自动填充封面/简介/标签
 ```
 
 **3. 自动运行**
@@ -421,13 +419,9 @@ npm run auto-publish   # 检测并发布作品
 | `GISCUS_REPO` | ✅ | GitHub 仓库路径 | `user/repo` |
 | `GISCUS_REPO_ID` | ✅ | 从 giscus.app 获取 | `MDEw...` |
 | `GISCUS_CATEGORY_ID` | ✅ | 从 giscus.app 获取 | `DIC_kw...` |
-| `RSS_FEED_URL` | ✅ | RSS 源地址 | `https://.../feed.xml` |
-| `GROUP_NAME` | ✅ | 字幕组名称 | `绿茶字幕组` |
-| `GROUP_NAME_ALT` | ❌ | 字幕组别名 | `GreenTeaSubs` |
-| `TMDB_API_KEY` | ❌ | TMDB API 密钥 | `a1b2c3...` |
+| `TMDB_API_KEY` | ❌ | TMDB API 密钥（自动发布作品用） | `a1b2c3...` |
 | `UMAMI_WEBSITE_ID` | ❌ | Umami 站点 ID | `uuid...` |
 | `UMAMI_SCRIPT_URL` | ❌ | Umami 脚本地址 | `https://.../script.js` |
-| `TMDB_API_KEY` | ❌ | TMDB API 密钥（自动发布用） | `a1b2c3...` |
 | `SUBTITLE_REPO` | ❌ | 字幕仓库路径 | `user/subtitles` |
 | `SUBTITLE_REPO_BRANCH` | ❌ | 字幕仓库分支 | `main` |
 
