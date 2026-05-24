@@ -96,7 +96,7 @@
 
   [data-theme="light"] .header-blur {
     backdrop-filter: blur(20px);
-    background: rgba(240, 255, 244, 0.7);
+    background: rgba(240, 255, 244, 0.5);
     border-bottom: 1px solid rgba(0, 255, 127, 0.08);
   }
 }
@@ -115,7 +115,7 @@
   }
 
   [data-theme="light"] .anime-card {
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.35);
     border: 1px solid rgba(0, 255, 127, 0.12);
     box-shadow: 0 4px 20px rgba(0, 255, 127, 0.06);
   }
@@ -241,7 +241,7 @@
   }
 
   [data-theme="light"] .lang-dropdown {
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.4);
     border-color: rgba(0, 255, 127, 0.3);
   }
 
@@ -252,7 +252,7 @@
   }
 
   [data-theme="light"] .search-toggle-btn {
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.4);
     border: 1px solid rgba(0, 255, 127, 0.3);
   }
 
@@ -343,17 +343,17 @@
 
   /* 浅色模式 */
   [data-theme="light"] .glass-nav-item {
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.3);
     border-color: rgba(0, 255, 127, 0.12);
   }
 
   [data-theme="light"] .glass-nav-item:hover {
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.5);
     border-color: rgba(0, 255, 127, 0.25);
   }
 
   [data-theme="light"] .glass-nav-group {
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.3);
     border-color: rgba(0, 255, 127, 0.12);
   }
 
