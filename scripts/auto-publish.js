@@ -161,12 +161,38 @@ async function fetchTMDBInfo(tmdbId, type = 'tv') {
   }
   
   try {
+    // Fetch basic info
     const url = `https://api.themoviedb.org/3/${type}/${tmdbId}?api_key=${TMDB_API_KEY}&language=zh-CN`;
     const response = await fetch(url);
     if (!response.ok) {
       throw new Error(`TMDB API error: ${response.status}`);
     }
     const data = await response.json();
+    
+    // Fetch credits (cast and crew)
+    try {
+      const creditsUrl = `https://api.themoviedb.org/3/${type}/${tmdbId}/credits?api_key=${TMDB_API_KEY}&language=zh-CN`;
+      const creditsResponse = await fetch(creditsUrl);
+      if (creditsResponse.ok) {
+        const creditsData = await creditsResponse.json();
+        data.credits = creditsData;
+      }
+    } catch (e) {
+      console.log('  TMDB credits fetch failed:', e.message);
+    }
+    
+    // Fetch external IDs (IMDb, etc)
+    try {
+      const extUrl = `https://api.themoviedb.org/3/${type}/${tmdbId}/external_ids?api_key=${TMDB_API_KEY}`;
+      const extResponse = await fetch(extUrl);
+      if (extResponse.ok) {
+        const extData = await extResponse.json();
+        data.external_ids = extData;
+      }
+    } catch (e) {
+      console.log('  TMDB external_ids fetch failed:', e.message);
+    }
+    
     tmdbCache.set(cacheKey, data);
     return data;
   } catch (e) {
@@ -239,30 +265,100 @@ async function publishWork(show, episode, episodeData, tmdbInfo, coverPath) {
   let cover = coverPath || '';
   let tags = ['动画'];
   
+  // PT metadata
+  let originalTitle = '';
+  let genres = [];
+  let language = 'Japanese';
+  let firstAirDate = '';
+  let numberOfEpisodes = null;
+  let numberOfSeasons = null;
+  let episodeRuntime = null;
+  let productionCountries = [];
+  let rating = null;
+  let tmdbUrl = '';
+  let imdbId = '';
+  let cast = [];
+  let crew = [];
+  
   if (tmdbInfo) {
     title = tmdbInfo.name || title;
     description = tmdbInfo.overview || description;
     tags = tmdbInfo.genres ? tmdbInfo.genres.map(g => g.name) : tags;
+    
+    originalTitle = tmdbInfo.original_name || '';
+    genres = tmdbInfo.genres ? tmdbInfo.genres.map(g => g.name) : [];
+    language = tmdbInfo.spoken_languages && tmdbInfo.spoken_languages[0] 
+      ? tmdbInfo.spoken_languages[0].english_name 
+      : 'Japanese';
+    firstAirDate = tmdbInfo.first_air_date || '';
+    numberOfEpisodes = tmdbInfo.number_of_episodes || null;
+    numberOfSeasons = tmdbInfo.number_of_seasons || null;
+    episodeRuntime = tmdbInfo.episode_run_time && tmdbInfo.episode_run_time[0] 
+      ? tmdbInfo.episode_run_time[0] 
+      : null;
+    productionCountries = tmdbInfo.production_countries 
+      ? tmdbInfo.production_countries.map(c => c.name) 
+      : [];
+    rating = tmdbInfo.vote_average || null;
+    tmdbUrl = `https://www.themoviedb.org/tv/${show.tmdb_id}`;
+    imdbId = tmdbInfo.external_ids?.imdb_id || '';
+    
+    if (tmdbInfo.credits) {
+      cast = (tmdbInfo.credits.cast || []).slice(0, 10).map(c => ({
+        name: c.name,
+        character: c.character || '',
+        profilePath: c.profile_path || '',
+      }));
+      crew = (tmdbInfo.credits.crew || [])
+        .filter(c => c.job === 'Producer' || c.job === 'Executive Producer')
+        .map(c => ({ name: c.name, job: c.job }));
+    }
   }
   
   const versionsYaml = Object.values(episodeData.versions).map(v => 
     `    - name: "${v.name}"\n      magnet: "${v.magnet}"`
   ).join('\n');
   
-  const coverLine = cover ? `\ncover: "${cover}"` : '';
-  const tmdbLine = show.tmdb_id ? `\ntmdbId: ${show.tmdb_id}` : '';
+  // Build frontmatter
+  const fm = [];
+  fm.push(`title: "${title} 第${episode}集"`);
+  fm.push(`description: "${description}"`);
+  if (cover) fm.push(`cover: "${cover}"`);
+  fm.push(`tags: [${tags.map(t => `"${t}"`).join(', ')}]`);
+  fm.push(`category: "anime"`);
+  fm.push(`pubDate: ${pubDate}`);
+  fm.push(`episode: ${episode}`);
+  if (show.tmdb_id) fm.push(`tmdbId: ${show.tmdb_id}`);
+  if (originalTitle) fm.push(`originalTitle: "${originalTitle}"`);
+  if (genres.length > 0) fm.push(`genres: [${genres.map(g => `"${g}"`).join(', ')}]`);
+  if (language) fm.push(`language: "${language}"`);
+  if (firstAirDate) fm.push(`firstAirDate: "${firstAirDate}"`);
+  if (numberOfEpisodes) fm.push(`numberOfEpisodes: ${numberOfEpisodes}`);
+  if (numberOfSeasons) fm.push(`numberOfSeasons: ${numberOfSeasons}`);
+  if (episodeRuntime) fm.push(`episodeRuntime: ${episodeRuntime}`);
+  if (productionCountries.length > 0) fm.push(`productionCountries: [${productionCountries.map(c => `"${c}"`).join(', ')}]`);
+  if (rating) fm.push(`rating: ${rating}`);
+  if (tmdbUrl) fm.push(`tmdbUrl: "${tmdbUrl}"`);
+  if (imdbId) fm.push(`imdbId: "${imdbId}"`);
+  if (cast.length > 0) {
+    fm.push(`cast:`);
+    cast.forEach(c => {
+      fm.push(`  - name: "${c.name}"`);
+      if (c.character) fm.push(`    character: "${c.character}"`);
+      if (c.profilePath) fm.push(`    profilePath: "${c.profilePath}"`);
+    });
+  }
+  if (crew.length > 0) {
+    fm.push(`crew:`);
+    crew.forEach(c => {
+      fm.push(`  - name: "${c.name}"`);
+      if (c.job) fm.push(`    job: "${c.job}"`);
+    });
+  }
+  fm.push(`versions:`);
+  fm.push(versionsYaml);
   
-  const content = `---
-title: "${title} 第${episode}集"
-description: "${description}"${coverLine}
-tags: [${tags.map(t => `"${t}"`).join(', ')}]
-category: "anime"
-pubDate: ${pubDate}
-episode: ${episode}${tmdbLine}
-versions:
-${versionsYaml}
----
-`;
+  const content = `---\n${fm.join('\n')}\n---\n`;
   
   fs.writeFileSync(filepath, content);
   console.log(`  Published: ${filename}`);

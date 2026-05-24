@@ -17,6 +17,31 @@ const works = defineCollection({
     source: z.string().optional(),
     lang: z.array(z.enum(['zh', 'ja', 'en'])).default(['zh']),
     tmdbId: z.number().optional(),
+    // PT-style metadata
+    originalTitle: z.string().optional(),
+    genres: z.array(z.string()).default([]),
+    language: z.string().optional(),
+    firstAirDate: z.string().optional(),
+    numberOfEpisodes: z.number().optional(),
+    numberOfSeasons: z.number().optional(),
+    episodeRuntime: z.number().optional(),
+    productionCountries: z.array(z.string()).default([]),
+    rating: z.number().optional(),
+    tmdbUrl: z.string().optional(),
+    imdbId: z.string().optional(),
+    cast: z.array(
+      z.object({
+        name: z.string(),
+        character: z.string().optional(),
+        profilePath: z.string().optional(),
+      })
+    ).default([]),
+    crew: z.array(
+      z.object({
+        name: z.string(),
+        job: z.string().optional(),
+      })
+    ).default([]),
     versions: z.array(
       z.object({
         name: z.string(),

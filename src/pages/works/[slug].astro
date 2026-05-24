@@ -27,60 +27,219 @@ const downloads = work.data.versions?.map(v => ({
   type: 'subtitles' as const,
   note: 'Magnet 链接'
 })) || [];
+
+const data = work.data;
+
+// Format helpers
+const formatDate = (dateStr: string | undefined) => {
+  if (!dateStr) return '';
+  return new Date(dateStr).toLocaleDateString('zh-CN');
+};
+
+const formatRuntime = (minutes: number | undefined) => {
+  if (!minutes) return '';
+  return `${minutes} minutes`;
+};
+
+const formatRating = (rating: number | undefined) => {
+  if (!rating) return '';
+  return `${rating} / 10`;
+};
+
+const formatList = (arr: string[] | undefined, separator = ' / ') => {
+  if (!arr || arr.length === 0) return '';
+  return arr.join(separator);
+};
+
+const producers = data.crew?.filter(c => 
+  c.job === 'Producer' || c.job === 'Executive Producer'
+).map(c => c.name) || [];
 ---
 
-<Layout title={work.data.title} description={work.data.description} lang={lang}>
+<Layout title={data.title} description={data.description} lang={lang}>
   <Header lang={lang} />
   
-  <main class="flex-1 py-12">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <!-- Article Header -->
-      <div class="mb-8">
-        <div class="flex items-center gap-2 mb-4 flex-wrap">
-          <span class="glass-badge text-purple-300">
-            {work.data.category === 'anime' ? '动画' : work.data.category === 'movie' ? '电影' : work.data.category === 'ova' ? 'OVA' : '其他'}
-          </span>
-          {work.data.season && (
-            <span class="glass-badge text-pink-300">
-              {work.data.season}
-            </span>
-          )}
-          {work.data.episode && (
-            <span class="glass-badge text-blue-300">
-              第{work.data.episode}集
-            </span>
+  <main class="flex-1 py-8">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- PT Style Header with Poster -->
+      <div class="flex flex-col md:flex-row gap-8 mb-10">
+        <!-- Poster -->
+        <div class="md:w-72 flex-shrink-0">
+          {data.cover && (
+            <div class="rounded-xl overflow-hidden shadow-2xl border border-white/10">
+              <img 
+                src={data.cover} 
+                alt={data.title} 
+                class="w-full aspect-[2/3] object-cover"
+              />
+            </div>
           )}
         </div>
         
-        <h1 class="text-3xl sm:text-4xl font-bold mb-4 text-theme">{work.data.title}</h1>
-        
-        <div class="flex items-center gap-4 text-sm text-muted mb-6">
-          <span>{work.data.pubDate.toLocaleDateString('zh-CN')}</span>
-          {work.data.source && <span>片源: {work.data.source}</span>}
-        </div>
-
-        {work.data.cover && (
-          <div class="aspect-video rounded-2xl overflow-hidden mb-8">
-            <img src={work.data.cover} alt={work.data.title} class="w-full h-full object-cover" />
+        <!-- Info Panel -->
+        <div class="flex-1">
+          <div class="flex items-center gap-2 mb-3 flex-wrap">
+            <span class="glass-badge text-purple-300 text-sm">
+              {data.category === 'anime' ? '动画' : data.category === 'movie' ? '电影' : data.category === 'ova' ? 'OVA' : '其他'}
+            </span>
+            {data.episode && (
+              <span class="glass-badge text-blue-300 text-sm">
+                第{data.episode}集
+              </span>
+            )}
           </div>
-        )}
+          
+          <h1 class="text-3xl sm:text-4xl font-bold mb-2 text-theme">{data.title}</h1>
+          
+          {data.originalTitle && data.originalTitle !== data.title && (
+            <p class="text-lg text-muted mb-4">{data.originalTitle}</p>
+          )}
+          
+          <!-- PT Info List -->
+          <div class="space-y-1.5 text-sm mt-6">
+            {data.genres && data.genres.length > 0 && (
+              <div class="flex gap-2">
+                <span class="text-purple-400 font-medium min-w-[120px]">❁ Genres:</span>
+                <span class="text-gray-300">{formatList(data.genres, ' / ')}</span>
+              </div>
+            )}
+            
+            {data.language && (
+              <div class="flex gap-2">
+                <span class="text-purple-400 font-medium min-w-[120px]">❁ Languages:</span>
+                <span class="text-gray-300">{data.language}</span>
+              </div>
+            )}
+            
+            {data.firstAirDate && (
+              <div class="flex gap-2">
+                <span class="text-purple-400 font-medium min-w-[120px]">❁ First Air Date:</span>
+                <span class="text-gray-300">{formatDate(data.firstAirDate)}</span>
+              </div>
+            )}
+            
+            {data.numberOfEpisodes && (
+              <div class="flex gap-2">
+                <span class="text-purple-400 font-medium min-w-[120px]">❁ Number of Episodes:</span>
+                <span class="text-gray-300">{data.numberOfEpisodes}</span>
+              </div>
+            )}
+            
+            {data.numberOfSeasons && (
+              <div class="flex gap-2">
+                <span class="text-purple-400 font-medium min-w-[120px]">❁ Number of Seasons:</span>
+                <span class="text-gray-300">{data.numberOfSeasons}</span>
+              </div>
+            )}
+            
+            {data.episodeRuntime && (
+              <div class="flex gap-2">
+                <span class="text-purple-400 font-medium min-w-[120px]">❁ Episode Runtime:</span>
+                <span class="text-gray-300">{formatRuntime(data.episodeRuntime)}</span>
+              </div>
+            )}
+            
+            {data.productionCountries && data.productionCountries.length > 0 && (
+              <div class="flex gap-2">
+                <span class="text-purple-400 font-medium min-w-[120px]">❁ Production Countries:</span>
+                <span class="text-gray-300">{formatList(data.productionCountries)}</span>
+              </div>
+            )}
+            
+            {data.rating && (
+              <div class="flex gap-2">
+                <span class="text-purple-400 font-medium min-w-[120px]">❁ Rating:</span>
+                <span class="text-gray-300">{formatRating(data.rating)}</span>
+              </div>
+            )}
+            
+            {data.tmdbUrl && (
+              <div class="flex gap-2">
+                <span class="text-purple-400 font-medium min-w-[120px]">❁ TMDB Link:</span>
+                <a href={data.tmdbUrl} target="_blank" rel="noopener" class="text-blue-400 hover:text-blue-300 transition-colors">
+                  {data.tmdbUrl}
+                </a>
+              </div>
+            )}
+            
+            {data.imdbId && (
+              <div class="flex gap-2">
+                <span class="text-purple-400 font-medium min-w-[120px]">❁ IMDb Link:</span>
+                <a href={`https://www.imdb.com/title/${data.imdbId}/`} target="_blank" rel="noopener" class="text-blue-400 hover:text-blue-300 transition-colors">
+                  https://www.imdb.com/title/{data.imdbId}/
+                </a>
+              </div>
+            )}
+            
+            {producers.length > 0 && (
+              <div class="flex gap-2">
+                <span class="text-purple-400 font-medium min-w-[120px]">❁ Producers:</span>
+                <span class="text-gray-300">{formatList(producers, ' / ')}</span>
+              </div>
+            )}
+          </div>
+          
+          <!-- Tags -->
+          {data.tags.length > 0 && (
+            <div class="flex items-center gap-2 mt-4 flex-wrap">
+              {data.tags.map(tag => (
+                <span class="glass-badge text-purple-300 text-xs">{tag}</span>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
-
-      <!-- Article Content -->
-      <article class="prose-custom max-w-none mb-12">
+      
+      <!-- Cast Section -->
+      {data.cast && data.cast.length > 0 && (
+        <section class="anime-card p-6 mb-8">
+          <h2 class="text-xl font-bold mb-4 text-purple-400 flex items-center gap-2">
+            <span>❁</span> Cast
+          </h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            {data.cast.map(actor => (
+              <div class="flex items-center gap-3 p-3 rounded-lg bg-white/5">
+                {actor.profilePath ? (
+                  <img 
+                    src={`https://image.tmdb.org/t/p/w45${actor.profilePath}`} 
+                    alt={actor.name}
+                    class="w-10 h-10 rounded-full object-cover"
+                  />
+                ) : (
+                  <div class="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center text-sm">
+                    {actor.name.charAt(0)}
+                  </div>
+                )}
+                <div class="min-w-0">
+                  <div class="text-sm font-medium truncate">{actor.name}</div>
+                  {actor.character && (
+                    <div class="text-xs text-gray-500 truncate">as {actor.character}</div>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+      
+      <!-- Introduction -->
+      {data.description && (
+        <section class="anime-card p-6 mb-8">
+          <h2 class="text-xl font-bold mb-4 text-purple-400 flex items-center gap-2">
+            <span>❁</span> Introduction
+          </h2>
+          <div class="prose-custom max-w-none text-gray-300 leading-relaxed">
+            <p>{data.description}</p>
+          </div>
+        </section>
+      )}
+      
+      <!-- Markdown Content (if any) -->
+      <article class="prose-custom max-w-none mb-8">
         <Content />
       </article>
-
-      <!-- Tags -->
-      {work.data.tags.length > 0 && (
-        <div class="flex items-center gap-2 mb-8 flex-wrap">
-          <span class="text-sm text-muted">标签:</span>
-          {work.data.tags.map(tag => (
-            <span class="glass-badge text-purple-300">{tag}</span>
-          ))}
-        </div>
-      )}
-
+      
       <!-- Downloads Section -->
       <section class="anime-card p-6 mb-12">
         <h2 class="text-xl font-bold mb-4 flex items-center gap-2 text-theme">
@@ -107,7 +266,7 @@ const downloads = work.data.versions?.map(v => ({
           字幕文件需配合对应片源使用。如链接失效，请在评论区反馈。
         </p>
       </section>
-
+      
       <!-- Giscus Comments -->
       <section class="mb-12">
         <h2 class="text-xl font-bold mb-4 text-theme">{t('giscus.title')}</h2>
@@ -132,6 +291,6 @@ const downloads = work.data.versions?.map(v => ({
       </section>
     </div>
   </main>
-
+  
   <Footer lang={lang} />
 </Layout>
