@@ -15,9 +15,10 @@ members:
     name: "技术组"
     role: "网站/工具"
 contacts:
-  - icon: "📱"
-    name: "QQ 群"
-    description: "加入粉丝群获取最新动态"
+  - icon: "📺"
+    name: "哔哩哔哩"
+    description: "关注我们的B站空间"
+    url: "https://space.bilibili.com/1007391147"
   - icon: "🐙"
     name: "GitHub"
     description: "开源项目与字幕归档"
@@ -41,4 +42,4 @@ contacts:
 ### 联系方式
 
 - GitHub: [Studio GreenTea](https://github.com/Studio-Green-Tea)
-- 交流群: QQ群 XXXXXX
+- 哔哩哔哩: [绿茶字幕组](https://space.bilibili.com/1007391147)
