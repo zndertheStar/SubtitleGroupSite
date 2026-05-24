@@ -1,6 +1,10 @@
-const { XMLParser } = require('fast-xml-parser');
-const fs = require('fs');
-const path = require('path');
+import { XMLParser } from 'fast-xml-parser';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const RSS_FEED_URL = process.env.RSS_FEED_URL || 'https://api.animes.garden/feed.xml';
 const GROUP_NAME = process.env.GROUP_NAME || '绿茶字幕组';
@@ -8,18 +12,40 @@ const GROUP_NAME_ALT = process.env.GROUP_NAME_ALT || '';
 
 // Common group patterns in RSS titles
 function getGroupPatterns(groupName) {
-  return [
+  // Auto-generate traditional Chinese variant
+  const tradName = groupName
+    .replace(/绿/g, '綠')
+    .replace(/茶/g, '茶')
+    .replace(/组/g, '組');
+  
+  const patterns = [
     `[${groupName}]`,
     `【${groupName}】`,
     `[${groupName}×`,
     `×${groupName}]`,
     `&${groupName}]`,
-    // Also check for alternative name if provided
-    ...(GROUP_NAME_ALT ? [
+  ];
+  
+  // Add traditional Chinese variant if different
+  if (tradName !== groupName) {
+    patterns.push(
+      `[${tradName}]`,
+      `【${tradName}】`,
+      `[${tradName}×`,
+      `×${tradName}]`,
+      `&${tradName}]`,
+    );
+  }
+  
+  // Also check for alternative name if provided
+  if (GROUP_NAME_ALT) {
+    patterns.push(
       `[${GROUP_NAME_ALT}]`,
       `【${GROUP_NAME_ALT}】`,
-    ] : []),
-  ];
+    );
+  }
+  
+  return patterns;
 }
 
 // Extract episode number from title using regex
