@@ -4,8 +4,8 @@
 
 ## 功能特性
 
-- 🎬 作品发布系统（文章 + 下载）
-- 📊 季度展示板（自动 RSS 解析进度）
+- 🎬 **作品自动发布** — RSS 抓取 + 版本收集 + TMDB 信息填充，一集全版本到齐后自动生成作品页
+- 📊 **季度展示板** — 自动 RSS 解析进度，实时跟踪番剧更新
 - 🌐 多语言支持（中/日/英）
 - 🌙 亮/暗双模式二次元主题
 - 📝 Decap CMS 内容管理
@@ -30,7 +30,7 @@
 ```
 1. 个性化配置  →  2. 选择部署方式  →  3. 配置第三方服务  →  4. 开始使用
      ↓                  ↓                      ↓
-  改站点名称      Vercel 或自建          Giscus / RSS
+  改站点名称      Vercel 或自建          Giscus / RSS / TMDB
   换图标颜色      服务器               Umami（可选）
 ```
 
@@ -109,7 +109,8 @@ export const siteConfig = {
 |------|------|------|
 | GitHub 账号 | ✅ 必需 | 代码托管 + CMS 认证 |
 | Giscus | ✅ 必需 | 评论区 |
-| RSS 源 | ✅ 必需 | 展示板自动更新 |
+| RSS 源 | ✅ 必需 | 展示板 + 自动发布作品 |
+| TMDB API Key | ❌ 可选 | 自动填充作品信息（封面、简介、标签） |
 | Vercel / 服务器 | ✅ 必需 | 网站托管 |
 | Umami | ❌ 可选 | 访问统计 |
 | 自定义域名 | ❌ 可选 | 品牌域名 |
@@ -322,14 +323,54 @@ npm run dev
 
 > 💡 **说明**：Giscus 评论使用 GitHub Discussions，用户评论时需要通过 GitHub 授权。站点登录功能让用户可以在站点内保持登录状态，方便评论互动。
 
-### 展示板 RSS 解析（必需）
+### 展示板 & 自动发布作品（必需）
 
-1. 确定你的 RSS 源地址（如 `https://api.animes.garden/feed.xml`）
-2. 设置环境变量：
-   - `RSS_FEED_URL`: RSS 源地址
-   - `GROUP_NAME`: 字幕组名称（如"绿茶字幕组"）
-3. GitHub Actions 会自动每 30 分钟解析一次
-4. 如需修改频率，编辑 `.github/workflows/showcase.yml`
+站点支持从 RSS 源自动抓取字幕组发布，**等一集的所有版本到齐后自动生成作品页**。
+
+**1. 配置展示板**
+
+编辑 `src/content/showcase/2025-spring.md`（或其他季节文件）：
+
+```yaml
+---
+season: "2025春"
+shows:
+  - title: "作品名 / 英文名"
+    regex: '\[?(\d{2,3})\]?\[WebRip\]'     # 集数提取正则
+    tmdb_id: 261526                         # TMDB 作品 ID（可选，用于获取封面/简介）
+    versions_expected:                       # 等这几个版本齐了才发布
+      - "简日内嵌"
+      - "繁日内嵌"
+      - "简繁日内封"
+    alsoIn: []
+    versions:
+      - name: "Web"
+        episodes: []
+---
+```
+
+**2. 设置环境变量**
+
+```bash
+RSS_FEED_URL=https://share.dmhy.org/topics/rss/team_id/867/rss/rss.xml
+GROUP_NAME=绿茶字幕组
+TMDB_API_KEY=your-tmdb-api-key    # 可选，用于自动填充封面/简介/标签
+```
+
+**3. 自动运行**
+
+GitHub Actions 每 30 分钟运行一次：
+- `scripts/parse-rss.js` — 更新展示板进度
+- `scripts/auto-publish.js` — 检测版本齐全后自动生成作品页
+
+如需修改频率，编辑 `.github/workflows/showcase.yml`。
+
+**4. 手动运行**
+
+```bash
+npm run parse-rss      # 仅更新展示板
+npm run auto-publish   # 检测并发布作品
+```
 
 ### Umami 统计（可选）
 
@@ -383,8 +424,10 @@ npm run dev
 | `RSS_FEED_URL` | ✅ | RSS 源地址 | `https://.../feed.xml` |
 | `GROUP_NAME` | ✅ | 字幕组名称 | `绿茶字幕组` |
 | `GROUP_NAME_ALT` | ❌ | 字幕组别名 | `GreenTeaSubs` |
+| `TMDB_API_KEY` | ❌ | TMDB API 密钥 | `a1b2c3...` |
 | `UMAMI_WEBSITE_ID` | ❌ | Umami 站点 ID | `uuid...` |
 | `UMAMI_SCRIPT_URL` | ❌ | Umami 脚本地址 | `https://.../script.js` |
+| `TMDB_API_KEY` | ❌ | TMDB API 密钥（自动发布用） | `a1b2c3...` |
 | `SUBTITLE_REPO` | ❌ | 字幕仓库路径 | `user/subtitles` |
 | `SUBTITLE_REPO_BRANCH` | ❌ | 字幕仓库分支 | `main` |
 
@@ -402,6 +445,10 @@ npm run pagefind         # 仅更新搜索索引
 
 # 预览
 npm run preview          # 本地预览构建结果
+
+# RSS 自动发布
+npm run parse-rss        # 更新展示板进度
+npm run auto-publish     # 检测并自动发布作品
 
 # 更新
 git pull origin main     # 拉取最新代码
@@ -433,7 +480,8 @@ SubtitleGroupSite/
 │   │   ├── works/            # 作品文章 (*.md)
 │   │   ├── misc/             # 杂谈文章 (*.md)
 │   │   ├── showcase/         # 展示板数据 (*.md)
-│   │   └── about/            # 关于页面 (*.md)
+│   │   ├── about/            # 关于页面 (*.md)
+│   │   └── .rss-cache/       # RSS 版本收集缓存（自动提交）
 │   ├── i18n/
 │   │   └── ui.ts             # 多语言字典
 │   ├── layouts/
@@ -452,7 +500,8 @@ SubtitleGroupSite/
 │   ├── favicon.svg           # 站点图标
 │   └── images/               # 图片资源
 ├── scripts/
-│   └── parse-rss.js          # RSS 解析脚本
+│   ├── parse-rss.js          # RSS 解析脚本（更新展示板）
+│   └── auto-publish.js       # 自动发布作品脚本（版本收集 + TMDB 查询）
 ├── .github/workflows/
 │   └── showcase.yml          # 自动更新展示板
 ├── .env.example              # 环境变量示例
@@ -481,6 +530,9 @@ SubtitleGroupSite/
 | 展示板不更新 | GitHub Actions 失败 | 检查 Actions 日志，确认 Secrets 设置正确 |
 | CMS 登录报错 | Git Gateway 未配置 | 检查 Netlify Identity / Git Gateway 是否启用 |
 | 样式错乱 | 构建缓存问题 | 清除浏览器缓存，重新构建 |
+| 作品未自动发布 | 版本未收集齐 | 检查 `versions_expected` 配置，确认 RSS 中已包含所有版本 |
+| 作品封面未显示 | TMDB API Key 未设置 | 在环境变量中添加 `TMDB_API_KEY` |
+| 展示板/作品重复发布 | 缓存丢失 | 确保 `src/content/.rss-cache/` 已提交到仓库 |
 
 ---
 
