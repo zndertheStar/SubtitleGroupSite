@@ -20,11 +20,11 @@ export const siteConfig = {
   // Logo 配置
   logo: {
     // 是否使用文字 Logo（如果为 false，将使用图标）
-    text: true,
+    text: false,
     // 图标文字（单个字母或短文字）
     iconText: 'G',
     // 如果使用图片 Logo，填写图片路径
-    image: '',
+    image: '/favicon.svg',
   },
   
   // 站点 URL

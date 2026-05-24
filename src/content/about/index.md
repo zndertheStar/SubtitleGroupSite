@@ -19,7 +19,7 @@ contacts:
     name: "哔哩哔哩"
     description: "关注我们的B站空间"
     url: "https://space.bilibili.com/1007391147"
-  - icon: "🐙"
+  - icon: "/Github.svg"
     name: "GitHub"
     description: "开源项目与字幕归档"
     url: "https://github.com/Studio-Green-Tea"
