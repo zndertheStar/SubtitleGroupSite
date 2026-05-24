@@ -10,14 +10,15 @@ const __dirname = path.dirname(__filename);
 const TMDB_API_KEY = process.env.TMDB_API_KEY;
 const RSS_BASE_URL = 'https://share.dmhy.org/topics/rss/rss.xml';
 
-// Cache TMDB info by tmdb_id to avoid repeated API calls
-const tmdbCache = new Map();
-const coverCache = new Map();
-
-// Cache directory for tracking collected episodes (stored in repo)
+// Cache directories (stored in repo to persist across GitHub Actions runs)
 const CACHE_DIR = path.join(process.cwd(), 'src/content/.rss-cache');
+const TMDB_CACHE_DIR = path.join(CACHE_DIR, 'tmdb');
+
 if (!fs.existsSync(CACHE_DIR)) {
   fs.mkdirSync(CACHE_DIR, { recursive: true });
+}
+if (!fs.existsSync(TMDB_CACHE_DIR)) {
+  fs.mkdirSync(TMDB_CACHE_DIR, { recursive: true });
 }
 
 // Load showcase configs
@@ -156,8 +157,17 @@ async function fetchTMDBInfo(tmdbId, type = 'tv') {
   }
   
   const cacheKey = `${type}-${tmdbId}`;
-  if (tmdbCache.has(cacheKey)) {
-    return tmdbCache.get(cacheKey);
+  const cacheFile = path.join(TMDB_CACHE_DIR, `${cacheKey}.json`);
+  
+  // Load from file cache if exists
+  if (fs.existsSync(cacheFile)) {
+    try {
+      const cached = JSON.parse(fs.readFileSync(cacheFile, 'utf-8'));
+      console.log(`  TMDB cache hit: ${cacheKey}`);
+      return cached;
+    } catch (e) {
+      console.log(`  TMDB cache read failed: ${cacheKey}`);
+    }
   }
   
   try {
@@ -193,7 +203,8 @@ async function fetchTMDBInfo(tmdbId, type = 'tv') {
       console.log('  TMDB external_ids fetch failed:', e.message);
     }
     
-    tmdbCache.set(cacheKey, data);
+    // Save to file cache
+    fs.writeFileSync(cacheFile, JSON.stringify(data, null, 2));
     return data;
   } catch (e) {
     console.error('TMDB fetch error:', e.message);
@@ -201,14 +212,9 @@ async function fetchTMDBInfo(tmdbId, type = 'tv') {
   }
 }
 
-// Download cover image (cached by showSlug)
+// Download cover image (stored in public/images/covers, reused if exists)
 async function downloadCover(imageUrl, showSlug) {
   if (!imageUrl) return null;
-  
-  const cacheKey = showSlug;
-  if (coverCache.has(cacheKey)) {
-    return coverCache.get(cacheKey);
-  }
   
   const coversDir = path.join(process.cwd(), 'public/images/covers');
   if (!fs.existsSync(coversDir)) {
@@ -220,9 +226,7 @@ async function downloadCover(imageUrl, showSlug) {
   
   // If already downloaded, reuse
   if (fs.existsSync(filepath)) {
-    const coverPath = `/images/covers/${filename}`;
-    coverCache.set(cacheKey, coverPath);
-    return coverPath;
+    return `/images/covers/${filename}`;
   }
   
   try {
@@ -232,14 +236,11 @@ async function downloadCover(imageUrl, showSlug) {
     const buffer = await response.arrayBuffer();
     fs.writeFileSync(filepath, Buffer.from(buffer));
     console.log(`  Downloaded cover: ${filename}`);
-    const coverPath = `/images/covers/${filename}`;
-    coverCache.set(cacheKey, coverPath);
-    return coverPath;
+    return `/images/covers/${filename}`;
   } catch (e) {
     console.error('  Cover download error:', e.message);
-    const fallbackUrl = `https://image.tmdb.org/t/p/w500${imageUrl}`;
-    coverCache.set(cacheKey, fallbackUrl);
-    return fallbackUrl;
+    // Return remote URL as fallback
+    return `https://image.tmdb.org/t/p/w500${imageUrl}`;
   }
 }
 
