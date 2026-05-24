@@ -208,13 +208,13 @@ async function publishWork(show, episode, episodeData, tmdbInfo) {
   }
   
   let title = show.title.split('/')[0].trim();
-  let description = '';
+  let description = show.title.split('/')[0].trim();
   let cover = '';
   let tags = ['动画'];
   
   if (tmdbInfo) {
     title = tmdbInfo.name || title;
-    description = tmdbInfo.overview || '';
+    description = tmdbInfo.overview || description;
     tags = tmdbInfo.genres ? tmdbInfo.genres.map(g => g.name) : tags;
     
     const coverFilename = `${showSlug}-${String(episode).padStart(2, '0')}.jpg`;

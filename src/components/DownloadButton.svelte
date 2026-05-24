@@ -10,8 +10,16 @@
   let isHovered = false;
   let isDownloading = false;
   
+  const isMagnet = url.startsWith('magnet:');
+  
   async function handleDownload() {
     if (url === '#' || isDownloading) return;
+    
+    // Magnet links: open directly or copy
+    if (isMagnet) {
+      window.open(url, '_blank');
+      return;
+    }
     
     isDownloading = true;
     try {

@@ -19,13 +19,14 @@ const { Content } = await render(work);
 const lang = 'zh';
 const t = useTranslations(lang);
 
-// Auto-detect downloads from subtitle repo
-// In real implementation, this would read from the subtitle repo manifest
-const downloads = [
-  // Example structure - would be populated by build script
-  { name: work.data.title + ' - 字幕文件', url: '#', size: '2.3 MB', type: 'subtitles' as const, note: '' },
-  { name: work.data.title + ' - 字体包', url: '#', size: '15 MB', type: 'fonts' as const, note: '' },
-];
+// Build downloads from versions magnet links
+const downloads = work.data.versions?.map(v => ({
+  name: v.name,
+  url: v.magnet,
+  size: '',
+  type: 'subtitles' as const,
+  note: 'Magnet 链接'
+})) || [];
 ---
 
 <Layout title={work.data.title} description={work.data.description} lang={lang}>
