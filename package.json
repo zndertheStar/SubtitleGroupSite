@@ -10,7 +10,9 @@
     "build": "astro build && npx pagefind --site dist",
     "preview": "astro preview",
     "astro": "astro",
-    "pagefind": "npx pagefind --site dist"
+    "pagefind": "npx pagefind --site dist",
+    "auto-publish": "node scripts/auto-publish.js",
+    "parse-rss": "node scripts/parse-rss.js"
   },
   "dependencies": {
     "@astrojs/node": "^9.5.5",

@@ -16,6 +16,13 @@ const works = defineCollection({
     episode: z.number().optional(),
     source: z.string().optional(),
     lang: z.array(z.enum(['zh', 'ja', 'en'])).default(['zh']),
+    tmdbId: z.number().optional(),
+    versions: z.array(
+      z.object({
+        name: z.string(),
+        magnet: z.string(),
+      })
+    ).default([]),
   }),
 });
 
@@ -39,6 +46,8 @@ const showcase = defineCollection({
       z.object({
         title: z.string(),
         regex: z.string(),
+        tmdb_id: z.number().optional(),
+        versions_expected: z.array(z.string()).default([]),
         versions: z.array(
           z.object({
             name: z.string(),

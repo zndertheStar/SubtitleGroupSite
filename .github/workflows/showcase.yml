@@ -1,11 +1,11 @@
-name: Showcase RSS Parser
+name: Auto Publish Works
 on:
   schedule:
     - cron: '*/30 * * * *'  # 每30分钟运行一次
   workflow_dispatch:  # 允许手动触发
 
 jobs:
-  parse-rss:
+  auto-publish:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -19,20 +19,23 @@ jobs:
           node-version: '22'
           
       - name: Install dependencies
-        run: npm install fast-xml-parser
+        run: npm install
         
-      - name: Parse RSS and update showcase
+      - name: Parse RSS and auto publish works
         run: |
           node scripts/parse-rss.js
+          node scripts/auto-publish.js
         env:
-          RSS_FEED_URL: ${{ secrets.RSS_FEED_URL || 'https://api.animes.garden/feed.xml' }}
-          GROUP_NAME: ${{ secrets.GROUP_NAME || '绿茶字幕组' }}
-          GROUP_NAME_ALT: ${{ secrets.GROUP_NAME_ALT || '' }}
+          RSS_FEED_URL: ${{ secrets.RSS_FEED_URL }}
+          GROUP_NAME: ${{ secrets.GROUP_NAME }}
+          GROUP_NAME_ALT: ${{ secrets.GROUP_NAME_ALT }}
+          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
           
       - name: Commit and push changes
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add src/content/showcase/
-          git diff --cached --quiet || git commit -m "chore: auto-update showcase from RSS [skip ci]"
+          git add src/content/works/
+          git diff --cached --quiet || git commit -m "chore: auto-publish works from RSS [skip ci]"
           git push
