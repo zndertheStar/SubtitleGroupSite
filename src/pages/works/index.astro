@@ -4,12 +4,18 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import { getCollection } from 'astro:content';
 import { useTranslations } from '../../i18n/ui';
+import { getTMDBCover } from '../../lib/tmdb-cache';
 
 const lang = 'zh';
 const t = useTranslations(lang);
 
 const allWorks = await getCollection('works');
-const works = allWorks.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const works = allWorks
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .map(work => {
+    const cover = work.data.cover || getTMDBCover(work.data.tmdbId, 'w200') || '';
+    return { ...work, data: { ...work.data, cover } };
+  });
 
 const categories = ['all', 'anime', 'movie', 'ova', 'other'] as const;
 ---

@@ -5,6 +5,7 @@ import Footer from '../components/Footer.astro';
 import PageLoader from '../components/PageLoader.astro';
 import { getCollection } from 'astro:content';
 import { useTranslations } from '../i18n/ui';
+import { getTMDBCover } from '../lib/tmdb-cache';
 
 const lang = 'zh';
 const t = useTranslations(lang);
@@ -12,8 +13,14 @@ const t = useTranslations(lang);
 const allWorks = await getCollection('works');
 const allMisc = await getCollection('misc');
 
+// 补充 TMDB 封面
+const worksWithCover = allWorks.map(work => {
+  const cover = work.data.cover || getTMDBCover(work.data.tmdbId, 'w200') || '';
+  return { ...work, data: { ...work.data, cover } };
+});
+
 // 最新作品（用于 marquee 和列表）
-const latestWorks = allWorks
+const latestWorks = worksWithCover
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .slice(0, 12);
 
