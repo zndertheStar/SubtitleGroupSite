@@ -175,6 +175,8 @@ function getPublishedVersionSlugs(showSlug, episode) {
   }).filter(Boolean);
 }
 
+const CACHE_MAX_AGE_MS = 30 * 24 * 60 * 60 * 1000; // 30 days
+
 // Call TMDB API (with caching)
 async function fetchTMDBInfo(tmdbId, type = 'tv') {
   if (!TMDB_API_KEY) {
@@ -184,12 +186,18 @@ async function fetchTMDBInfo(tmdbId, type = 'tv') {
   const cacheKey = `${type}-${tmdbId}`;
   const cacheFile = path.join(TMDB_CACHE_DIR, `${cacheKey}.json`);
   
-  // Load from file cache if exists
+  // Load from file cache if exists and not expired
   if (fs.existsSync(cacheFile)) {
     try {
-      const cached = JSON.parse(fs.readFileSync(cacheFile, 'utf-8'));
-      console.log(`  TMDB cache hit: ${cacheKey}`);
-      return cached;
+      const stat = fs.statSync(cacheFile);
+      const ageMs = Date.now() - stat.mtimeMs;
+      if (ageMs < CACHE_MAX_AGE_MS) {
+        const cached = JSON.parse(fs.readFileSync(cacheFile, 'utf-8'));
+        console.log(`  TMDB cache hit: ${cacheKey}`);
+        return cached;
+      }
+      console.log(`  TMDB cache expired (${Math.round(ageMs / 86400000)}d), refreshing: ${cacheKey}`);
+      fs.unlinkSync(cacheFile);
     } catch (e) {
       console.log(`  TMDB cache read failed: ${cacheKey}`);
     }
