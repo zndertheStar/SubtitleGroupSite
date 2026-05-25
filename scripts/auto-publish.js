@@ -553,18 +553,17 @@ async function main() {
         
         // Fetch TMDB info once per show (reused for all episodes)
         let tmdbInfo = null;
-        let coverPath = '';
+        let coverUrl = '';
         if (show.tmdb_id && TMDB_API_KEY) {
           tmdbInfo = await fetchTMDBInfo(show.tmdb_id, 'tv');
           if (tmdbInfo && tmdbInfo.poster_path) {
-            const showSlug = slugify(show.title.split('/')[0].trim());
-            coverPath = await downloadCover(tmdbInfo.poster_path, showSlug);
+            coverUrl = `https://image.tmdb.org/t/p/w500${tmdbInfo.poster_path}`;
           }
         }
-        
+
         for (const [episodeNum, episodeData] of Object.entries(episodes)) {
           for (const [versionName, versionData] of Object.entries(episodeData.versions)) {
-            const published = await publishWork(show, parseInt(episodeNum), versionName, versionData.magnet, tmdbInfo, coverPath);
+            const published = await publishWork(show, parseInt(episodeNum), versionName, versionData.magnet, tmdbInfo, coverUrl);
             if (published) totalPublished++;
           }
           
