@@ -143,11 +143,36 @@ function saveEpisodeCache(showTitle, cache) {
   fs.writeFileSync(cacheFile, JSON.stringify(cache, null, 2));
 }
 
-// Check if episode has all expected versions
-function isEpisodeComplete(episodeData, expectedVersions) {
-  if (!expectedVersions || expectedVersions.length === 0) return true;
-  const collectedVersions = Object.keys(episodeData.versions);
-  return expectedVersions.every(v => collectedVersions.includes(v));
+function versionSlug(versionName) {
+  return versionName
+    .replace(/简繁日内封/, 'chs-cht-sub')
+    .replace(/简日内嵌/, 'chs-embed')
+    .replace(/繁日内嵌/, 'cht-embed')
+    .replace(/[^\w-]/g, '')
+    .toLowerCase() || 'default';
+}
+
+function findExistingWork(showSlug, episode, versionSlugStr) {
+  const worksDir = path.join(process.cwd(), 'src/content/works');
+  if (!fs.existsSync(worksDir)) return null;
+  const episodeStr = String(episode).padStart(2, '0');
+  const suffix = `-${showSlug}-${episodeStr}-${versionSlugStr}.md`;
+  const files = fs.readdirSync(worksDir);
+  const match = files.find(f => f.endsWith(suffix));
+  return match ? path.join(worksDir, match) : null;
+}
+
+function getPublishedVersionSlugs(showSlug, episode) {
+  const worksDir = path.join(process.cwd(), 'src/content/works');
+  if (!fs.existsSync(worksDir)) return [];
+  const episodeStr = String(episode).padStart(2, '0');
+  const infix = `-${showSlug}-${episodeStr}-`;
+  const files = fs.readdirSync(worksDir).filter(f => f.includes(infix));
+  return files.map(f => {
+    const afterInfix = f.substring(f.indexOf(infix) + infix.length);
+    const vSlug = afterInfix.replace(/\.md$/, '');
+    return vSlug || null;
+  }).filter(Boolean);
 }
 
 // Call TMDB API (with caching)
@@ -244,29 +269,30 @@ async function downloadCover(imageUrl, showSlug) {
   }
 }
 
-// Generate work file
-async function publishWork(show, episode, episodeData, tmdbInfo, coverPath) {
+async function publishWork(show, episode, versionName, magnet, tmdbInfo, coverPath) {
   const worksDir = path.join(process.cwd(), 'src/content/works');
   if (!fs.existsSync(worksDir)) {
     fs.mkdirSync(worksDir, { recursive: true });
   }
   
   const showSlug = slugify(show.title.split('/')[0].trim());
-  const pubDate = new Date().toISOString().split('T')[0];
-  const filename = `${pubDate}-${showSlug}-${String(episode).padStart(2, '0')}.md`;
-  const filepath = path.join(worksDir, filename);
+  const vSlug = versionSlug(versionName);
+  const existingPath = findExistingWork(showSlug, episode, vSlug);
   
-  if (fs.existsSync(filepath)) {
-    console.log(`  Work already exists: ${filename}`);
+  if (existingPath) {
+    console.log(`  Already exists: ep${episode} [${versionName}]`);
     return false;
   }
+  
+  const pubDate = new Date().toISOString().split('T')[0];
+  const filename = `${pubDate}-${showSlug}-${String(episode).padStart(2, '0')}-${vSlug}.md`;
+  const filepath = path.join(worksDir, filename);
   
   let title = show.title.split('/')[0].trim();
   let description = show.title.split('/')[0].trim();
   let cover = coverPath || '';
   let tags = ['动画'];
   
-  // PT metadata
   let originalTitle = '';
   let genres = [];
   let language = 'Japanese';
@@ -316,13 +342,8 @@ async function publishWork(show, episode, episodeData, tmdbInfo, coverPath) {
     }
   }
   
-  const versionsYaml = Object.values(episodeData.versions).map(v => 
-    `    - name: "${v.name}"\n      magnet: "${v.magnet}"`
-  ).join('\n');
-  
-  // Build frontmatter
   const fm = [];
-  fm.push(`title: "${title} 第${episode}集"`);
+  fm.push(`title: "${title} 第${episode}集 ${versionName}"`);
   fm.push(`description: "${description}"`);
   if (cover) fm.push(`cover: "${cover}"`);
   fm.push(`tags: [${tags.map(t => `"${t}"`).join(', ')}]`);
@@ -357,7 +378,8 @@ async function publishWork(show, episode, episodeData, tmdbInfo, coverPath) {
     });
   }
   fm.push(`versions:`);
-  fm.push(versionsYaml);
+  fm.push(`    - name: "${versionName}"`);
+  fm.push(`      magnet: "${magnet}"`);
   
   const content = `---\n${fm.join('\n')}\n---\n`;
   
@@ -387,28 +409,50 @@ async function fetchShowRSS(searchKeyword) {
   }
 }
 
-// Update showcase file with collected episodes
-function updateShowcaseEpisodes(showcaseFile, showTitle, episodes) {
+function updateShowcaseEpisodes(showcaseFile, showTitle, episodes, show) {
   const filePath = path.join(process.cwd(), 'src/content/showcase', showcaseFile);
   let content = fs.readFileSync(filePath, 'utf-8');
   
-  // Build version -> episodes map from cache
   const versionEpisodes = {};
+  
+  const slugToName = {};
+  const nameToSlug = {};
+  
   for (const [epNum, epData] of Object.entries(episodes)) {
     for (const versionName of Object.keys(epData.versions || {})) {
-      if (!versionEpisodes[versionName]) {
-        versionEpisodes[versionName] = [];
+      if (!versionEpisodes[versionName]) versionEpisodes[versionName] = [];
+      if (!versionEpisodes[versionName].includes(parseInt(epNum))) {
+        versionEpisodes[versionName].push(parseInt(epNum));
       }
-      versionEpisodes[versionName].push(parseInt(epNum));
+      const vs = versionSlug(versionName);
+      slugToName[vs] = versionName;
+      nameToSlug[versionName] = vs;
     }
   }
   
-  // Sort episodes for each version
+  const showSlug = slugify(show.title.split('/')[0].trim());
+  const worksDir = path.join(process.cwd(), 'src/content/works');
+  if (fs.existsSync(worksDir)) {
+    const workFiles = fs.readdirSync(worksDir).filter(f => f.includes(`-${showSlug}-`));
+    for (const wf of workFiles) {
+      const infix = `-${showSlug}-`;
+      const afterInfix = wf.substring(wf.indexOf(infix) + infix.length);
+      const m = afterInfix.match(/^(\d{2,3})-(.+)\.md$/);
+      if (!m) continue;
+      const epNum = parseInt(m[1]);
+      const vSlugStr = m[2];
+      const vName = slugToName[vSlugStr] || vSlugStr;
+      if (!versionEpisodes[vName]) versionEpisodes[vName] = [];
+      if (!versionEpisodes[vName].includes(epNum)) {
+        versionEpisodes[vName].push(epNum);
+      }
+    }
+  }
+  
   for (const versionName of Object.keys(versionEpisodes)) {
     versionEpisodes[versionName].sort((a, b) => a - b);
   }
   
-  // Find the show block in the file
   const titleMarker = `- title: "${showTitle}"`;
   const titleIndex = content.indexOf(titleMarker);
   
@@ -417,26 +461,17 @@ function updateShowcaseEpisodes(showcaseFile, showTitle, episodes) {
     return;
   }
   
-  // Find the end of this show block (next show or end of file)
   let blockEnd = content.indexOf('\n  - title:', titleIndex + titleMarker.length);
-  if (blockEnd === -1) {
-    blockEnd = content.indexOf('\n---', titleIndex + titleMarker.length);
-  }
-  if (blockEnd === -1) {
-    blockEnd = content.length;
-  }
+  if (blockEnd === -1) blockEnd = content.indexOf('\n---', titleIndex + titleMarker.length);
+  if (blockEnd === -1) blockEnd = content.length;
   
   let showBlock = content.substring(titleIndex, blockEnd);
   let updated = false;
   
-  // Update each version's episodes
   for (const [versionName, eps] of Object.entries(versionEpisodes)) {
     const versionRegex = new RegExp(`(- name:\\s*"${versionName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}"\\s*\\n\\s*episodes:\\s*)\\[[^\\]]*\\]`);
     if (versionRegex.test(showBlock)) {
-      showBlock = showBlock.replace(
-        versionRegex,
-        `$1[${eps.join(', ')}]`
-      );
+      showBlock = showBlock.replace(versionRegex, `$1[${eps.join(', ')}]`);
       updated = true;
       console.log(`    Updated ${versionName}: [${eps.join(', ')}]`);
     }
@@ -506,8 +541,7 @@ async function main() {
         // Save cache
         saveEpisodeCache(show.title, episodes);
         
-        // Update showcase progress
-        updateShowcaseEpisodes(showcase.file, show.title, episodes);
+        updateShowcaseEpisodes(showcase.file, show.title, episodes, show);
         
         // Fetch TMDB info once per show (reused for all episodes)
         let tmdbInfo = null;
@@ -520,20 +554,26 @@ async function main() {
           }
         }
         
-        // Check for complete episodes and publish
         for (const [episodeNum, episodeData] of Object.entries(episodes)) {
-          if (isEpisodeComplete(episodeData, show.versions_expected)) {
-            console.log(`\n    Episode ${episodeNum} complete`);
-            console.log(`      Versions: ${Object.keys(episodeData.versions).join(', ')}`);
-            
-            const published = await publishWork(show, parseInt(episodeNum), episodeData, tmdbInfo, coverPath);
+          for (const [versionName, versionData] of Object.entries(episodeData.versions)) {
+            const published = await publishWork(show, parseInt(episodeNum), versionName, versionData.magnet, tmdbInfo, coverPath);
             if (published) totalPublished++;
-            
-            // Remove from cache after publishing
+          }
+          
+          if (show.versions_expected && show.versions_expected.length > 0) {
+            const showSlug = slugify(show.title.split('/')[0].trim());
+            const publishedSlugs = getPublishedVersionSlugs(showSlug, parseInt(episodeNum));
+            const expectedSlugs = show.versions_expected.map(v => versionSlug(v));
+            const allPublished = expectedSlugs.every(s => publishedSlugs.includes(s));
+            if (allPublished) {
+              delete episodes[episodeNum];
+              console.log(`    Episode ${episodeNum} all versions published, removed from cache`);
+            }
+          } else {
             delete episodes[episodeNum];
-            saveEpisodeCache(show.title, episodes);
           }
         }
+        saveEpisodeCache(show.title, episodes);
       }
     }
     
