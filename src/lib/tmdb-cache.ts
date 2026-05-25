@@ -7,9 +7,14 @@ const TMDB_IMAGE_BASE = 'https://image.tmdb.org/t/p/w500';
 
 /** 从作品文件 id 提取作品基础 slug（与 auto-publish.js 生成封面文件名一致） */
 function extractShowSlug(workId: string): string | null {
-  // 格式: 2026-05-24-re从零开始的异世界生活-第四期-67
-  const match = workId.match(/^\d{4}-\d{2}-\d{2}-(.+)-\d{1,3}$/);
-  return match ? match[1] : null;
+  // 格式: 2026-05-25-上伊那牡丹酒醉身姿似百合花般-01-cht-embed
+  // 或: 2026-05-24-re从零开始的异世界生活-第四期-67
+  const withoutDate = workId.replace(/^\d{4}-\d{2}-\d{2}-/, '');
+  if (!withoutDate) return null;
+
+  // 去掉末尾的 -集数 和可选的 -版本后缀
+  const match = withoutDate.match(/^(.+?)-\d{1,3}(?:-[a-z0-9-]+)?$/);
+  return match ? match[1] : withoutDate;
 }
 
 /** 获取作品封面：优先使用本地手动替换的封面，否则回退到 TMDB 远程 URL */
