@@ -5,7 +5,7 @@ import Footer from '../../components/Footer.astro';
 import DownloadButton from '../../components/DownloadButton.svelte';
 import { getCollection, render } from 'astro:content';
 import { useTranslations } from '../../i18n/ui';
-import { getTMDBCover } from '../../lib/tmdb-cache';
+import { getCover } from '../../lib/tmdb-cache';
 
 export async function getStaticPaths() {
   const works = await getCollection('works');
@@ -79,9 +79,9 @@ if (richMeta) {
     data.tags = richMeta.tags;
 }
 
-// 如果仍然没有封面，尝试从 TMDB 缓存获取
-if (!data.cover && data.tmdbId) {
-  data.cover = getTMDBCover(data.tmdbId, 'w500') || '';
+// 如果仍然没有封面，优先检查本地手动替换的封面，否则回退到 TMDB
+if (!data.cover) {
+  data.cover = getCover(work.id, data.tmdbId, 'w500') || '';
 }
 
 // Build downloads from versions magnet links

@@ -5,7 +5,7 @@ import Footer from '../components/Footer.astro';
 import PageLoader from '../components/PageLoader.astro';
 import { getCollection } from 'astro:content';
 import { useTranslations } from '../i18n/ui';
-import { getTMDBCover } from '../lib/tmdb-cache';
+import { getCover } from '../lib/tmdb-cache';
 
 const lang = 'zh';
 const t = useTranslations(lang);
@@ -13,9 +13,9 @@ const t = useTranslations(lang);
 const allWorks = await getCollection('works');
 const allMisc = await getCollection('misc');
 
-// 补充 TMDB 封面
+// 优先使用本地封面，否则回退到 TMDB
 const worksWithCover = allWorks.map(work => {
-  const cover = work.data.cover || getTMDBCover(work.data.tmdbId, 'w200') || '';
+  const cover = work.data.cover || getCover(work.id, work.data.tmdbId, 'w200') || '';
   return { ...work, data: { ...work.data, cover } };
 });
 
