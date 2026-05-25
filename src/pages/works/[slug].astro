@@ -8,27 +8,84 @@ import { useTranslations } from '../../i18n/ui';
 
 export async function getStaticPaths() {
   const works = await getCollection('works');
+
+  // 按 tmdbId 分组，找出每组中最完整的元数据作为共享数据
+  const tmdbGroups = new Map<number, typeof works>();
+  for (const work of works) {
+    if (!work.data.tmdbId) continue;
+    const key = work.data.tmdbId;
+    if (!tmdbGroups.has(key)) {
+      tmdbGroups.set(key, []);
+    }
+    tmdbGroups.get(key)!.push(work);
+  }
+
+  const richMetaMap = new Map<number, (typeof works)[0]['data']>();
+  for (const [tmdbId, group] of tmdbGroups) {
+    const sorted = [...group].sort((a, b) => {
+      const score = (w: typeof a) =>
+        [
+          w.data.cover,
+          w.data.originalTitle,
+          w.data.genres?.length,
+          w.data.cast?.length,
+          w.data.crew?.length,
+          w.data.description && w.data.description !== w.data.title,
+        ].filter(Boolean).length;
+      return score(b) - score(a);
+    });
+    richMetaMap.set(tmdbId, sorted[0].data);
+  }
+
   return works.map(work => ({
     params: { slug: work.id },
-    props: { work },
+    props: {
+      work,
+      richMeta: work.data.tmdbId ? richMetaMap.get(work.data.tmdbId) ?? null : null,
+    },
   }));
 }
 
-const { work } = Astro.props;
+const { work, richMeta } = Astro.props;
 const { Content } = await render(work);
 const lang = 'zh';
 const t = useTranslations(lang);
 
+// 合并当前作品数据与最完整的同系列元数据
+const data = { ...work.data };
+if (richMeta) {
+  if (!data.cover && richMeta.cover) data.cover = richMeta.cover;
+  if (!data.originalTitle && richMeta.originalTitle) data.originalTitle = richMeta.originalTitle;
+  if ((!data.genres || data.genres.length === 0) && richMeta.genres?.length) data.genres = richMeta.genres;
+  if (!data.language && richMeta.language) data.language = richMeta.language;
+  if (!data.firstAirDate && richMeta.firstAirDate) data.firstAirDate = richMeta.firstAirDate;
+  if (!data.numberOfEpisodes && richMeta.numberOfEpisodes) data.numberOfEpisodes = richMeta.numberOfEpisodes;
+  if (!data.numberOfSeasons && richMeta.numberOfSeasons) data.numberOfSeasons = richMeta.numberOfSeasons;
+  if (!data.episodeRuntime && richMeta.episodeRuntime) data.episodeRuntime = richMeta.episodeRuntime;
+  if ((!data.productionCountries || data.productionCountries.length === 0) && richMeta.productionCountries?.length)
+    data.productionCountries = richMeta.productionCountries;
+  if (!data.rating && richMeta.rating) data.rating = richMeta.rating;
+  if (!data.tmdbUrl && richMeta.tmdbUrl) data.tmdbUrl = richMeta.tmdbUrl;
+  if (!data.imdbId && richMeta.imdbId) data.imdbId = richMeta.imdbId;
+  if ((!data.cast || data.cast.length === 0) && richMeta.cast?.length) data.cast = richMeta.cast;
+  if ((!data.crew || data.crew.length === 0) && richMeta.crew?.length) data.crew = richMeta.crew;
+  if ((!data.description || data.description === data.title) && richMeta.description)
+    data.description = richMeta.description;
+  if (
+    (!data.tags || data.tags.length === 0 || (data.tags.length === 1 && data.tags[0] === '动画')) &&
+    richMeta.tags?.length
+  )
+    data.tags = richMeta.tags;
+}
+
 // Build downloads from versions magnet links
-const downloads = work.data.versions?.map(v => ({
+const downloads = data.versions?.map(v => ({
   name: v.name,
   url: v.magnet,
   size: '',
   type: 'subtitles' as const,
   note: 'Magnet 链接'
 })) || [];
-
-const data = work.data;
 
 // Format helpers
 const formatDate = (dateStr: string | undefined) => {
