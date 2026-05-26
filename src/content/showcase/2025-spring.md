@@ -61,11 +61,11 @@ shows:
     alsoIn: []
     versions:
       - name: "简日内嵌"
-        episodes: [1, 2, 3, 4, 5]
+        episodes: [1, 2, 3, 4, 5, 6]
       - name: "繁日内嵌"
-        episodes: [1, 2, 3, 4, 5]
+        episodes: [1, 2, 3, 4, 5, 6]
       - name: "简繁日内封"
-        episodes: [1, 2, 3, 4]
+        episodes: [1, 2, 3, 4, 5]
   - title: "Re:从零开始的异世界生活 第四期 / Re:Zero S4"
     regex: '\[(\d{1,3})\]'
     rss_search: "绿茶字幕组 Re从零"
@@ -87,11 +87,11 @@ shows:
     alsoIn: []
     versions:
       - name: "简日内嵌"
-        episodes: [49, 50]
+        episodes: [49, 50, 51, 52]
       - name: "繁日内嵌"
-        episodes: [49, 50]
+        episodes: [49, 50, 51, 52]
       - name: "简繁日内封"
-        episodes: [49, 50]
+        episodes: [49, 50, 51, 52]
   - title: "主播女孩重度依赖 / NEEDY GIRL OVERDOSE"
     regex: '\[(\d{1,3})\]'
     rss_search: "绿茶字幕组 主播女孩"
