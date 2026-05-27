@@ -22,11 +22,11 @@ shows:
     alsoIn: []
     versions:
       - name: "简日内嵌"
-        episodes: [13, 14, 15, 16, 17, 18]
+        episodes: [13, 14, 15, 16, 17, 18, 19]
       - name: "繁日内嵌"
-        episodes: [13, 14, 15, 16, 17, 18]
+        episodes: [13, 14, 15, 16, 17, 18, 19]
       - name: "简繁日内封"
-        episodes: [13, 14, 15, 16, 17]
+        episodes: [13, 14, 15, 16, 17, 18]
   - title: "欢迎来到实力至上主义的教室 第四季 / Classroom of the Elite S4"
     regex: '\[(\d{1,3})\]'
     rss_search: "绿茶字幕组 实力至上"
@@ -35,11 +35,11 @@ shows:
     alsoIn: []
     versions:
       - name: "简日内嵌"
-        episodes: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+        episodes: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
       - name: "繁日内嵌"
-        episodes: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+        episodes: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
       - name: "简繁日内封"
-        episodes: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        episodes: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
   - title: "关于邻家的天使大人不知不觉把我惯成了废人这件事 第2期 / The Angel Next Door S2"
     regex: '\[(\d{1,3})\]'
     rss_search: "绿茶字幕组 天使大人"
