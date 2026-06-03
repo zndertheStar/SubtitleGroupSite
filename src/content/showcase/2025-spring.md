@@ -35,11 +35,11 @@ shows:
     alsoIn: []
     versions:
       - name: "简日内嵌"
-        episodes: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+        episodes: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
       - name: "繁日内嵌"
-        episodes: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+        episodes: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
       - name: "简繁日内封"
-        episodes: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+        episodes: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
   - title: "关于邻家的天使大人不知不觉把我惯成了废人这件事 第2期 / The Angel Next Door S2"
     regex: '\[(\d{1,3})\]'
     rss_search: "绿茶字幕组 天使大人"
@@ -48,11 +48,11 @@ shows:
     alsoIn: []
     versions:
       - name: "简日内嵌"
-        episodes: [1, 2, 3, 4, 5, 6, 7]
+        episodes: [1, 2, 3, 4, 5, 6, 7, 8]
       - name: "繁日内嵌"
-        episodes: [1, 2, 3, 4, 5, 6, 7]
+        episodes: [1, 2, 3, 4, 5, 6, 7, 8]
       - name: "简繁日内封"
-        episodes: [1, 2, 3, 4, 5, 6]
+        episodes: [1, 2, 3, 4, 5, 6, 7]
   - title: "想结束这场我爱你游戏 / Aishiteru Game wo Owarasetai"
     regex: '\[(\d{1,3})\]'
     rss_search: "绿茶字幕组 我爱你游戏"
