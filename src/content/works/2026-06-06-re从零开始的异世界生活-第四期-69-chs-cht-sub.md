@@ -1,0 +1,62 @@
+---
+title: "Re：从零开始的异世界生活 第69集 简繁日内封"
+description: "在异世界陷入迷茫的普通高中生菜月昴，邂逅了一位银发的美少女。但想助她一臂之力的昴，却一次次地遭遇敌袭，背叛、暴力，甚至是死亡……“死亡回归”——无力的少年拥有的唯一能力，能将死后时间倒转回一开始。使用了这般力量，便会失去过去的回忆，可为了守护最重要的人们，昴必须抗争到底。“即使你忘却了我，我也不会遗忘你。”"
+cover: "https://image.tmdb.org/t/p/w500/a1pMK4456dF2j5B9xvkjMEGiOOw.jpg"
+tags: ["动画", "动作冒险", "Sci-Fi & Fantasy", "悬疑", "剧情"]
+category: "anime"
+pubDate: 2026-06-06
+episode: 69
+tmdbId: 65942
+originalTitle: "Re:ゼロから始める異世界生活"
+genres: ["动画", "动作冒险", "Sci-Fi & Fantasy", "悬疑", "剧情"]
+language: "Japanese"
+firstAirDate: "2016-04-04"
+numberOfEpisodes: 85
+numberOfSeasons: 1
+episodeRuntime: 25
+productionCountries: ["Japan"]
+rating: 7.86
+tmdbUrl: "https://www.themoviedb.org/tv/65942"
+imdbId: "tt5607616"
+cast:
+  - name: "小林裕介"
+    character: "Subaru Natsuki (voice)"
+    profilePath: "/y4ukKDSobZJNuB4H3k89hkrKCDC.jpg"
+  - name: "高桥李依"
+    character: "Emilia (voice)"
+    profilePath: "/aeB7z0cBTASdjKOjQriBAO6hYq4.jpg"
+  - name: "内山夕实"
+    character: "Puck (voice)"
+    profilePath: "/JvavoF3YOLCf4LHfl4XvYobANE.jpg"
+  - name: "赤崎千夏"
+    character: "Felt (voice)"
+    profilePath: "/nYYs30FgGrgr3uOiQ4ASmRpFca2.jpg"
+  - name: "中村悠一"
+    character: "Reinhard van Astrea (voice)"
+    profilePath: "/wb8behVKjBHX9XXrEydvNINCYwH.jpg"
+  - name: "水濑祈"
+    character: "Rem (voice)"
+    profilePath: "/cqOrQDUbbQLKpujzcK47YqjFdNp.jpg"
+  - name: "村川梨衣"
+    character: "Ram (voice)"
+    profilePath: "/pawIx7uhV1a2fAHjvTnrCP0KcHX.jpg"
+  - name: "子安武人"
+    character: "Roswaal L. Mathers (voice)"
+    profilePath: "/8uBkNDKPNmp9JWgMUI02NVyfhi1.jpg"
+  - name: "新井里美"
+    character: "Beatrice (voice)"
+    profilePath: "/v95wU1gpSLAOJS5yKFTxyheXAW2.jpg"
+  - name: "天崎滉平"
+    character: "Otto Suwen (voice)"
+    profilePath: "/tnN5jLiLjcDa7qn88uLb1iAfivL.jpg"
+crew:
+  - name: "池本昌仁"
+    job: "Producer"
+  - name: "青木绘理子"
+    job: "Producer"
+  - name: "饭冢彩"
+    job: "Producer"
+versions:
+    - name: "简繁日内封"
+      magnet: "magnet:?xt=urn:btih:F54LCM3CE25AW4KBDTSYC6BOQ744Z5HE&dn=&tr=http%3A%2F%2F104.143.10.186%3A8000%2Fannounce&tr=udp%3A%2F%2F104.143.10.186%3A8000%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=http%3A%2F%2Ftracker3.itzmx.com%3A6961%2Fannounce&tr=http%3A%2F%2Ftracker4.itzmx.com%3A2710%2Fannounce&tr=http%3A%2F%2Ftracker.publicbt.com%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.prq.to%2Fannounce&tr=http%3A%2F%2Fopen.acgtracker.com%3A1096%2Fannounce&tr=https%3A%2F%2Ft-115.rhcloud.com%2Fonly_for_ylbud&tr=http%3A%2F%2Ftracker1.itzmx.com%3A8080%2Fannounce&tr=http%3A%2F%2Ftracker2.itzmx.com%3A6961%2Fannounce&tr=udp%3A%2F%2Ftracker1.itzmx.com%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker2.itzmx.com%3A6961%2Fannounce&tr=udp%3A%2F%2Ftracker3.itzmx.com%3A6961%2Fannounce&tr=udp%3A%2F%2Ftracker4.itzmx.com%3A2710%2Fannounce"
+---

@@ -74,11 +74,11 @@ shows:
     alsoIn: []
     versions:
       - name: "简日内嵌"
-        episodes: [67]
+        episodes: [67, 68, 69]
       - name: "繁日内嵌"
-        episodes: [67]
+        episodes: [67, 68, 69]
       - name: "简繁日内封"
-        episodes: [67]
+        episodes: [67, 68, 69]
   - title: "租借女友 第五季 / Rent-a-Girlfriend S5"
     regex: '\[(\d{1,3})\]'
     rss_search: "绿茶字幕组 租借女友"
