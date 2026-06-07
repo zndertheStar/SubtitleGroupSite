@@ -9,11 +9,11 @@ shows:
     alsoIn: []
     versions:
       - name: "简日内嵌"
-        episodes: [1, 2, 3, 4, 5, 6, 7, 8]
+        episodes: [1, 2, 3, 4, 5, 6, 7, 8, 9]
       - name: "繁日内嵌"
-        episodes: [1, 2, 3, 4, 5, 6, 7, 8]
+        episodes: [1, 2, 3, 4, 5, 6, 7, 8, 9]
       - name: "简繁日内封"
-        episodes: [1, 2, 3, 4, 5, 6, 7]
+        episodes: [1, 2, 3, 4, 5, 6, 7, 8]
   - title: "杖与剑的魔剑谭 第2期 / Wistoria: Wand and Sword S2"
     regex: '\[(\d{1,3})\]'
     rss_search: "绿茶字幕组 杖与剑"
