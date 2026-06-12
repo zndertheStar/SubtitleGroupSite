@@ -22,11 +22,11 @@ shows:
     alsoIn: []
     versions:
       - name: "简日内嵌"
-        episodes: [13, 14, 15, 16, 17, 18, 19, 20]
+        episodes: [13, 14, 15, 16, 17, 18, 19, 20, 21]
       - name: "繁日内嵌"
-        episodes: [13, 14, 15, 16, 17, 18, 19, 20]
+        episodes: [13, 14, 15, 16, 17, 18, 19, 20, 21]
       - name: "简繁日内封"
-        episodes: [13, 14, 15, 16, 17, 18, 19]
+        episodes: [13, 14, 15, 16, 17, 18, 19, 20]
   - title: "欢迎来到实力至上主义的教室 第四季 / Classroom of the Elite S4"
     regex: '\[(\d{1,3})\]'
     rss_search: "绿茶字幕组 实力至上"
