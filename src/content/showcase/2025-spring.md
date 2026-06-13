@@ -48,11 +48,11 @@ shows:
     alsoIn: []
     versions:
       - name: "简日内嵌"
-        episodes: [1, 2, 3, 4, 5, 6, 7, 8]
+        episodes: [1, 2, 3, 4, 5, 6, 7, 8, 9]
       - name: "繁日内嵌"
-        episodes: [1, 2, 3, 4, 5, 6, 7, 8]
+        episodes: [1, 2, 3, 4, 5, 6, 7, 8, 9]
       - name: "简繁日内封"
-        episodes: [1, 2, 3, 4, 5, 6, 7]
+        episodes: [1, 2, 3, 4, 5, 6, 7, 8]
   - title: "想结束这场我爱你游戏 / Aishiteru Game wo Owarasetai"
     regex: '\[(\d{1,3})\]'
     rss_search: "绿茶字幕组 我爱你游戏"
@@ -113,9 +113,9 @@ shows:
     alsoIn: []
     versions:
       - name: "简日内嵌"
-        episodes: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        episodes: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
       - name: "繁日内嵌"
-        episodes: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        episodes: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
       - name: "简繁日内封"
         episodes: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 ---
