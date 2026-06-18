@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import { siteConfig, getSiteName } from '../config/site';
+import Analytics from '@vercel/analytics/astro';
 
 interface Props {
   title: string;
@@ -24,6 +25,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <Analytics />
   <title>{title} | {getSiteName(lang)}</title>
   <meta name="description" content={description} />
   <meta name="generator" content={Astro.generator} />
